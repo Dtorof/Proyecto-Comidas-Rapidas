@@ -198,45 +198,27 @@
         <!--Cards -->
         <div class="container">
             <h1 style="background-color: #fff;">Hamburguesas</h1>
+
             <div class="row">
+
                 <div class="col">
-                    <div class="col-sm-12 col-lg-6 col-xs-12 justify-content-center" v-for="(item,index) in PRODUCTS_KEY[0].burgers">
-                        <div class="card mb-3" style="max-width: 540px;">
-                          <div class="row g-0">
-                            <div class="col-md-4 ">
-                              <img :src="item.image" class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                              <div class="card-body">
-                                <div class="row">
-                                    <h4>{{item.name}}</h4>
-                                    <h4>{{item.price}}</h4>
-                                    <div class="col">
-                                        <button type="button">-</button>
-                                    </div>
-                                    <div class="col border border-dark">
-                                        <h4>contador</h4>
-                                    </div>
-                                    <div class="col">
-                                        <button type="button">+</button>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal22">
-                                Agregar
-                            </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    <!-- <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
+
+                    <div class="card" style="width: 18rem;" v-for="item in products.burgers">
+                        <img :src="item.image" class="img-fluid rounded-start" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <div class="row">
+                                <div class="col">
+                                    <h4>{{item.name}}</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- <h4>{{item.descripcion}}</h4> -->
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h4>{{item.price}}</h4>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col">
                                     <button type="button">-</button>
@@ -253,20 +235,34 @@
                                 Agregar
                             </button>
                         </div>
-                    </div> -->
+                    </div>
+
+
                 </div>
                 
             </div>
+
             <h1 style="background-color: #fff;">Perros calientes</h1>
             <div class="row">
-                <div class="col-sm-12 col-lg-6 col-xs-12 justify-content-center" v-for="(item,index) in PRODUCTS_KEY[0].hot_dogs">
-                    <div class="card mb-3" style="max-width: 540px;">
-                      <div class="row g-0">
-                        <div class="col-md-4 ">
-                          <img :src="item.image" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                          <div class="card-body">
+
+                <div class="col">
+
+                    <div class="card" style="width: 18rem;" v-for="item in products.hot_dogs">
+                        <img :src="item.image" class="img-fluid rounded-start" alt="...">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h4>{{item.name}}</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- <h4>{{item.descripcion}}</h4> -->
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h4>{{item.price}}</h4>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col">
                                     <button type="button">-</button>
@@ -279,15 +275,16 @@
                                 </div>
                             </div>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal22">
-                            Agregar
-                        </button>
-                            </div>
-                          </div>
+                                data-bs-target="#exampleModal22">
+                                Agregar
+                            </button>
                         </div>
-                      </div>
                     </div>
-                  </div>
+
+
+
+                </div>
+
             </div>
             
 
@@ -312,9 +309,9 @@
                             <h6>Elegir adicionales que desees agregar</h6>
                         </div>
                         <div class="row" >
-                            <div class="form-check" v-for="item in additional">
-                                <input v-model="Option" name="item" class="form-check-input" type="checkbox" value="" id="item">
-                                <label v-text="item.name" class="form-check-label" for="item">
+                            <div class="form-check" v-for="">
+                                <input  name="item" class="form-check-input" type="checkbox" value="" id="item">
+                                <label class="form-check-label" for="item">
                                   
                                 </label>
                             </div>
