@@ -58,10 +58,9 @@
                         </button>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#exampleModal1">
-                            <i
-                                class="fa-solid fa-cart-arrow-down"></i>
+                            <i class="fa-solid fa-cart-arrow-down"></i>
                         </button>
-                        
+
                     </form>
                 </div>
             </div>
@@ -143,7 +142,8 @@
         <!-- Inicio yeni -->
 
         <!--Modal carrito-->
-        <div class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -181,16 +181,31 @@
         </div>
         <!--Fin modal carrito-->
 
+       
+        <!--Cards -->
         <div class="container">
             <h1 style="background-color: #fff;">Hamburguesas</h1>
+
             <div class="row">
+
                 <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
+
+                    <div class="card" style="width: 18rem;" v-for="item in products.burgers">
+                        <img :src="item.image" class="img-fluid rounded-start" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <div class="row">
+                                <div class="col">
+                                    <h4>{{item.name}}</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- <h4>{{item.descripcion}}</h4> -->
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h4>{{item.price}}</h4>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col">
                                     <button type="button">-</button>
@@ -202,174 +217,107 @@
                                     <button type="button">+</button>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-primary">Agregar</a>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal22">
+                                Agregar
+                            </button>
                         </div>
                     </div>
+
+
                 </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="button">-</button>
-                                </div>
-                                <div class="col border border-dark">
-                                    <h4>contador</h4>
-                                </div>
-                                <div class="col">
-                                    <button type="button">+</button>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-primary">Agregar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="button">-</button>
-                                </div>
-                                <div class="col border border-dark">
-                                    <h4>contador</h4>
-                                </div>
-                                <div class="col">
-                                    <button type="button">+</button>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-primary">Agregar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="button">-</button>
-                                </div>
-                                <div class="col border border-dark">
-                                    <h4>contador</h4>
-                                </div>
-                                <div class="col">
-                                    <button type="button">+</button>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-primary">Agregar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h1 style="background-color: #fff;">Perros calientes</h1>
-            <div class="row">
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="button">-</button>
-                                </div>
-                                <div class="col border border-dark">
-                                    <h4>contador</h4>
-                                </div>
-                                <div class="col">
-                                    <button type="button">+</button>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-primary">Agregar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="button">-</button>
-                                </div>
-                                <div class="col border border-dark">
-                                    <h4>contador</h4>
-                                </div>
-                                <div class="col">
-                                    <button type="button">+</button>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-primary">Agregar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="button">-</button>
-                                </div>
-                                <div class="col border border-dark">
-                                    <h4>contador</h4>
-                                </div>
-                                <div class="col">
-                                    <button type="button">+</button>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-primary">Agregar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="button">-</button>
-                                </div>
-                                <div class="col border border-dark">
-                                    <h4>contador</h4>
-                                </div>
-                                <div class="col">
-                                    <button type="button">+</button>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-primary">Agregar</a>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
 
+            <h1 style="background-color: #fff;">Perros calientes</h1>
+            <div class="row">
+
+                <div class="col">
+
+                    <div class="card" style="width: 18rem;" v-for="item in products.hot_dogs">
+                        <img :src="item.image" class="img-fluid rounded-start" alt="...">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h4>{{item.name}}</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- <h4>{{item.descripcion}}</h4> -->
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h4>{{item.price}}</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button type="button">-</button>
+                                </div>
+                                <div class="col border border-dark">
+                                    <h4>contador</h4>
+                                </div>
+                                <div class="col">
+                                    <button type="button">+</button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal22">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+            
+
         </div>
+        <!--Fin Cards -->
+         <!--Modal adicionales-->
+       
+        
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal22" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adicionales</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                       
+                        <div class="row">
+                            <h6>Elegir adicionales que desees agregar</h6>
+                        </div>
+                        <div class="row" >
+                            <div class="form-check" v-for="">
+                                <input  name="item" class="form-check-input" type="checkbox" value="" id="item">
+                                <label class="form-check-label" for="item">
+                                  
+                                </label>
+                            </div>
+                              <!-- <div class="form-check">
+                                <option ><input v-model="Option" class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate"></option>
+                                <input v-model="Option" class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                              </div> -->
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin modal adicionales-->
+
 
 
         ​
@@ -378,6 +326,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="./backEnd/index.js"></script>
+    <script src="./backEnd/ShoppingCart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
