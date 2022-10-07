@@ -25,6 +25,11 @@ new Vue({
         }
         
         let products = {
+          Additional:[
+            {"id":v4(),"name":"papas","price":3000},
+            {"id":v4(),"name":"yuca","price":5000},
+            {"id":v4(),"name":"nachos","price":1500}
+            ],
           burgers: [
           {
             "id": v4(),
