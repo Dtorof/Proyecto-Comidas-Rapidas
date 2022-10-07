@@ -89,7 +89,8 @@ new Vue({
         }
 
         this.setterLocalStorage(this.PRODUCTS_KEY,products)
-      }
-    }
+      },
+    },
+    
    
 })
