@@ -79,6 +79,10 @@ new Vue({
 
         this.setterLocalStorage(this.PRODUCTS_KEY,products)
       }
+    },
+    // yeni empieza aca 
+    localstorage(){
+        
     }
    
 })
