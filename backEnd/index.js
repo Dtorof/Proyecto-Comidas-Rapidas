@@ -30,6 +30,7 @@ new Vue({
             "id": v4(),
             "name": "Básica",
             "price": 15000,
+            "description": "Hamburguesa con carne de 50gr y queso derretido.",
             "image": "https://res.cloudinary.com/jorge-tarifa/image/upload/v1665118196/carrito-market-mix/Sencilla_c4zql2.jpg",
             "adicionales": []
           },
@@ -37,51 +38,59 @@ new Vue({
             "id": v4(),
             "name": "Bacon",
             "price": 25000,
+            "description": "Hamburguesa con dos carnes de res de 50gr,  125 gr de tocineta, queso cheddar, cebolla, salsa de tomate y mostaza.",
             "image": "https://res.cloudinary.com/jorge-tarifa/image/upload/v1665118200/carrito-market-mix/Bacon_h8vzrt.jpg",
-            "adicionales": []
+            "additional": []
           },{
             "id": v4(),
             "name": "Magna",
             "price": 60000,
+            "description": "Prueba la deliciosa Magna. Cinco carnes de res de 50gr con salsa especial de la casa y queso derretido.",
             "image": "https://res.cloudinary.com/jorge-tarifa/image/upload/v1665118200/carrito-market-mix/Magna_hoka4e.jpg",
-            "adicionales": []
+            "additional": []
           },{
             "id": v4(),
             "name": "Triple Carne",
             "price": 35000,
+            "description": "Hamburguesa con tres carne de 50gr, dos queso cheddar, cebolla, pepinillos, salsa de tomate y mostaza.",
             "image": "https://res.cloudinary.com/jorge-tarifa/image/upload/v1665118196/carrito-market-mix/Medium_numhp4.jpg",
-            "adicionales": []
+            "additional": []
           }],
           
           hot_dogs:[{
             "id": v4(),
             "name": "Básico",
             "price": 9000,
+            "description": "Hot dog básico con mostaza y pan recién horneado.",
             "image": "https://res.cloudinary.com/jorge-tarifa/image/upload/v1665118573/carrito-market-mix/Hot-sencillo_pzc1oe.jpg",
-            "adicionales": []
+            "additional": []
           },{
             "id": v4(),
             "name": "Texano",
             "price": 20000,
+            "description": "Hot dog con salchicha texana, lechuga, tomate, cebolla, chips de patata y un toque de queso.",
             "image": "https://res.cloudinary.com/jorge-tarifa/image/upload/v1665117307/carrito-market-mix/Texano_uccuwd.jpg",
-            "adicionales": []
+            "additional": []
           },{
             "id": v4(),
             "name": "Viena",
             "price": 15000,
+            "description": "Hot dog con salchicha tipo viena,lechuga, tomate, cebolla y un toque de queso.",
             "image": "https://res.cloudinary.com/jorge-tarifa/image/upload/v1665117299/carrito-market-mix/Viena_i7rbd7.jpg",
-            "adicionales": []
+            "additional": []
           },{
             "id": v4(),
             "name": "Quesudo",
             "price": 17000,
+            "description": "Hot dog con salchicha especial de la casa,lechuga, tomate, cebolla y abundante queso derretido.",
             "image": "https://res.cloudinary.com/jorge-tarifa/image/upload/v1665117323/carrito-market-mix/Cheeser_uwf5us.jpg",
-            "adicionales": []
+            "additional": []
           }]
         }
 
         this.setterLocalStorage(this.PRODUCTS_KEY,products)
-      }
-    }
+      },
+    },
+    
    
 })
