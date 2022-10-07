@@ -1,10 +1,13 @@
 new Vue({   
     el: '#app',
     data: {
-    PRODUCTS_KEY: 'all-products'
+    products: [],
+    PRODUCTS_KEY: 'all-products',
     },
     created(){
         this.setDataProducts()
+        this.products = this.getterParsedLocalStorage(this.PRODUCTS_KEY)
+        console.log(this.products)
     },
     methods: {
       setterLocalStorage(key, data) {
