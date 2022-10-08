@@ -19,6 +19,21 @@ new Vue({
         
     },
     methods: {
+        setterLocalStorage(key, data) {
+            localStorage.setItem(key, JSON.stringify(data))
+          },
+          getterParsedLocalStorage(key) {
+            return JSON.parse(localStorage.getItem(key) || "[]")
+        },
+        createProduct(){
+
+        },
+        createAdditional(){
+
+        },
+        createEmployee(){
+
+        },
         validationFlag1(){
             this.flag1=true;
             if(this.flag1==true){
