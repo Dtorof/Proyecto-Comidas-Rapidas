@@ -19,24 +19,18 @@ new Vue({
       },
       
       addCart(itemId) {
-        console.log('Hola')
         this.productBuy = this.products.burgers.find((prod)=> {
-          console.log(prod.id) 
-          console.log(itemId)
           if(prod.id === itemId) {
             console.log(prod.id === itemId)
             console.log(prod)
             return prod
           }
         })
-        console.log("*************************************")
-        console.log(this.productBuy)
         this.addProduct(this.productBuy)
         return this.productBuy
       },
       addProduct(){
         this.cartData.push(this.productBuy);
-        console.log(this.cartData)
         return this.cartData;
       },
       getterParsedLocalStorage(key) {
