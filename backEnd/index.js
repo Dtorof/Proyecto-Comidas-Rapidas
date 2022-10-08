@@ -3,6 +3,7 @@ new Vue({
     data: {
     products: [],
     quantity:0,
+    totalQuantitys:0,
     total:0,
     cartData: [],
     productBuy:{},
@@ -17,21 +18,30 @@ new Vue({
       setterLocalStorage(key, data) {
         localStorage.setItem(key, JSON.stringify(data));
       },
-      
       addCart(itemId) {
         this.productBuy = this.products.burgers.find((prod)=> {
           if(prod.id === itemId) {
-            console.log(prod.id === itemId)
-            console.log(prod)
             return prod
           }
         })
+        this.productBuy.quantity = this.updateQty();
+        this.productBuy.subTotal =  this.productBuy.quantity * this.productBuy.price
         this.addProduct(this.productBuy)
         return this.productBuy
       },
       addProduct(){
         this.cartData.push(this.productBuy);
         return this.cartData;
+      },
+      updateQty(action, id){
+        if(action === "add") {
+          this.quantity++
+          this.totalQuantitys = this.quantity
+        } else if(this.quantity > 0) {
+          this.quantity--
+          this.totalQuantitys = this.quantity
+        }
+        return this.totalQuantitys 
       },
       getterParsedLocalStorage(key) {
         return JSON.parse(localStorage.getItem(key) || "[]");
