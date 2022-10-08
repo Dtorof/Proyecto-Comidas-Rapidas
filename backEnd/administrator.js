@@ -9,11 +9,29 @@ new Vue({
         flag2:false,
         flag3:false,
         flag4:false,
+        createdProducts: [],
+        createdAdditionals:[],
+        createdEmployees: []
     },
     created(){
-        
+
     },
     methods: {
+        setterLocalStorage(key, data) {
+            localStorage.setItem(key, JSON.stringify(data))
+          },
+          getterParsedLocalStorage(key) {
+            return JSON.parse(localStorage.getItem(key) || "[]")
+        },
+        createProduct(){
+
+        },
+        createAdditional(){
+
+        },
+        createEmployee(){
+
+        },
         validationFlag1(){
             this.flag1=true;
             if(this.flag1==true){
