@@ -140,7 +140,6 @@
 
         ​
         <!-- Inicio yeni -->
-
         <!--Modal carrito-->
         <div class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -159,9 +158,9 @@
                                                 <th class="col-3">Total</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr class="body" v-for="">
-                                                <td v-text=""></td>
+                                        <tbody v-if="cartData.length">
+                                            <tr class="body" v-for="(item, i) in cartData">
+                                                <td v-text="item.name"></td>
                                                 <td v-text=""></td>
                                                 <td v-text=""></td>
                                             </tr>
@@ -180,16 +179,11 @@
             </div>
         </div>
         <!--Fin modal carrito-->
-
-       
         <!--Cards -->
         <div class="container">
             <h1 style="background-color: #fff;">Hamburguesas</h1>
-
             <div class="row">
-
                 <div class="col">
-
                     <div class="card" style="width: 18rem;" v-for="item in products.burgers">
                         <img :src="item.image" class="img-fluid rounded-start" alt="...">
                         <div class="card-body">
@@ -211,7 +205,7 @@
                                     <button type="button">-</button>
                                 </div>
                                 <div class="col border border-dark">
-                                    <h4>contador</h4>
+                                    <h4 v-text="quantity"></h4>
                                 </div>
                                 <div class="col">
                                     <button type="button">+</button>
@@ -223,10 +217,7 @@
                             </button>
                         </div>
                     </div>
-
-
-                </div>
-                
+                </div>          
             </div>
 
             <h1 style="background-color: #fff;">Perros calientes</h1>
@@ -279,8 +270,6 @@
         <!--Fin Cards -->
          <!--Modal adicionales-->
        
-        
-
         <!-- Modal -->
         <div class="modal fade" id="exampleModal22" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -317,16 +306,12 @@
             </div>
         </div>
         <!--Fin modal adicionales-->
-
-
-
         ​
         <!-- Fin yeni -->
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="./backEnd/index.js"></script>
-    <script src="./backEnd/ShoppingCart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>

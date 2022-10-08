@@ -2,6 +2,10 @@ new Vue({
     el: '#app',
     data: {
     products: [],
+    quantity:0,
+    total:0,
+    cartData: [],
+    productBuy:{},
     PRODUCTS_KEY: 'all-products',
     },
     created(){
@@ -12,6 +16,28 @@ new Vue({
     methods: {
       setterLocalStorage(key, data) {
         localStorage.setItem(key, JSON.stringify(data));
+      },
+      
+      addCart(itemId) {
+        console.log('Hola')
+        this.productBuy = this.products.burgers.find((prod)=> {
+          console.log(prod.id) 
+          console.log(itemId)
+          if(prod.id === itemId) {
+            console.log(prod.id === itemId)
+            console.log(prod)
+            return prod
+          }
+        })
+        console.log("*************************************")
+        console.log(this.productBuy)
+        this.addProduct(this.productBuy)
+        return this.productBuy
+      },
+      addProduct(){
+        this.cartData.push(this.productBuy);
+        console.log(this.cartData)
+        return this.cartData;
       },
       getterParsedLocalStorage(key) {
         return JSON.parse(localStorage.getItem(key) || "[]");
