@@ -105,12 +105,6 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label class="form-label">Id</label>
-                        <input class="form-control" type="text">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
                         <label class="form-label">Nombre del producto</label>
                         <input class="form-control" type="text">
                     </div>
@@ -178,14 +172,14 @@
                 <div class="row">
                     <div class="col">
                         <label class="form-label">Nombre del producto</label>
-                        <input class="form-control" type="text">
+                        <input v-model="nameAdditional" class="form-control" type="text">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
                         <label class="form-label">Precio</label>
-                        <input class="form-control" type="number">
+                        <input v-model="price" class="form-control" type="number">
                     </div>
                 </div>
 
