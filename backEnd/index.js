@@ -5,6 +5,7 @@ new Vue({
     quantity:0,
     totalQuantitys:0,
     total:0,
+    additionals:0,
     cartData: [],
     productBuy:{},
     PRODUCTS_KEY: 'all-products',
@@ -25,7 +26,7 @@ new Vue({
           }
         })
         this.productBuy.quantity = this.updateQty();
-        this.productBuy.subTotal =  this.productBuy.quantity * this.productBuy.price
+        this.productBuy.subTotal =  (this.productBuy.quantity * this.productBuy.price) + this.additionals;
         this.addProduct(this.productBuy)
         return this.productBuy
       },
