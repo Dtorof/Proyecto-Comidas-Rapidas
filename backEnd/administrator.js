@@ -1,16 +1,21 @@
 new Vue({   
     el: '#app',
     data: {
-        userType:[{id:1,name:"Chef"},{id:2,name:"Mesero"},{id:3,name:"Domiciliario"}],
-        user:"",
-        productType:[{id:1,name:"Hamburguesa"},{id:2,name:"Perros"}],
-        product:"",
+        //yeni 
         flag1:false,
         flag2:false,
         flag3:false,
         flag4:false,
+        products:"",
+        nameAdditional:"",
+        price:0,
+        //yeni 
+
+
+        
     },
     created(){
+        this.products = JSON.parse(localStorage.getItem("all-products"));
         
     },
     methods: {
@@ -46,7 +51,10 @@ new Vue({
                 this.flag2=false;
                 this.flag3=false;
             }
-        }
+        },
+        
+        
+        
         
     },
    
