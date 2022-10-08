@@ -45,11 +45,6 @@ new Vue({
         }
         
         let products = {
-          Additional:[
-            {"id":v4(),"name":"papas","price":3000},
-            {"id":v4(),"name":"yuca","price":5000},
-            {"id":v4(),"name":"nachos","price":1500}
-            ],
           burgers: [
           {
             "id": v4(),
@@ -57,7 +52,7 @@ new Vue({
             "price": 15000,
             "description": "Hamburguesa con carne de 50gr y queso derretido.",
             "image": "https://res.cloudinary.com/jorge-tarifa/image/upload/v1665118196/carrito-market-mix/Sencilla_c4zql2.jpg",
-            "adicionales": []
+            "additional": []
           },
           {
             "id": v4(),
