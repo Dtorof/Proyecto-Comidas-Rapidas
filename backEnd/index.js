@@ -18,7 +18,7 @@ new Vue({
       setterLocalStorage(key, data) {
         localStorage.setItem(key, JSON.stringify(data));
       },
-      addCart(itemId) {
+      addCartBurgers(itemId) {
         this.productBuy = this.products.burgers.find((prod)=> {
           if(prod.id === itemId) {
             return prod
@@ -29,6 +29,18 @@ new Vue({
         this.addProduct(this.productBuy)
         return this.productBuy
       },
+      addCartHotDog(itemId) {
+        this.productBuy = this.products.hot_dogs.find((prod)=> {
+          if(prod.id === itemId) {
+            return prod
+          }
+        })
+        this.productBuy.quantity = this.updateQty();
+        this.productBuy.subTotal =  this.productBuy.quantity * this.productBuy.price
+        this.addProduct(this.productBuy)
+        return this.productBuy
+      },
+      
       addProduct(){
         this.cartData.push(this.productBuy);
         return this.cartData;
