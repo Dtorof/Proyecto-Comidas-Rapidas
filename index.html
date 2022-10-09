@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 ​
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
     <title>Comidas Rapidas</title>
 </head>
 ​
+
 <body>
 
     <div class="container" id="app">
@@ -52,7 +54,7 @@
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-primaryx" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">
                             Inicio de sesión
                         </button>
@@ -140,7 +142,6 @@
 
         ​
         <!-- Inicio yeni -->
-
         <!--Modal carrito-->
         <div class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -159,11 +160,11 @@
                                                 <th class="col-3">Total</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr class="body" v-for="">
-                                                <td v-text=""></td>
-                                                <td v-text=""></td>
-                                                <td v-text=""></td>
+                                        <tbody v-if="cartData.length">
+                                            <tr class="body" v-for="(item, i) in cartData">
+                                                <td v-text="item.name"></td>
+                                                <td v-text="item.quantity"></td>
+                                                <td v-text="item.subTotal"></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -185,11 +186,8 @@
         <!--Cards -->
         <div class="container">
             <h1 style="background-color: #fff;">Hamburguesas</h1>
-
             <div class="row">
-
                 <div class="col">
-
                     <div class="card" style="width: 18rem;" v-for="item in products.burgers">
                         <img :src="item.image" class="img-fluid rounded-start" alt="...">
                         <div class="card-body">
@@ -199,7 +197,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <!-- <h4>{{item.descripcion}}</h4> -->
+                                <h4>{{item.description}}</h4>
                             </div>
                             <div class="row">
                                 <div class="col">
@@ -208,13 +206,13 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <button type="button">-</button>
+                                    <button type="button" @click="updateQty('remove', item.id)">-</button>
                                 </div>
                                 <div class="col border border-dark">
                                     <h4>contador</h4>
                                 </div>
                                 <div class="col">
-                                    <button type="button">+</button>
+                                    <button type="button" @click="updateQty('add',  item.id)">+</button>
                                 </div>
                             </div>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -243,7 +241,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <!-- <h4>{{item.descripcion}}</h4> -->
+                                <h4>{{item.description}}</h4>
                             </div>
                             <div class="row">
                                 <div class="col">
@@ -252,13 +250,13 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <button type="button">-</button>
+                                    <button type="button" @click="updateQty('remove', item.id)">-</button>
                                 </div>
                                 <div class="col border border-dark">
                                     <h4>contador</h4>
                                 </div>
                                 <div class="col">
-                                    <button type="button">+</button>
+                                    <button type="button" @click="updateQty('add',  item.id)">+</button>
                                 </div>
                             </div>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -273,7 +271,7 @@
                 </div>
 
             </div>
-            
+
 
         </div>
         <!--Fin Cards -->
@@ -291,21 +289,18 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                       
+
                         <div class="row">
                             <h6>Elegir adicionales que desees agregar</h6>
                         </div>
-                        <div class="row" >
-                            <div class="form-check" v-for="">
-                                <input  name="item" class="form-check-input" type="checkbox" value="" id="item">
-                                <label class="form-check-label" for="item">
-                                  
+                        <div class="row">
+                            <div class="form-check" v-for="item in products.additional" >
+                                <input class="form-check-input" type="checkbox" value="item.nombre" id="flexCheckDefault" @click="addAdditional(item.nombre)">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                     {{item.name}}
                                 </label>
-                            </div>
-                              <!-- <div class="form-check">
-                                <option ><input v-model="Option" class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate"></option>
-                                <input v-model="Option" class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
-                              </div> -->
+                               </div>
+                            
                         </div>
 
                     </div>
@@ -317,9 +312,6 @@
             </div>
         </div>
         <!--Fin modal adicionales-->
-
-
-
         ​
         <!-- Fin yeni -->
 
