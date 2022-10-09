@@ -1,23 +1,26 @@
 new Vue({   
     el: '#app',
     data: {
-    products: [],
-    PRODUCTS_KEY: 'all-products',
-    optionAdditional:[],
-
-
-    opcion:"",
+    quantity:0,
+    total:0,
+    cartData: [],
+    productBuy:{},
+    password: "",
+    username: "",
+    loguedUser:[],
+    registeredUsers:[{username:"admin",password:"admin", rol: "administrator"}],
+    REGISTERED_USERS_KEY: 'registered-users',
+    CURRENT_LOGUED_USER_KEY: 'current-user',
     },
     created(){
-        this.setDataProducts()
-        this.products = this.getterParsedLocalStorage(this.PRODUCTS_KEY)
-        console.log(this.products)
+        this.products = this.getterLocalStorage(this.PRODUCTS_KEY)
+        this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
     },
     methods: {
       setterLocalStorage(key, data) {
         localStorage.setItem(key, JSON.stringify(data));
       },
-      getterParsedLocalStorage(key) {
+      getterLocalStorage(key) {
         return JSON.parse(localStorage.getItem(key) || "[]");
       },
       setDataProducts(){
@@ -103,6 +106,4 @@ new Vue({
         console.log(item.additional.name)
       },
     },
-    
-   
 })
