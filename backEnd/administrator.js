@@ -15,7 +15,10 @@ new Vue({
     },
     created(){
         this.setDataProducts()
-        this.products = JSON.parse(localStorage.getItem("all-products"));
+        this.productsParsed = JSON.parse(localStorage.getItem("all-products"));
+        this.createNewProduct()
+        console.log('new data');
+        console.log(this.allProducts)
     },
     methods: {
         setterLocalStorage(key, data) {
@@ -96,6 +99,16 @@ new Vue({
             this.allProducts = products
             this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
           },
+          createNewProduct(){
+            this.allProducts.burgers.push({
+                name: 'Vegana',
+                price: 22000,
+                description: 'Prueba la deliciosa Vegana. Porción de vegetales de 125gr con un increible sabor y textura a carne, salsas de la casa y los más frescos vegetales.',
+                image: 'https://res.cloudinary.com/jorge-tarifa/image/upload/v1665290581/carrito-market-mix/vegana_gnvfth.jpg',
+                id: this.v4()
+            })
+            this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
+        },
         validationFlag1(){
             this.flag1=true;
             if(this.flag1==true){
