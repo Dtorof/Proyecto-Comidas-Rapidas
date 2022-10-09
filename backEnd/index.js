@@ -3,6 +3,10 @@ new Vue({
     data: {
     products: [],
     PRODUCTS_KEY: 'all-products',
+    optionAdditional:[],
+
+
+    opcion:"",
     },
     created(){
         this.setDataProducts()
@@ -25,12 +29,12 @@ new Vue({
         }
         
         let products = {
-          Additional:[
+          additional:[
             {"id":v4(),"name":"papas","price":3000},
             {"id":v4(),"name":"yuca","price":5000},
             {"id":v4(),"name":"nachos","price":1500}
             ],
-          burgers: [
+          burgers:[
           {
             "id": v4(),
             "name": "Básica",
@@ -94,6 +98,9 @@ new Vue({
         }
 
         this.setterLocalStorage(this.PRODUCTS_KEY,products)
+      },
+      addAdditional(item){
+        console.log(item.additional.name)
       },
     },
     

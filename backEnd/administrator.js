@@ -9,6 +9,13 @@ new Vue({
         products:"",
         nameAdditional:"",
         price:0,
+        option:[
+            {id:1,name:"Crear usuarios"},
+            {id:2,name:"Crear productos"},
+            {id:3,name:"Crear productos"},
+            {id:3,name:"Crear adicionales"},
+        ],
+        option1:"",
         //yeni 
 
 
@@ -19,6 +26,7 @@ new Vue({
         
     },
     methods: {
+
         validationFlag1(){
             this.flag1=true;
             if(this.flag1==true){
@@ -52,6 +60,7 @@ new Vue({
                 this.flag3=false;
             }
         },
+        
         
         
         
