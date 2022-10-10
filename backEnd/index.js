@@ -11,6 +11,7 @@ new Vue({
     registeredUsers:[{username:"admin",password:"admin", rol: "administrator"}],
     REGISTERED_USERS_KEY: 'registered-users',
     CURRENT_LOGUED_USER_KEY: 'current-user',
+    products:"",
     },
     created(){
         this.products = this.getterLocalStorage(this.PRODUCTS_KEY)
@@ -99,7 +100,6 @@ new Vue({
             "additional": []
           }]
         }
-
         this.setterLocalStorage(this.PRODUCTS_KEY,products)
       },
       addAdditional(item){

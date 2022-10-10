@@ -1,384 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  ​
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="./frontEnd/Css/index.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <script
-      src="https://kit.fontawesome.com/eb9c72ba98.js"
-      crossorigin="anonymous"
-    >
-    </script>
-    
-    <title>Comidas Rapidas</title>
-  </head>
-  ​
-  <body>
-    <div id="app">
-      <!-- Inicio diego -->
-      <!--Inicio header-->
-      <!--Inicio navbar-->
+​
 
-      <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-          <a href="#" class="navbar-brand">
-            <img
-              src="https://i.ibb.co/xYCNXYP/Group-1.png"
-              width="150"
-              height="80"
-              class="d-inline-block align-top"
-              alt=""
-            />
-          </a>
-          <form class="d-flex">
-            
-            <button id = "btn-9 "class="btn" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Iniciar sesión</button>
-            <button class="btn btn-outline-success" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal1"><i class="fa-solid fa-cart-arrow-down"></i></button>
-           <span></span>
-          </form>
-        </div>
-      </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./frontEnd/Css/index.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/eb9c72ba98.js" crossorigin="anonymous">
+  </script>
 
-      
+  <title>Comidas Rapidas</title>
+</head>
+​
 
+<body>
+  <div id="app">
+    <!-- Inicio diego -->
+    <!--Inicio header-->
+    <!--Inicio navbar-->
 
-      
-      <!--Fin navbar-->
-      <!--Inicio modal inicio de sesión -->
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="container">
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col text-center">Inicio de sesión</div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <label class="form-label">Usuario</label>
-                    <input class="form-control" type="text" />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <label class="form-label">Contraseña</label>
-                    <input class="form-control" type="password" />
-                  </div>
-                </div>
-                <button type="button" class="btn btn-primary">
-                  Save changes
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand">
+          <img src="https://i.ibb.co/xYCNXYP/Group-1.png" width="150" height="80" class="d-inline-block align-top"
+            alt="" />
+        </a>
+        <form class="d-flex">
+
+          <button id="btn-9 " class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Iniciar
+            sesión</button>
+          <button class="btn btn-outline-success" type="button" data-bs-toggle="modal"
+            data-bs-target="#exampleModal1"><i class="fa-solid fa-cart-arrow-down"></i></button>
+          <span></span>
+        </form>
       </div>
-      <!--Fin modal inicio de sesión -->
-      <!--Fin header-->
-      <!-- Inicio de carrusel  -->
-      <div
-        id="carouselExampleIndicators"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="https://1.bp.blogspot.com/-7dGW9kZWm5M/U5ds7LUAfhI/AAAAAAAAAeI/vKNyKuuCbaQ/s1600/hamburger-6709-1920x1200.jpg"
-              class="d-block w-100"
-              alt="..."
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://cdn-3.expansion.mx/49/dc/95614fa24e3daaf0ede1ab9beec2/istock-694198404.jpg"
-              class="d-block w-100"
-              alt="..."
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://i0.wp.com/lacigarra.tk/wp-content/uploads/2018/10/La-Cigarra-Comidas-Rapidas-Perros-Calientes.jpg?fit=1920%2C1080&ssl=1"
-              class="d-block w-100"
-              alt="..."
-            />
-          </div>
-        </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-      <!-- Fin  de carrusel  -->
+    </nav>
 
-      ​
-      <!-- Fin  diego -->
 
-      ​
-      <!-- Inicio yeni -->
 
-      <!--Modal carrito-->
-      <div
-        class="modal fade"
-        id="exampleModal1"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <div class="modal-body">
-              <!--Inicio tabla-->
-              <div class="row" id="tabla">
-                <div class="container pe-3 ps-3">
-                  <div class="table-responsive">
-                    <table
-                      class="table table-bordered mt-4 table-strip text-center"
-                    >
-                      <thead class="table">
-                        <tr>
-                          <th class="col-3">Producto</th>
-                          <th class="col-3">Cantidad</th>
-                          <th class="col-3">Total</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr class="body" v-for="">
-                          <td v-text=""></td>
-                          <td v-text=""></td>
-                          <td v-text=""></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <!--Fin tabla-->
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">Pagar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Fin modal carrito-->
 
-      <!--Cards -->
-      <div class="container">
-        <h1 style="background-color: #fff">Hamburguesas</h1>
 
-        <div class="row">
-          <div class="col">
-            <div
-              class="card"
-              style="width: 18rem"
-              v-for="item in products.burgers"
-            >
-              <img
-                :src="item.image"
-                class="img-fluid rounded-start"
-                alt="..."
-              />
-              <div class="card-body">
-                <div class="row">
-                  <div class="col">
-                    <h4>{{item.name}}</h4>
-                  </div>
-                </div>
-                <div class="row">
-                  <!-- <h4>{{item.descripcion}}</h4> -->
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <h4>{{item.price}}</h4>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <button type="button">-</button>
-                  </div>
-                  <div class="col border border-dark">
-                    <h4>contador</h4>
-                  </div>
-                  <div class="col">
-                    <button type="button">+</button>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal22"
-                >
-                  Agregar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <h1 style="background-color: #fff">Perros calientes</h1>
-        <div class="row">
-          <div class="col">
-            <div
-              class="card"
-              style="width: 18rem"
-              v-for="item in products.hot_dogs"
-            >
-              <img
-                :src="item.image"
-                class="img-fluid rounded-start"
-                alt="..."
-              />
-              <div class="card-body">
-                <div class="row">
-                  <div class="col">
-                    <h4>{{item.name}}</h4>
-                  </div>
-                </div>
-                <div class="row">
-                  <!-- <h4>{{item.descripcion}}</h4> -->
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <h4>{{item.price}}</h4>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <button type="button">-</button>
-                  </div>
-                  <div class="col border border-dark">
-                    <h4>contador</h4>
-                  </div>
-                  <div class="col">
-                    <button type="button">+</button>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal22"
-                >
-                  Agregar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Fin Cards -->
-      <!--Modal adicionales-->
-
-      <!-- Modal -->
-      <div
-        class="modal fade"
-        id="exampleModal22"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Adicionales</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
+    <!--Fin navbar-->
+    <!--Inicio modal inicio de sesión -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="container">
             <div class="modal-body">
               <div class="row">
-                <h6>Elegir adicionales que desees agregar</h6>
+                <div class="col text-center">Inicio de sesión</div>
               </div>
               <div class="row">
-                <div class="form-check" v-for="">
-                  <input
-                    name="item"
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="item"
-                  />
-                  <label class="form-check-label" for="item"> </label>
+                <div class="col">
+                  <label class="form-label">Usuario</label>
+                  <input class="form-control" type="text" />
                 </div>
-                <!-- <div class="form-check">
-                                <option ><input v-model="Option" class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate"></option>
-                                <input v-model="Option" class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
-                              </div> -->
               </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
+              <div class="row">
+                <div class="col">
+                  <label class="form-label">Contraseña</label>
+                  <input class="form-control" type="password" />
+                </div>
+              </div>
               <button type="button" class="btn btn-primary">
                 Save changes
               </button>
@@ -386,28 +75,231 @@
           </div>
         </div>
       </div>
-      <!--Fin modal adicionales-->
-
-    
-      <!-- Fin yeni -->
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="./backEnd/index.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <!--Fin modal inicio de sesión -->
+    <!--Fin header-->
+    <!-- Inicio de carrusel  -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="https://1.bp.blogspot.com/-7dGW9kZWm5M/U5ds7LUAfhI/AAAAAAAAAeI/vKNyKuuCbaQ/s1600/hamburger-6709-1920x1200.jpg"
+            class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="https://cdn-3.expansion.mx/49/dc/95614fa24e3daaf0ede1ab9beec2/istock-694198404.jpg"
+            class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://i0.wp.com/lacigarra.tk/wp-content/uploads/2018/10/La-Cigarra-Comidas-Rapidas-Perros-Calientes.jpg?fit=1920%2C1080&ssl=1"
+            class="d-block w-100" alt="..." />
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- Fin  de carrusel  -->
+
+    ​
+    <!-- Fin  diego -->
+
+    ​
+    <!-- Inicio yeni -->
+
+    <!--Modal carrito-->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-body">
+            <!--Inicio tabla-->
+            <div class="row" id="tabla">
+              <div class="container pe-3 ps-3">
+                <div class="table-responsive">
+                  <table class="table table-bordered mt-4 table-strip text-center">
+                    <thead class="table">
+                      <tr>
+                        <th class="col-3">Producto</th>
+                        <th class="col-3">Cantidad</th>
+                        <th class="col-3">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="body" v-for="">
+                        <td v-text=""></td>
+                        <td v-text=""></td>
+                        <td v-text=""></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!--Fin tabla-->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Pagar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Fin modal carrito-->
+
+    <!--Cards -->
+    <div class="container">
+      <div class="row title text-center">
+        <h1>Hamburguesas</h1>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="card" style="width: 18rem" v-for="item in products.burgers">
+            <img :src="item.image" class="img-fluid rounded-start" alt="..." />
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h4>{{item.name}}</h4>
+                </div>
+              </div>
+              <div class="row">
+                <h4>{{item.descripcion}}</h4>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h4>{{item.price}}</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <button type="button">-</button>
+                </div>
+                <div class="col border border-dark">
+                  <h4>contador</h4>
+                </div>
+                <div class="col">
+                  <button type="button">+</button>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal22">
+                Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row title text-center">
+        <h1>Perros calientes</h1>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="card" style="width: 18rem" v-for="item in products.hot_dogs">
+            <img :src="item.image" class="img-fluid rounded-start" alt="..." />
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h4>{{item.name}}</h4>
+                </div>
+              </div>
+              <div class="row">
+                <!-- <h4>{{item.descripcion}}</h4> -->
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h4>{{item.price}}</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <button type="button">-</button>
+                </div>
+                <div class="col border border-dark">
+                  <h4>contador</h4>
+                </div>
+                <div class="col">
+                  <button type="button">+</button>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal22">
+                Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Fin Cards -->
+    <!--Modal adicionales-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal22" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Adicionales</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <h6>Elegir adicionales que desees agregar</h6>
+            </div>
+            <div class="row">
+              <div class="form-check" v-for="">
+                <input name="item" class="form-check-input" type="checkbox" value="" id="item" />
+                <label class="form-check-label" for="item"> </label>
+              </div>
+              <!-- <div class="form-check">
+                                <option ><input v-model="Option" class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate"></option>
+                                <input v-model="Option" class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                              </div> -->
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Fin modal adicionales-->
+
+
+    <!-- Fin yeni -->
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="./backEnd/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous"></script>
+</body>
 
 </html>
