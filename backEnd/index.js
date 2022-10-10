@@ -234,13 +234,34 @@ new Vue({
   },
   createNewProduct(){
   
-},
-   
   },
-  computed: {
-    validation(){
-    return console.log(this.additionalOption);
-    }
-    
-  },
+      addCart(itemId) {
+        this.productBuy = this.products.burgers.find((prod)=> {
+          if(prod.id === itemId) {
+            console.log(prod.id === itemId)
+            console.log(prod)
+            return prod
+          }
+        })
+        this.addProduct(this.productBuy)
+        return this.productBuy
+      },
+      addProduct(){
+        this.cartData.push(this.productBuy);
+        return this.cartData;
+      },
+      validation(){
+        let closeModal = document.getElementById('not');
+            closeModal.click();
+        let closeModal2 = document.getElementById('not1');
+            closeModal2.click();
+        let openCar = document.getElementById('car');
+        openCar.click()
+      },
+      validation2(){
+        let closeModal5 = document.getElementById('segI');
+        closeModal5.click();
+      }
+      
+    }  
 })
