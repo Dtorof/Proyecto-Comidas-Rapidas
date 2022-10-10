@@ -1,30 +1,53 @@
 new Vue({   
     el: '#app',
     data: {
+        roles: ['administrator', 'chef', 'employee','domiciliary'],
+        rolDefault: null,
+        forms: {
+        user: {
+        name: "",
+        username: "",
+        password:"",
+        rol:""
+        },
+        product:{
+        name: "",
+        description: "",
+        price:"",
+        image:""
+        },
+        additional:{
+        name: "",
+        description: "",
+        price:"",
+        image:""
+        }
+        },
         flag1:false,
         flag2:false,
         flag3:false,
         flag4:false,
+        option:[{name:"Crear usuarios"},{name:"Crear productos"},{name:"Crear adicionales"}],
+        option1:"",
         products:"",
+        productType:[{name:"Hamburguesas"},{name:"Perros calientes"}],
+        product:"",
         nameAdditional:"",
         price:0,
+        productsParsed: [],
         registeredUsers: [],
         allAdditionals: [],
         allProducts: [],
         PRODUCTS_KEY: 'all-products',
     },
     created(){
-        this.setDataProducts()
-        this.productsParsed = JSON.parse(localStorage.getItem("all-products"));
-        this.createNewProduct()
-        console.log('new data');
-        console.log(this.allProducts)
+      this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
     },
     methods: {
         setterLocalStorage(key, data) {
             localStorage.setItem(key, JSON.stringify(data))
           },
-          getterParsedLocalStorage(key) {
+          getterLocalStorage(key) {
             return JSON.parse(localStorage.getItem(key) || "[]")
         },
         

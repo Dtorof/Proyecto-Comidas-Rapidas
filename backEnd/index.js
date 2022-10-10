@@ -8,18 +8,18 @@ new Vue({
   password: "",
   username: "",
   loguedUser:[],
-  registeredUsers:[{username:"admin",password:"admin", rol: "administrator"}],
+  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrator"}],
   REGISTERED_USERS_KEY: 'registered-users',
   CURRENT_LOGUED_USER_KEY: 'current-user',
   registeredUsers: [],
   allAdditionals: [],
+  productsParsed: [],
   allProducts: [],
   PRODUCTS_KEY: 'all-products',
   },
   created(){
-      this.products = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.setDataProducts()
-      this.productsParsed = JSON.parse(localStorage.getItem("all-products"));
+      this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.createNewProduct()
       console.log('new data');
       console.log(this.allProducts)
@@ -67,7 +67,7 @@ new Vue({
     let loguedUser = [];
     let res = this.userCredentials.filter(
       (usr) => usr.username === user && usr.password === key
-    );
+    )
     loguedUser = [...res];
     this.loguedUser = [...res]
     
@@ -111,6 +111,11 @@ new Vue({
   },
   setDataProducts(){
     let products = {
+      additional:[
+        {"id":this.v4(),"name":"papas","price":3000},
+        {"id":this.v4(),"name":"yuca","price":5000},
+        {"id":this.v4(),"name":"nachos","price":1500}
+        ],
       burgers: [
       {
         "id": this.v4(),

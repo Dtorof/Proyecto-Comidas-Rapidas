@@ -188,7 +188,7 @@
             <h1 style="background-color: #fff;">Hamburguesas</h1>
             <div class="row">
                 <div class="col">
-                    <div class="card" style="width: 18rem;" v-for="item in products.burgers">
+                    <div class="card" style="width: 18rem;" v-for="item in productsParsed.burgers">
                         <img :src="item.image" class="img-fluid rounded-start" alt="...">
                         <div class="card-body">
                             <div class="row">
@@ -232,7 +232,7 @@
 
                 <div class="col">
 
-                    <div class="card" style="width: 18rem;" v-for="item in products.hot_dogs">
+                    <div class="card" style="width: 18rem;" v-for="item in productsParsed.hot_dogs">
                         <img :src="item.image" class="img-fluid rounded-start" alt="...">
                         <div class="card-body">
                             <div class="row">
@@ -294,7 +294,7 @@
                             <h6>Elegir adicionales que desees agregar</h6>
                         </div>
                         <div class="row">
-                            <div class="form-check" v-for="item in products.additional" >
+                            <div class="form-check" v-for="item in productsParsed.additional" >
                                 <input class="form-check-input" type="checkbox" value="item.nombre" id="flexCheckDefault" @click="addAdditional(item.nombre)">
                                 <label class="form-check-label" for="flexCheckDefault">
                                      {{item.name}}
