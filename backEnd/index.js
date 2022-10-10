@@ -15,13 +15,14 @@ new Vue({
   productsParsed: [],
   allProducts: [],
   PRODUCTS_KEY: 'all-products',
+  additionalOption:"",
   },
   created(){
       this.setDataProducts()
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.createNewProduct()
-      console.log('new data');
-      console.log(this.allProducts)
+      // console.log('new data');
+      // console.log(this.allProducts)
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
   },
   methods: {
@@ -205,5 +206,11 @@ new Vue({
       this.cartData.push(this.productBuy);
       return this.cartData;
     },
+  },
+  computed: {
+    validation(){
+    return console.log(this.additionalOption);
+    }
+    
   },
 })
