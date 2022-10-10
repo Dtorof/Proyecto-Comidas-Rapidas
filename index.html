@@ -195,7 +195,7 @@
                   <button  id="menos" type="button" @click="updateQtyBurgers('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
                 </div>
                 <div class="col-6">
-                  <input id="medio" type="number">
+                  <input id="medio" type="number" v-model.number="item.qty">
                 </div>
                 <div class="col-3">
                   <button id="mas" type="button" @click="updateQtyBurgers('add', item.id )"><i class="fa-solid fa-plus"></i></button>
@@ -233,7 +233,7 @@
                   <button id="menos" type="button" @click="updateQtyHotDogs('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
                 </div>
                 <div class="col-6">
-                  <input id="medio" type="number">
+                  <input id="medio" type="number" v-model.number="item.qty">
                 </div>
                 <div class="col-3">
                   <button id="mas" type="button" @click="updateQtyHotDogs('add',  item.id)"><i class="fa-solid fa-plus"></i></button>
