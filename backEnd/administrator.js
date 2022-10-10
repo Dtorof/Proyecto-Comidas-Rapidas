@@ -27,6 +27,7 @@ new Vue({
         flag2:false,
         flag3:false,
         flag4:false,
+        flag5:false,
         option:[{name:"Crear usuarios"},{name:"Crear productos"},{name:"Crear adicionales"}],
         option1:"",
         products:"",
