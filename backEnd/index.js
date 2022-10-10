@@ -21,7 +21,6 @@ new Vue({
   created(){
       this.setDataProducts()
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
-      this.createNewProduct()
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
   },
   methods: {
@@ -181,9 +180,6 @@ new Vue({
     this.allProducts = products
     this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
   },
-  createNewProduct(){
-  
-},
     addCart(itemId) {
       this.productBuy = this.products.burgers.find((prod)=> {
         if(prod.id === itemId) {
