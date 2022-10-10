@@ -1,128 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-​
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
-  <link rel="stylesheet" href="./frontEnd/Css/index.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/eb9c72ba98.js" crossorigin="anonymous">
+  ​
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./frontEnd/Css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/eb9c72ba98.js"
+      crossorigin="anonymous"
+    >
+    </script>
     
-  </script>
+    <title>Comidas Rapidas</title>
+  </head>
+  ​
+  <body>
+    <div id="app">
+      <!-- Inicio diego -->
+      <!--Inicio header-->
+      <!--Inicio navbar-->
+      <div class="container-fluid g-0 fixed-top">
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid ">
+          <a href="#" class="navbar-brand">
+            <img
+              src="https://i.ibb.co/xYCNXYP/Group-1.png"
+              width="130"
+              height="60"
+              class="d-inline-block align-top"
+              alt=""
+            />
+          </a>
+          <form class="d-flex te">
+            <button  class="btn btn-outline-light" type="button" > <a href="#carouselExampleInterval" id="home-nav" class="nav-link">Home</a></button>
+            <button  class="btn btn-outline-light" type="button" > <a href="#hamburguesa" id="hamburguesa-nav" class="nav-link">Hamburguesas</a></button>
+            <button  class="btn btn-outline-light" type="button" > <a href="#hotdogs"  id="hotdogs-nav" class="nav-link">Perros Calientes</a></button>
+            <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Iniciar sesión</button>
+            <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal"><span class="position-absolute top-50  right-4 translate-middle badge rounded-pill">0</span> <img src="https://i.ibb.co/9g9Bym6/logo-Secundary.png" alt="Carrito" ></button>
+          </form>
+        </div>
+      </nav>
+    </div>
+      
 
-  <title>Comidas Rapidas</title>
-</head>
-​
 
-<body>
-  <div id="app">
-    <!-- Inicio diego -->
-    <!--Inicio header-->
-    <!--Inicio navbar-->
-
-    <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <a href="#" class="navbar-brand">
-          <img src="https://i.ibb.co/xYCNXYP/Group-1.png" width="150" height="80" class="d-inline-block align-top"
-            alt="" />
-        </a>
-        <form class="d-flex">
-
-          <button id="btn-9 " class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Iniciar
-            sesión</button>
-          <button class="btn btn-outline-success" type="button" data-bs-toggle="modal"
-            data-bs-target="#exampleModal1"><i class="fa-solid fa-cart-arrow-down"></i></button>
-          <span></span>
-        </form>
-      </div>
-    </nav>
-
-
-
-
-
-    <!--Fin navbar-->
-    <!--Inicio modal inicio de sesión -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="container">
-            <div class="modal-body">
-              <div class="row">
-                <div class="col text-center">Inicio de sesión</div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <label class="form-label">Usuario</label>
-                  <input class="form-control" type="text" />
+      
+      <!--Fin navbar-->
+      <!--Inicio modal inicio de sesión -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true" id="home1"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="container">
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col text-center">Inicio de sesión</div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <label class="form-label">Contraseña</label>
-                  <input class="form-control" type="password" />
+                <div class="row">
+                  <div class="col">
+                    <label class="form-label">Usuario</label>
+                    <input class="form-control" type="text" />
+                  </div>
                 </div>
+                <div class="row">
+                  <div class="col">
+                    <label class="form-label">Contraseña</label>
+                    <input class="form-control" type="password" />
+                  </div>
+                </div>
+                <button type="button" class="btn btn-primary">
+                  Save changes
+                </button>
               </div>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!--Fin modal inicio de sesión -->
-    <!--Fin header-->
-    <!-- Inicio de carrusel  -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-          aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-          aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-          aria-label="Slide 3"></button>
+      <!--Fin modal inicio de sesión -->
+      <!--Fin header-->
+      <!-- Inicio de carrusel  -->
+     
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="https://i.ibb.co/0KZGdBv/hot-spicy-burger-ys.jpg" class="d-block w-100" alt="..." width="980" height="630">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="https://i.ibb.co/P6mm7xq/hotd.png" class="d-block w-100" alt="..." width="980" height="630">
+          </div>
+          <div class="carousel-item">
+            <img src="https://i.ibb.co/4Smfrsd/pexels-photo-1639562.jpg" class="d-block w-100" alt="..." width="980" height="630">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img
-            src="https://1.bp.blogspot.com/-7dGW9kZWm5M/U5ds7LUAfhI/AAAAAAAAAeI/vKNyKuuCbaQ/s1600/hamburger-6709-1920x1200.jpg"
-            class="d-block w-100" alt="..." />
-        </div>
-        <div class="carousel-item">
-          <img src="https://cdn-3.expansion.mx/49/dc/95614fa24e3daaf0ede1ab9beec2/istock-694198404.jpg"
-            class="d-block w-100" alt="..." />
-        </div>
-        <div class="carousel-item">
-          <img
-            src="https://i0.wp.com/lacigarra.tk/wp-content/uploads/2018/10/La-Cigarra-Comidas-Rapidas-Perros-Calientes.jpg?fit=1920%2C1080&ssl=1"
-            class="d-block w-100" alt="..." />
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-    <!-- Fin  de carrusel  -->
 
-    ​
-    <!-- Fin  diego -->
+      <!-- Fin  de carrusel  -->
 
-    ​
-    <!-- Inicio yeni -->
+      ​
+      <!-- Fin  diego -->
+
+      ​
+          <!-- Inicio yeni -->
 
     <!--Modal carrito-->
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -171,7 +172,7 @@
         <h1>Hamburguesas</h1>
       </div>
       <div class="row burger text-center align-items-center justify-content-center ">
-        <div class="col-6 col-sm-12 col-lg-4 col-xs-12 card1" v-for="item in products.burgers">
+        <div class="col-6 col-sm-12 col-lg-4 col-xs-12 card1" v-for="item in allProducts.burgers">
           <div class="card" style="width: 22rem" >
             <img :src="item.image" class="img-fluid rounded-start" alt="..." />
             <div class="card-body">
@@ -187,7 +188,7 @@
             </div>
               <div class="row">
                 <div class="col-3">
-                  <button  id="menos" type="button"><i class="fa-solid fa-minus"></i></button>
+                  <button  id="menos" type="button">-</button>
                 </div>
                 <div class="col-6">
                   <input id="medio" type="number">
@@ -209,7 +210,7 @@
         <h1>Perros calientes</h1>
       </div>
       <div class="row hot_dogs text-center justify-content-center align-items-center">
-        <div class="col-5 col-sm-12 col-lg-4 col-xs-12 "v-for="item in products.hot_dogs">
+        <div class="col-5 col-sm-12 col-lg-4 col-xs-12 "v-for="item in allProducts.hot_dogs">
           <div class="card" style="width: 22rem" >
             <img :src="item.image" class="img-fluid rounded-start" alt="..." />
             <div class="card-body">
@@ -225,7 +226,7 @@
             </div>
               <div class="row justify-content-center align-items-center">
                 <div class="col-3">
-                  <button id="menos" type="button"><i class="fa-solid fa-minus"></i></button>
+                  <button id="menos" type="button">-</button>
                 </div>
                 <div class="col-6">
                   <input id="medio" type="number">
@@ -282,18 +283,24 @@
 
 
     <!-- Fin yeni -->
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script src="./backEnd/index.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
-    crossorigin="anonymous"></script>
-</body>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./backEnd/index.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 
 </html>

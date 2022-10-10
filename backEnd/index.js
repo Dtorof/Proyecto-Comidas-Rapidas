@@ -8,22 +8,21 @@ new Vue({
   password: "",
   username: "",
   loguedUser:[],
-  registeredUsers:[{username:"admin",password:"admin", rol: "administrator"}],
+  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrator"}],
   REGISTERED_USERS_KEY: 'registered-users',
   CURRENT_LOGUED_USER_KEY: 'current-user',
-  registeredUsers: [],
   allAdditionals: [],
+  productsParsed: [],
   allProducts: [],
   PRODUCTS_KEY: 'all-products',
-  
   },
   created(){
-      this.products = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.setDataProducts()
-      this.productsParsed = JSON.parse(localStorage.getItem("all-products"));
+      this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.createNewProduct()
       console.log('new data');
       console.log(this.allProducts)
+      this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
   },
   methods: {
     setterLocalStorage(key, data) {
@@ -68,7 +67,7 @@ new Vue({
     let loguedUser = [];
     let res = this.userCredentials.filter(
       (usr) => usr.username === user && usr.password === key
-    );
+    )
     loguedUser = [...res];
     this.loguedUser = [...res]
     
