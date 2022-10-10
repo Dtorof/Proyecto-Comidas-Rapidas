@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Source+Sans+Pro:wght@900&display=swap');
+:root{
+    --dorado:rgb(212, 175, 55);
+    --negro:rgb(0, 0, 0);
+    --blanco:#fff;
+}
+body{
+    background-color: black;
+    margin-bottom: 0;
+    
+}
+#app{
+    width: 100%;
+  
+    
+}
+.select select{
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 30px;
+    border-color: var(--negro);
+}
+.usuarios{
+    color: #fff;
+   
+}
+.modal .modal-dialog .modal-content .modal-body .card img{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 150px;
+}
+.custom-btn{
+    width: 100%;
+    height: 40px;
+    color: var(--blanco);
+    border-radius: 5px;
+    padding: 10px 25px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  .btn-9 {
+  border: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.btn-9:after {
+  position: absolute;
+  content: " ";
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1fd1f9;
+  background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+  background-image: linear-gradient(315deg,var(--negro) 0%,var(--dorado) 74%);
+  transition: all 0.3s ease;
+}
+
+.btn-9:hover {
+  background: transparent;
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
+    -4px -4px 6px 0 rgba(116, 125, 136, .2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, .5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+  color: #fff;
+  color: var(--blanco);
+}
+
+.btn-9:hover:after {
+  -webkit-transform: scale(2) rotate(180deg);
+  transform: scale(2) rotate(180deg);
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
+    -4px -4px 6px 0 rgba(116, 125, 136, .2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, .5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+}
+.btn-8{
+    background-color: grey;
+    color:var(--blanco);
+    border: none;
+}
+.btn-8:hover{
+    background-color:var(--dorado);
+    color:var(--blanco);
+}
+.container .title{
+  color: var(--dorado);
+  font-family: 'Source Sans Pro', sans-serif;
+} 
+.container .title2{
+  color: var(--blanco);
+  font-family: 'Source Sans Pro', sans-serif;
+} 
