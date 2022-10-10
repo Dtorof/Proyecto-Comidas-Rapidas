@@ -9,20 +9,19 @@ new Vue({
   username: "",
   loguedUser:[],
   registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrator"}],
-  REGISTERED_USERS_KEY: 'registered-users',
-  CURRENT_LOGUED_USER_KEY: 'current-user',
   allAdditionals: [],
   productsParsed: [],
   allProducts: [],
   PRODUCTS_KEY: 'all-products',
+  REGISTERED_USERS_KEY: 'registered-users',
+  CURRENT_LOGUED_USER_KEY: 'current-user',
+  ADDITIONALS_KEY: 'all-additionals',
   additionalOption:"",
   },
   created(){
       this.setDataProducts()
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.createNewProduct()
-      // console.log('new data');
-      // console.log(this.allProducts)
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
   },
   methods: {
@@ -183,14 +182,7 @@ new Vue({
     this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
   },
   createNewProduct(){
-    this.allProducts.burgers.push({
-        name: 'Vegana',
-        price: 22000,
-        description: 'Prueba la deliciosa Vegana. Porción de vegetales de 125gr con una increible textura y sabor a carne.',
-        image: 'https://assets.unileversolutions.com/recipes-v2/211056.jpg',
-        id: this.v4()
-    })
-    this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
+  
 },
     addCart(itemId) {
       this.productBuy = this.products.burgers.find((prod)=> {
