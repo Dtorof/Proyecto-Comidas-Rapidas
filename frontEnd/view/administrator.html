@@ -37,7 +37,7 @@
                 <div class="col">
                     <label class="form-label">Nombre</label>
                     <input v-model="forms.user.name" class="form-control" type="text">
-                    <span class="error" v-if="error1" style="color: red;">Por favor ingrese un nombre</span>
+                    <span class="error" v-if="" style="color: red;">Por favor ingrese un nombre</span>
                 </div>
             </div>
             <div class="row">
@@ -49,13 +49,13 @@
             <div class="row">
                 <div class="col">
                     <label class="form-label">Contraseña</label>
-                    <input v-model="forms.user.password" class="form-control" type="number">
+                    <input v-model="forms.user.password" class="form-control" type="text">
                 </div>
             </div>
             <div class="row">
                 <div>
                     <label class="form-label">Rol</label>
-                    <select v-model="rolDefault" name="seleccionProducto" id="seleccionProducto"
+                    <select v-model="forms.user.rolDefault" name="seleccionProducto" id="seleccionProducto"
                         class="form-select  text-center">
                         <option v-for="item in  roles" v-text="item">Seleccione</option>
                     </select>
@@ -213,7 +213,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn-8" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn-9">Guardar</button>
+                        <button type="button" class="btn-89">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -236,7 +236,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn-8" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn-9">Guardar</button>
+                        <button type="button" class="btn-89">Guardar</button>
                     </div>
                 </div>
             </div>
