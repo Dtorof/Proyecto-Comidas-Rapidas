@@ -43,6 +43,7 @@ new Vue({
     created(){
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
+      console.log(this.productsParsed);
     },
     methods: {
         setterLocalStorage(key, data) {
@@ -93,8 +94,15 @@ new Vue({
           })
         this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)
         },
+        createProduct(){
 
-        //yeni
+          if(this.product==="Hamburguesas"){
+             this.createNewBurger();
+          }else{
+            this.createNewHotDog()
+          }
+        }
+        
         
 
     },
