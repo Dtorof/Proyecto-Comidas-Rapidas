@@ -61,7 +61,8 @@ new Vue({
           false)
       
     setTimeout(() => window.location.href = `./..frontend/..views${this.validateRolUser(this.username)}.html`, 2400)
-  }, validateCredentials(user, key) {
+  }, 
+  validateCredentials(user, key) {
     this.login();
   
     let loguedUser = [];
