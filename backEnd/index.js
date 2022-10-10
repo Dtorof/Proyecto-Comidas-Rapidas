@@ -21,7 +21,6 @@ new Vue({
   created(){
       this.setDataProducts()
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
-      this.createNewProduct()
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
   },
   methods: {
@@ -43,13 +42,13 @@ new Vue({
     })
     },
     validateRolUser(user){
-      if(user.rol === 'administrator') {
+      if(user.rol === 'administrador') {
         return 'administrator'
       } else if(user.rol === 'chef'){
         return 'chef'
-      }else if(user.rol === 'employee'){
+      }else if(user.rol === 'empleado'){
         return 'employee'
-      }else return 'domiciliary'
+      }else return 'domiciliario'
     },
     messageSuccessLogin(){
       this.message(
@@ -181,9 +180,6 @@ new Vue({
     this.allProducts = products
     this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
   },
-  createNewProduct(){
-  
-},
     addCart(itemId) {
       this.productBuy = this.products.burgers.find((prod)=> {
         if(prod.id === itemId) {
