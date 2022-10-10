@@ -2,13 +2,12 @@ new Vue({
     el: '#app',
     data: {
         roles: ['administrator', 'chef', 'employee','domiciliary'],
-        rolDefault: null,
         forms: {
         user: {
         name: "",
         username: "",
         password:"",
-        rol:""
+        rolDefault:null
         },
         product:{
         name: "",
@@ -36,13 +35,14 @@ new Vue({
         productsParsed: [],
         registeredUsers: [],
         allAdditionals: [],
-        allProducts: [],
         PRODUCTS_KEY: 'all-products',
-        productsParsed:"",
-        
+        ADDITIONALS_KEY: 'all-additionals',
+        REGISTERED_USERS_KEY: 'registered-users',
+        CURRENT_LOGUED_USER_KEY: 'current-user',
     },
     created(){
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
+      this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
     },
     methods: {
         setterLocalStorage(key, data) {
@@ -57,14 +57,41 @@ new Vue({
         validateErrorLogin(){
 
         },
-        createProduct(){
-
+        createNewBurger(){
+            this.productsParsed.burgers.push({
+            id:this.v4(),
+            name: this.forms.product.name,
+            price: this.forms.product.price,
+            description: this.forms.product.description,
+            image: this.forms.product.image,
+        })
+        this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
+        },
+        createNewHotDog(){
+            this.productsParsed.hot_dogs.push({
+            id:this.v4(),
+            name: this.forms.product.name,
+            price: this.forms.product.price,
+            description: this.forms.product.description,
+            image: this.forms.product.image,
+        })
+        this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
         },
         createAdditional(){
-
+          this.allAdditionals.push({
+            name: this.forms.additional.name,
+            price: this.forms.additional.price
+          })
+        this.setterLocalStorage(this.ADDITIONALS_KEY,this.allAdditionals)
         },
         createEmployee(){
-
+          this.registeredUsers.push({
+            name: this.forms.user.name,
+            username: this.forms.user.username,
+            password:this.forms.user.password,
+            rol:this.forms.user.rolDefault
+          })
+        this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)
         },
 
         //yeni
