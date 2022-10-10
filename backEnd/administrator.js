@@ -1,7 +1,7 @@
 new Vue({   
     el: '#app',
     data: {
-        roles: ['administrator', 'chef', 'employee','domiciliary'],
+        roles: ['administrador', 'chef', 'empleado','domiciliario'],
         forms: {
         user: {
         name: "",

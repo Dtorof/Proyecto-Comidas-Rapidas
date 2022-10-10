@@ -42,13 +42,13 @@ new Vue({
     })
     },
     validateRolUser(user){
-      if(user.rol === 'administrator') {
+      if(user.rol === 'administrador') {
         return 'administrator'
       } else if(user.rol === 'chef'){
         return 'chef'
-      }else if(user.rol === 'employee'){
+      }else if(user.rol === 'empleado'){
         return 'employee'
-      }else return 'domiciliary'
+      }else return 'domiciliario'
     },
     messageSuccessLogin(){
       this.message(
