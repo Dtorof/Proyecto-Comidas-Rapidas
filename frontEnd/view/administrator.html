@@ -9,39 +9,36 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="../Css/administrator.css">
+    <link rel="stylesheet" href="../Css/index.css">
     <title>Administración</title>
 </head>
 ​
 
 <body>
     <div class="container " id="app">
-        <!--ADMINISTRADOR-->
+        <!--Select-->
         <div class="row text-center title">
             <h1>Administración</h1>
         </div>
         <div class="row justify-content-center">
             <div class="select " style="width: 40%; padding: 1%;">
-                <select
-                  v-model="product"
-                  name="seleccionProducto"
-                  id="seleccionProducto"
-                  class="form-select  text-center">
-                  <option
-                  v-for="item in option"
-                  v-text="item.name">Seleccione</option>
-                  </select>
+                <select v-model="option1" name="seleccionProducto" id="seleccionProducto"
+                    class="form-select  text-center">
+                    <option v-for="item in option" v-text="item.name">Seleccione</option>
+                </select>
             </div>
         </div>
+        <!--Fin select-->
         <!--Crear usuarios-->
-        <div class="container1  border border-dark justify-content-center" >
-        <div class="row usuarios">
-            <div class="row text-center ">
+        <div v-if="flag1"  class="row usuarios m-3  border border-white border-5  justify-content-center">
+            <div class="row mt-3 text-center ">
                 <h3>Crear usuarios</h3>
             </div>
             <div class="row ">
                 <div class="col">
                     <label class="form-label">Nombre</label>
                     <input class="form-control" type="text">
+                    <span class="error" v-if="error1" style="color: red;">Por favor ingrese un nombre</span>
                 </div>
             </div>
             <div class="row">
@@ -52,160 +49,134 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <label class="form-label">edad</label>
+                    <label class="form-label">Edad</label>
+                    <input class="form-control" type="number">
+                </div>
+            </div>
+            <div class="row m-3">
+                <div class="col">
+                    <button class="custom-btn btn-9" type="button">Guardar</button>
+                </div>
+            </div>
+        </div>
+        <!--Fin crear usuarios-->
+        <!--Crear productos-->
+        <div v-if="flag2" class="row usuarios  border border-white border-5 m-3  justify-content-center">
+            <div class="row">
+                <div class="row mt-3 text-center ">
+                    <h3>Crear productos</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label>Tipo de producto</label>
+                    <select v-model="product" name="seleccionProducto" id="seleccionProducto"
+                        class="form-select text-center">
+                        <option v-for="(item,index) in productType" v-text="item.name">Seleccione</option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Nombre del producto</label>
+                    <input class="form-control" type="text">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Descripción del producto</label>
+                    <input class="form-control" type="text">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Precio</label>
                     <input class="form-control" type="number">
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="button">Guardar</button>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-        <!--Fin crear usuarios-->
-        <!--Fin administrador-->
-
-
-        <!--CHEF-->
-        <div class="row">
-            <div v-if="flag2" class="col">
-                <div class="row">
-                    <div class="col text-center">
-                        Crear productos
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label>Tipo de producto</label>
-                        <select v-model="product" name="seleccionProducto" id="seleccionProducto"
-                            class="form-select text-center">
-                            <option v-for="(item,index) in productType" v-text="item.name">Seleccione</option>
-                        </select>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label class="form-label">Nombre del producto</label>
-                        <input class="form-control" type="text">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label class="form-label">Descripción del producto</label>
-                        <input class="form-control" type="text">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label class="form-label">Precio</label>
-                        <input class="form-control" type="number">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label class="form-label">seleccionar imagen</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            Launch demo modal
-                        </button>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <button type="button" class="btn btn-primary">Guardar</button>
-                    </div>
+                    <label class="form-label">Seleccionar imagen</label>
                 </div>
             </div>
+            <div v-if="flag3"  class="row mt-1">
+                <div class="col">
+                    <button type="button" class="btn-8" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Imagenes
+                    </button>
 
+                </div>
+            </div>
+            <div v-if="flag4" class="row mt-1">
+                <div class="col">
+                    <button type="button" class="btn-8" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        Imagenes
+                    </button>
+
+                </div>
+            </div>
+            <div class="row m-3">
+                <div class="col">
+                    <button type="button" class="custom-btn btn-9">Guardar</button>
+                </div>
+            </div>
         </div>
         <!--Fin chef-->
 
         <!--Crear adicionales-->
-        <div class="row">
-            <div v-if="flag3" class="col">
-
+        <div v-if="flag5" class="row usuarios  border border-white border-5 m-3  justify-content-center">           
+             <div  class="col">
                 <div class="row">
-                    <div class="col text-center">
-                        Crear adicionales
+                    <div class="row mt-3 text-center ">
+                        <h3>Crear adicionales</h3>
                     </div>
                 </div>
-
-
                 <div class="row">
                     <div class="col">
                         <label class="form-label">Nombre del producto</label>
                         <input v-model="nameAdditional" class="form-control" type="text">
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col">
                         <label class="form-label">Precio</label>
                         <input v-model="price" class="form-control" type="number">
                     </div>
                 </div>
-
-
-                <div class="row">
+                <div class="row mt-3 mb-3">
                     <div class="col">
-                        <button type="button" class="btn btn-primary">Guardar</button>
+                        <button class="custom-btn btn-9" type="button">Guardar</button>
                     </div>
                 </div>
             </div>
-
         </div>
         <!--Fin Crear adicionales-->
-
         <!--Ventas realizadas-->
         <div class="row">
-
-            <div v-if="flag4" class="col">
-
+            <div class="row text-center title2">
+                <h1>Ventas realizadas</h1>
+            </div>
+            <div  class="col">
                 <!-- tabla-->
                 <div class="row" id="tabla">
-                    <div class="container pe-3 ps-3">
+                    <div class="container pe-4 ps-4">
                         <div class="table-responsive">
-                            <table class="table table-bordered  border-dark  mt-4  table-strip text-center">
-                                <thead class="table">
+                            <table class="table table-bordered border-white border-5 text-center">
+                                <thead >
                                     <tr>
                                         <th class="col-3">Numero pedido</th>
                                         <th class="col-3">Descripción</th>
                                         <th class="col-3">Opción</th>
-
-
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="body" v-for="">
-
-
                                         <td><img src="" class="rounded-circle" alt=""></td>
                                         <td v-text=""></td>
                                         <td v-text=""></td>
-
-
-
-
-
-                                    </tr>
-
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center d-flex justify-content-center">Tu lista de compras está
-                                            vacía</td>
                                     </tr>
                                 </tbody>
-
-
                             </table>
                         </div>
                     </div>
@@ -215,50 +186,53 @@
         </div>
 
         <!--Fin Ventas realizadas-->
-        <!--Modal imagenes-->
-
-        <!-- Modal -->
-        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!--Modal imagenes hamburguesas-->
+        <div class="modal fade justify-content-center " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
-
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="card" style="width: 18rem;" v-for="item in products.burgers">
-                                    <img :src="item.image" class="card-img-top" alt="auch">
-                                    <div class="card-body">
-                                        <h5 class="card-title"></h5>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
+                    <div class="modal-body justify-content-center">
+                        <div class="row  align-items-center">
+                            <h1 class="text-center title">Elegir imagen de su producto</h1>
+                            <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center" v-for="item in allProducts.burgers">
+                                <div class="card" style="width: 18rem;" >
+                                    <img :src="item.image" class="card-img-top" alt="...">
+                                    <button  class="btn-8 ">Elegir</button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn-8" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn-9">Guardar</button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!--Fin madal imagenes-->
-
-
-
-
+        <!--Fin modal imagenes hamburguesas-->
+        <!--Modal imagenes perros calientes-->
+        <div class="modal fade justify-content-center " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-body justify-content-center">
+                        <div class="row  align-items-center">
+                            <h1 class="text-center title">Elegir imagen de su producto</h1>
+                            <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center" v-for="item in allProducts.hot_dogs">
+                                <div class="card" style="width: 18rem;" >
+                                    <img :src="item.image" class="card-img-top" alt="...">
+                                    <button  class="btn-8 ">elegir</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-8" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn-9">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin modal imagenes perros calientes-->
     </div>
-    ​
-    ​
-    ​
-    ​
-    ​
-    ​
-    ​
-    ​
-    ​
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="../../backEnd/administrator.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"

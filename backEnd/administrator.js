@@ -5,7 +5,12 @@ new Vue({
         flag2:false,
         flag3:false,
         flag4:false,
+        flag5:false,
+        option:[{name:"Crear usuarios"},{name:"Crear productos"},{name:"Crear adicionales"}],
+        option1:"",
         products:"",
+        productType:[{name:"Hamburguesas"},{name:"Perros calientes"}],
+        product:"",
         nameAdditional:"",
         price:0,
         registeredUsers: [],
@@ -34,7 +39,7 @@ new Vue({
             })
           },
           setDataProducts(){
-            let products = {
+          let products = {
               burgers: [
               {
                 "id": this.v4(),
@@ -63,7 +68,7 @@ new Vue({
                 "name": "Triple Carne",
                 "price": 35000,
                 "description": "Hamburguesa con tres carnes de 50gr, dos queso cheddar, cebolla, pepinillos, salsa de tomate y mostaza.",
-                "image": "https://res.cloudinary.com/jorge-tarifa/image/upload/v1665118196/carrito-market-mix/Medium_numhp4.jpg",
+                "image": "https://st3.depositphotos.com/3957801/12810/i/600/depositphotos_128102518-stock-photo-big-beef-burger.jpg",
                 "additional": []
               }],
               hot_dogs:[{
@@ -104,42 +109,10 @@ new Vue({
                 name: 'Vegana',
                 price: 22000,
                 description: 'Prueba la deliciosa Vegana. Porción de vegetales de 125gr con un increible sabor y textura a carne, salsas de la casa y los más frescos vegetales.',
-                image: 'https://res.cloudinary.com/jorge-tarifa/image/upload/v1665290581/carrito-market-mix/vegana_gnvfth.jpg',
+                image: 'https://assets.unileversolutions.com/recipes-v2/211056.jpg',
                 id: this.v4()
             })
             this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
-        },
-        validationFlag1(){
-            this.flag1=true;
-            if(this.flag1==true){
-                this.flag2=false;
-                this.flag3=false;
-                this.flag4=false;
-            }
-        },
-        validationFlag2(){
-            this.flag2=true;
-            if(this.flag2==true){
-                this.flag1=false;
-                this.flag3=false;
-                this.flag4=false;
-            }
-        },
-        validationFlag3(){
-            this.flag3=true;
-            if(this.flag3==true){
-                this.flag1=false;
-                this.flag2=false;
-                this.flag4=false;
-            }
-        },
-        validationFlag4(){
-            this.flag4=true;
-            if(this.flag4==true){
-                this.flag1=false;
-                this.flag2=false;
-                this.flag3=false;
-            }
         },
         validateCredentials(){
 
@@ -156,5 +129,39 @@ new Vue({
         createEmployee(){
 
         },
+
+        //yeni
+        
+
     },
+    //yeni
+    watch:{
+      option1(){
+        if(this.option1==this.option[0].name){
+          this.flag1=true;
+          this.flag2=false;
+          this.flag5=false;
+        }
+        if(this.option1==this.option[1].name){
+          this.flag1=false;
+          this.flag2=true;
+          this.flag5=false;
+        }
+        if(this.option1==this.option[2].name){
+          this.flag1=false;
+          this.flag2=false;
+          this.flag5=true;
+        }
+      },
+      product(){
+        if(this.product==this.productType[0].name){
+          this.flag3=true;
+          this.flag4=false;
+        }
+        if(this.product==this.productType[1].name){
+          this.flag3=false;
+          this.flag4=true;
+        }
+      }
+    }
 })
