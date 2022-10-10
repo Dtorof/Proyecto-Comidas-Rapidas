@@ -29,22 +29,22 @@
       <!-- Inicio diego -->
       <!--Inicio header-->
       <!--Inicio navbar-->
-      <div class="container-fluid g-0">
+      <div class="container-fluid g-0 fixed-top">
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid ">
           <a href="#" class="navbar-brand">
             <img
               src="https://i.ibb.co/xYCNXYP/Group-1.png"
-              width="150"
-              height="80"
+              width="130"
+              height="60"
               class="d-inline-block align-top"
               alt=""
             />
           </a>
           <form class="d-flex te">
-            <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Home</button>
-            <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Hamburguesas</button>
-            <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Perros Calientes</button>
+            <button  class="btn btn-outline-light" type="button" > <a href="#carouselExampleInterval" id="home-nav" class="nav-link">Home</a></button>
+            <button  class="btn btn-outline-light" type="button" > <a href="#hamburguesa" id="hamburguesa-nav" class="nav-link">Hamburguesas</a></button>
+            <button  class="btn btn-outline-light" type="button" > <a href="#hotdogs"  id="hotdogs-nav" class="nav-link">Perros Calientes</a></button>
             <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Iniciar sesión</button>
             <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal"><span class="position-absolute top-50  right-4 translate-middle badge rounded-pill">0</span> <img src="https://i.ibb.co/9g9Bym6/logo-Secundary.png" alt="Carrito" ></button>
           </form>
@@ -62,7 +62,7 @@
         id="exampleModal"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
+        aria-hidden="true" id="home1"
       >
         <div class="modal-dialog">
           <div class="modal-content">
@@ -94,6 +94,7 @@
       <!--Fin modal inicio de sesión -->
       <!--Fin header-->
       <!-- Inicio de carrusel  -->
+     
       <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="10000">
@@ -115,6 +116,7 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
+
       <!-- Fin  de carrusel  -->
 
       ​
@@ -177,7 +179,7 @@
       <!--Fin modal carrito-->
 
       <!--Cards -->
-      <div class="container">
+      <div class="container" id="hamburguesa">
         <h1 style="background-color: #fff">Hamburguesas</h1>
 
         <div class="row">
@@ -185,7 +187,7 @@
             <div
               class="card"
               style="width: 18rem"
-              v-for="item in products.burgers"
+              v-for="item in allProducts.burgers"
             >
               <img
                 :src="item.image"
@@ -229,14 +231,14 @@
             </div>
           </div>
         </div>
-
+        <section id="hotdogs">
         <h1 style="background-color: #fff">Perros calientes</h1>
-        <div class="row">
+        <div class="row" >
           <div class="col">
             <div
               class="card"
               style="width: 18rem"
-              v-for="item in products.hot_dogs"
+              v-for="item in allProducts.hot_dogs"
             >
               <img
                 :src="item.image"
@@ -280,6 +282,7 @@
             </div>
           </div>
         </div>
+      </section>
       </div>
       <!--Fin Cards -->
       <!--Modal adicionales-->
