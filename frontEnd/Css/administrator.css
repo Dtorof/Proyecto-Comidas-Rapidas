@@ -101,3 +101,7 @@ body{
   color: var(--blanco);
   font-family: 'Source Sans Pro', sans-serif;
 } 
+#tabla th{
+  color: var(--blanco);
+  font-size: 150%;
+}

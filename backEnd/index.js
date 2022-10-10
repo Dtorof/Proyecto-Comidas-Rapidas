@@ -9,20 +9,19 @@ new Vue({
   username: "",
   loguedUser:[],
   registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrator"}],
-  REGISTERED_USERS_KEY: 'registered-users',
-  CURRENT_LOGUED_USER_KEY: 'current-user',
   allAdditionals: [],
   productsParsed: [],
   allProducts: [],
   PRODUCTS_KEY: 'all-products',
+  REGISTERED_USERS_KEY: 'registered-users',
+  CURRENT_LOGUED_USER_KEY: 'current-user',
+  ADDITIONALS_KEY: 'all-additionals',
   additionalOption:"",
   },
   created(){
       this.setDataProducts()
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.createNewProduct()
-      // console.log('new data');
-      // console.log(this.allProducts)
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
   },
   methods: {
@@ -62,7 +61,8 @@ new Vue({
           false)
       
     setTimeout(() => window.location.href = `./..frontend/..views${this.validateRolUser(this.username)}.html`, 2400)
-  }, validateCredentials(user, key) {
+  }, 
+  validateCredentials(user, key) {
     this.login();
   
     let loguedUser = [];
@@ -182,14 +182,7 @@ new Vue({
     this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
   },
   createNewProduct(){
-    this.allProducts.burgers.push({
-        name: 'Vegana',
-        price: 22000,
-        description: 'Prueba la deliciosa Vegana. Porción de vegetales de 125gr con una increible textura y sabor a carne.',
-        image: 'https://assets.unileversolutions.com/recipes-v2/211056.jpg',
-        id: this.v4()
-    })
-    this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
+  
 },
     addCart(itemId) {
       this.productBuy = this.products.burgers.find((prod)=> {
@@ -206,11 +199,19 @@ new Vue({
       this.cartData.push(this.productBuy);
       return this.cartData;
     },
-  },
-  computed: {
     validation(){
-    return console.log(this.additionalOption);
+      let closeModal = document.getElementById('not');
+          closeModal.click();
+      let closeModal2 = document.getElementById('not1');
+          closeModal2.click();
+      let openCar = document.getElementById('car');
+      openCar.click()
+    },
+    validation2(){
+      let closeModal5 = document.getElementById('segI');
+      closeModal5.click();
     }
     
   },
+  
 })
