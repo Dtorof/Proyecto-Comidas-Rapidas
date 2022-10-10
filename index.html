@@ -29,9 +29,9 @@
       <!-- Inicio diego -->
       <!--Inicio header-->
       <!--Inicio navbar-->
-
+      <div class="container-fluid g-0">
       <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
+        <div class="container-fluid ">
           <a href="#" class="navbar-brand">
             <img
               src="https://i.ibb.co/xYCNXYP/Group-1.png"
@@ -41,15 +41,16 @@
               alt=""
             />
           </a>
-          <form class="d-flex">
-            
-            <button id = "btn-9 "class="btn" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Iniciar sesión</button>
-            <button class="btn btn-outline-success" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal1"><i class="fa-solid fa-cart-arrow-down"></i></button>
-           <span></span>
+          <form class="d-flex te">
+            <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Home</button>
+            <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Hamburguesas</button>
+            <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Perros Calientes</button>
+            <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Iniciar sesión</button>
+            <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal"><span class="position-absolute top-50  right-4 translate-middle badge rounded-pill">0</span> <img src="https://i.ibb.co/9g9Bym6/logo-Secundary.png" alt="Carrito" ></button>
           </form>
         </div>
       </nav>
-
+    </div>
       
 
 
@@ -93,71 +94,23 @@
       <!--Fin modal inicio de sesión -->
       <!--Fin header-->
       <!-- Inicio de carrusel  -->
-      <div
-        id="carouselExampleIndicators"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-        </div>
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="https://1.bp.blogspot.com/-7dGW9kZWm5M/U5ds7LUAfhI/AAAAAAAAAeI/vKNyKuuCbaQ/s1600/hamburger-6709-1920x1200.jpg"
-              class="d-block w-100"
-              alt="..."
-            />
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="https://i.ibb.co/0KZGdBv/hot-spicy-burger-ys.jpg" class="d-block w-100" alt="..." width="980" height="630">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="https://i.ibb.co/P6mm7xq/hotd.png" class="d-block w-100" alt="..." width="980" height="630">
           </div>
           <div class="carousel-item">
-            <img
-              src="https://cdn-3.expansion.mx/49/dc/95614fa24e3daaf0ede1ab9beec2/istock-694198404.jpg"
-              class="d-block w-100"
-              alt="..."
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://i0.wp.com/lacigarra.tk/wp-content/uploads/2018/10/La-Cigarra-Comidas-Rapidas-Perros-Calientes.jpg?fit=1920%2C1080&ssl=1"
-              class="d-block w-100"
-              alt="..."
-            />
+            <img src="https://i.ibb.co/4Smfrsd/pexels-photo-1639562.jpg" class="d-block w-100" alt="..." width="980" height="630">
           </div>
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev"
-        >
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next"
-        >
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
