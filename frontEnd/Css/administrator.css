@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Source+Sans+Pro:wght@900&display=swap');
+
+:root{
+    --dorado:rgb(212, 175, 55);
+    --negro:rgb(0, 0, 0);
+}
+.container .title{
+    color: var(--dorado);
+    font-family: 'Source Sans Pro', sans-serif;
+} 
+.select select{
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 30px;
+    border-color: var(--negro);
+}
+.container .usuarios{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+}

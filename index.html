@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 ​
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
     <title>Comidas Rapidas</title>
 </head>
 ​
+
 <body>
 
     <div class="container" id="app">
@@ -179,6 +181,8 @@
             </div>
         </div>
         <!--Fin modal carrito-->
+
+       
         <!--Cards -->
         <div class="container">
             <h1 style="background-color: #fff;">Hamburguesas</h1>
@@ -193,7 +197,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <!-- <h4>{{item.descripcion}}</h4> -->
+                                <h4>{{item.description}}</h4>
                             </div>
                             <div class="row">
                                 <div class="col">
@@ -205,7 +209,7 @@
                                     <button type="button" @click="updateQty('remove', item.id)">-</button>
                                 </div>
                                 <div class="col border border-dark">
-                                    <h4 v-text="quantity"></h4>
+                                    <h4>contador</h4>
                                 </div>
                                 <div class="col">
                                     <button type="button" @click="updateQty('add',  item.id)">+</button>
@@ -217,7 +221,10 @@
                             </button>
                         </div>
                     </div>
-                </div>          
+
+
+                </div>
+                
             </div>
 
             <h1 style="background-color: #fff;">Perros calientes</h1>
@@ -234,7 +241,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <!-- <h4>{{item.descripcion}}</h4> -->
+                                <h4>{{item.description}}</h4>
                             </div>
                             <div class="row">
                                 <div class="col">
@@ -246,7 +253,7 @@
                                     <button type="button" @click="updateQty('remove', item.id)">-</button>
                                 </div>
                                 <div class="col border border-dark">
-                                    <h4 v-text="quantity"></h4>
+                                    <h4>contador</h4>
                                 </div>
                                 <div class="col">
                                     <button type="button" @click="updateQty('add',  item.id)">+</button>
@@ -264,12 +271,14 @@
                 </div>
 
             </div>
-            
+
 
         </div>
         <!--Fin Cards -->
          <!--Modal adicionales-->
        
+        
+
         <!-- Modal -->
         <div class="modal fade" id="exampleModal22" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -280,21 +289,18 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                       
+
                         <div class="row">
                             <h6>Elegir adicionales que desees agregar</h6>
                         </div>
-                        <div class="row" >
-                            <div class="form-check" v-for="">
-                                <input  name="item" class="form-check-input" type="checkbox" value="" id="item">
-                                <label class="form-check-label" for="item">
-                                  
+                        <div class="row">
+                            <div class="form-check" v-for="item in products.additional" >
+                                <input class="form-check-input" type="checkbox" value="item.nombre" id="flexCheckDefault" @click="addAdditional(item.nombre)">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                     {{item.name}}
                                 </label>
-                            </div>
-                              <!-- <div class="form-check">
-                                <option ><input v-model="Option" class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate"></option>
-                                <input v-model="Option" class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
-                              </div> -->
+                               </div>
+                            
                         </div>
 
                     </div>

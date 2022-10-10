@@ -14,80 +14,63 @@
 ​
 
 <body>
-    <div class="container" id="app">
+    <div class="container " id="app">
         <!--ADMINISTRADOR-->
-        <div class="row">
-
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://i.ibb.co/c18JcZN/pngwing-com-2.png" class="card-img-top" alt="...">
-                    <div class="card-body ">
-                        <p class="card-text">Crear usuarios</p>
-                        <button @click="validationFlag1()" type="button">Ingresar</button>
-                    </div>
-                </div>
-            </div>
-
-            <div v-if="flag1" class="col">
-
-                <div class="row">
-                    <div class="col text-center">
-                        Crear usuarios
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label>Tipo de usuario</label>
-                        <select v-model="user" name="seleccionCargo" id="seleccionCargo"
-                            class="form-select text-center">
-                            <option v-for="(item,index) in additional" v-text="item.name">Seleccione</option>
-                        </select>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label class="form-label">Nombre</label>
-                        <input class="form-control" type="text">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label class="form-label">Numero de identificacion</label>
-                        <input class="form-control" type="text">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label class="form-label">edad</label>
-                        <input class="form-control" type="number">
-                    </div>
-                </div>
-                <button type="button" class="btn btn-primary">Guardar</button>
-
-            </div>
-            <div v-else class="col">
-                <img src="https://t3.ftcdn.net/jpg/03/00/16/94/240_F_300169453_6xuLDQnnQUHnCJNctiI7Vzx8uJm20xow.jpg"
-                    class="card-img-top" alt="...">
+        <div class="row text-center title">
+            <h1>Administración</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="select " style="width: 40%; padding: 1%;">
+                <select
+                  v-model="product"
+                  name="seleccionProducto"
+                  id="seleccionProducto"
+                  class="form-select  text-center">
+                  <option
+                  v-for="item in option"
+                  v-text="item.name">Seleccione</option>
+                  </select>
             </div>
         </div>
+        <!--Crear usuarios-->
+        <div class="container1  border border-dark justify-content-center" >
+        <div class="row usuarios">
+            <div class="row text-center ">
+                <h3>Crear usuarios</h3>
+            </div>
+            <div class="row ">
+                <div class="col">
+                    <label class="form-label">Nombre</label>
+                    <input class="form-control" type="text">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Numero de identificacion</label>
+                    <input class="form-control" type="text">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">edad</label>
+                    <input class="form-control" type="number">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="button">Guardar</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+        <!--Fin crear usuarios-->
         <!--Fin administrador-->
+
 
         <!--CHEF-->
         <div class="row">
-
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://i.ibb.co/c18JcZN/pngwing-com-2.png" class="card-img-top" alt="...">
-                    <div class="card-body ">
-                        <p class="card-text">Crear Productos</p>
-                        <button @click="validationFlag2()" type="button">Ingresar</button>
-                    </div>
-                </div>
-            </div>
-
             <div v-if="flag2" class="col">
-
                 <div class="row">
                     <div class="col text-center">
                         Crear productos
@@ -141,25 +124,12 @@
                     </div>
                 </div>
             </div>
-            <div v-else class="col">
-                <img src="https://cdn-icons-png.flaticon.com/128/3461/3461974.png" alt="">
-            </div>
+
         </div>
         <!--Fin chef-->
 
         <!--Crear adicionales-->
         <div class="row">
-
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://i.ibb.co/c18JcZN/pngwing-com-2.png" class="card-img-top" alt="...">
-                    <div class="card-body ">
-                        <p class="card-text">Crear adicionales</p>
-                        <button @click="validationFlag3()" type="button">Ingresar</button>
-                    </div>
-                </div>
-            </div>
-
             <div v-if="flag3" class="col">
 
                 <div class="row">
@@ -190,24 +160,12 @@
                     </div>
                 </div>
             </div>
-            <div v-else class="col">
-                <img src="https://cdn-icons-png.flaticon.com/128/3461/3461974.png" alt="">
-            </div>
+
         </div>
         <!--Fin Crear adicionales-->
 
         <!--Ventas realizadas-->
         <div class="row">
-
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://i.ibb.co/c18JcZN/pngwing-com-2.png" class="card-img-top" alt="...">
-                    <div class="card-body ">
-                        <p class="card-text">Ventas</p>
-                        <button @click="validationFlag4()" type="button">Ingresar</button>
-                    </div>
-                </div>
-            </div>
 
             <div v-if="flag4" class="col">
 
@@ -221,26 +179,26 @@
                                         <th class="col-3">Numero pedido</th>
                                         <th class="col-3">Descripción</th>
                                         <th class="col-3">Opción</th>
-                                        
+
 
                                     </tr>
                                 </thead>
-                                <tbody >
+                                <tbody>
                                     <tr class="body" v-for="">
 
 
                                         <td><img src="" class="rounded-circle" alt=""></td>
                                         <td v-text=""></td>
                                         <td v-text=""></td>
-                                       
-                                        
+
+
 
 
 
                                     </tr>
 
                                 </tbody>
-                                <tbody >
+                                <tbody>
                                     <tr>
                                         <td class="text-center d-flex justify-content-center">Tu lista de compras está
                                             vacía</td>
@@ -253,10 +211,7 @@
                     </div>
                 </div>
             </div>
-            <div v-else class="col">
-                <img src="https://t3.ftcdn.net/jpg/03/00/16/94/240_F_300169453_6xuLDQnnQUHnCJNctiI7Vzx8uJm20xow.jpg"
-                    class="card-img-top" alt="...">
-            </div>
+
         </div>
 
         <!--Fin Ventas realizadas-->
@@ -270,51 +225,15 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="..." class="card-img-top" alt="...">
+                                <div class="card" style="width: 18rem;" v-for="item in products.burgers">
+                                    <img :src="item.image" class="card-img-top" alt="auch">
                                     <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's content.</p>
+                                        <h5 class="card-title"></h5>
                                         <a href="#" class="btn btn-primary">Go somewhere</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="..." class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="..." class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="..." class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -341,7 +260,7 @@
     ​
     ​
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="../../backEnd/administrator.js"></script>
+    <script src="../../backEnd/administrator.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
