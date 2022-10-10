@@ -50,7 +50,6 @@ new Vue({
           getterLocalStorage(key) {
             return JSON.parse(localStorage.getItem(key) || "[]")
         },
-        
         validationFlag1(){
             this.flag1=true;
             if(this.flag1==true){
@@ -98,5 +97,39 @@ new Vue({
         createEmployee(){
 
         },
+
+        //yeni
+        
+
     },
+    //yeni
+    watch:{
+      option1(){
+        if(this.option1==this.option[0].name){
+          this.flag1=true;
+          this.flag2=false;
+          this.flag5=false;
+        }
+        if(this.option1==this.option[1].name){
+          this.flag1=false;
+          this.flag2=true;
+          this.flag5=false;
+        }
+        if(this.option1==this.option[2].name){
+          this.flag1=false;
+          this.flag2=false;
+          this.flag5=true;
+        }
+      },
+      product(){
+        if(this.product==this.productType[0].name){
+          this.flag3=true;
+          this.flag4=false;
+        }
+        if(this.product==this.productType[1].name){
+          this.flag3=false;
+          this.flag4=true;
+        }
+      }
+    }
 })
