@@ -33,13 +33,13 @@ new Vue({
         products:"",
         productType:[{name:"Hamburguesas"},{name:"Perros calientes"}],
         product:"",
-        nameAdditional:"",
-        price:0,
         productsParsed: [],
         registeredUsers: [],
         allAdditionals: [],
         allProducts: [],
         PRODUCTS_KEY: 'all-products',
+        productsParsed:"",
+        
     },
     created(){
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
@@ -50,38 +50,6 @@ new Vue({
           },
           getterLocalStorage(key) {
             return JSON.parse(localStorage.getItem(key) || "[]")
-        },
-        validationFlag1(){
-            this.flag1=true;
-            if(this.flag1==true){
-                this.flag2=false;
-                this.flag3=false;
-                this.flag4=false;
-            }
-        },
-        validationFlag2(){
-            this.flag2=true;
-            if(this.flag2==true){
-                this.flag1=false;
-                this.flag3=false;
-                this.flag4=false;
-            }
-        },
-        validationFlag3(){
-            this.flag3=true;
-            if(this.flag3==true){
-                this.flag1=false;
-                this.flag2=false;
-                this.flag4=false;
-            }
-        },
-        validationFlag4(){
-            this.flag4=true;
-            if(this.flag4==true){
-                this.flag1=false;
-                this.flag2=false;
-                this.flag3=false;
-            }
         },
         validateCredentials(){
 

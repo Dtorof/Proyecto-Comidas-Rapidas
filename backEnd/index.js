@@ -15,13 +15,14 @@ new Vue({
   productsParsed: [],
   allProducts: [],
   PRODUCTS_KEY: 'all-products',
+  additionalOption:"",
   },
   created(){
       this.setDataProducts()
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.createNewProduct()
-      console.log('new data');
-      console.log(this.allProducts)
+      // console.log('new data');
+      // console.log(this.allProducts)
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
   },
   methods: {
@@ -145,7 +146,7 @@ new Vue({
         "name": "Triple Carne",
         "price": 35000,
         "description": "Hamburguesa con tres carnes de 50gr, dos queso cheddar, cebolla, pepinillos, salsa de tomate y mostaza.",
-        "image": "https://res.cloudinary.com/jorge-tarifa/image/upload/v1665118196/carrito-market-mix/Medium_numhp4.jpg",
+        "image": "https://st3.depositphotos.com/3957801/12810/i/600/depositphotos_128102518-stock-photo-big-beef-burger.jpg",
         "additional": []
       }],
       hot_dogs:[{
@@ -185,8 +186,8 @@ new Vue({
     this.allProducts.burgers.push({
         name: 'Vegana',
         price: 22000,
-        description: 'Prueba la deliciosa Vegana. Porción de vegetales de 125gr con un increible sabor y textura a carne, salsas de la casa y los más frescos vegetales.',
-        image: 'https://res.cloudinary.com/jorge-tarifa/image/upload/v1665290581/carrito-market-mix/vegana_gnvfth.jpg',
+        description: 'Prueba la deliciosa Vegana. Porción de vegetales de 125gr con una increible textura y sabor a carne.',
+        image: 'https://assets.unileversolutions.com/recipes-v2/211056.jpg',
         id: this.v4()
     })
     this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
@@ -206,5 +207,11 @@ new Vue({
       this.cartData.push(this.productBuy);
       return this.cartData;
     },
+  },
+  computed: {
+    validation(){
+    return console.log(this.additionalOption);
+    }
+    
   },
 })
