@@ -3,58 +3,69 @@ new Vue({
     data: {
     products: [],
     quantity:0,
-    totalQuantitys:0,
-    total:0,
+    order:[],
     additionals:0,
+    totalPayment: '',
     cartData: [],
-    productBuy:{},
     PRODUCTS_KEY: 'all-products',
     },
     created(){
         this.setDataProducts()
         this.products = this.getterParsedLocalStorage(this.PRODUCTS_KEY)
-        console.log(this.products)
+        this.addQuantityToProducts();
     },
     methods: {
       setterLocalStorage(key, data) {
         localStorage.setItem(key, JSON.stringify(data));
       },
+     
+      addQuantityToProducts(){
+        if (this.products?.burgers){
+          this.products.burgers = this.products.burgers.map(prod =>({...prod, qty: 1}))
+        }
+        if (this.products?.hot_dogs){
+          this.products.hot_dogs = this.products.hot_dogs.map(prod => ({...prod, qty: 1}))
+        }
+      },
       addCartBurgers(itemId) {
-        this.productBuy = this.products.burgers.find((prod)=> {
-          if(prod.id === itemId) {
-            return prod
-          }
-        })
-        this.productBuy.quantity = this.updateQty();
-        this.productBuy.subTotal =  (this.productBuy.quantity * this.productBuy.price) + this.additionals;
-        this.addProduct(this.productBuy)
-        return this.productBuy
+        const productBuy = this.products.burgers.find((prod)=> prod.id === itemId)
+        productBuy.quantity = productBuy.qty;
+        productBuy.subTotal = this.thousandSeparator((productBuy.qty * productBuy.price) + this.additionals);
+        productBuy.subTotalNumber =  (productBuy.qty * productBuy.price) + this.additionals;
+        this.addProduct(productBuy)
       },
       addCartHotDog(itemId) {
-        this.productBuy = this.products.hot_dogs.find((prod)=> {
-          if(prod.id === itemId) {
-            return prod
-          }
-        })
-        this.productBuy.quantity = this.updateQty();
-        this.productBuy.subTotal =  this.productBuy.quantity * this.productBuy.price
-        this.addProduct(this.productBuy)
-        return this.productBuy
+        const productBuy = this.products.hot_dogs.find((prod)=> prod.id === itemId)
+        productBuy.quantity = productBuy.qty;
+        productBuy.subTotal =  this.thousandSeparator((productBuy.qty * productBuy.price) + this.additionals);
+        productBuy.subTotalNumber =  (productBuy.qty * productBuy.price) + this.additionals;
+        this.addProduct(productBuy)
       },
-      
-      addProduct(){
-        this.cartData.push(this.productBuy);
-        return this.cartData;
+      addProduct(productBuy){
+        this.cartData.push(productBuy);
+        console.log(this.cartData)
       },
-      updateQty(action, id){
-        if(action === "add") {
-          this.quantity++
-          this.totalQuantitys = this.quantity
-        } else if(this.quantity > 0) {
-          this.quantity--
-          this.totalQuantitys = this.quantity
+      thousandSeparator(number = 0, decimalsQuantity = 2) {
+        return Number(number).toFixed(decimalsQuantity).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      },  
+      updateQtyHotDogs(action, id){
+        const product = this.products.hot_dogs.find(product => product.id === id)
+        if(product){
+          const qty = product.qty;
+          product.qty = action === "add" ? qty + 1 : qty - 1;
         }
-        return this.totalQuantitys 
+      },
+      updateQtyBurgers(action, id){
+        const product = this.products.burgers.find(product => product.id === id)
+        if(product){
+          const qty = product.qty;
+          product.qty = action === "add" ? qty + 1 : qty - 1;
+        }
+      },
+      totalToPay() {        
+          let payData = this.cartData.map((prod)=> {return prod.subTotalNumber})
+          let pay = payData.reduce((value, num) => value + num,0)
+          this.totalPayment  = this.thousandSeparator(pay, 0);
       },
       getterParsedLocalStorage(key) {
         return JSON.parse(localStorage.getItem(key) || "[]");
