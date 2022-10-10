@@ -2,13 +2,12 @@ new Vue({
     el: '#app',
     data: {
         roles: ['administrator', 'chef', 'employee','domiciliary'],
-        rolDefault: null,
         forms: {
         user: {
         name: "",
         username: "",
         password:"",
-        rol:""
+        rolDefault:null
         },
         product:{
         name: "",
@@ -33,16 +32,17 @@ new Vue({
         products:"",
         productType:[{name:"Hamburguesas"},{name:"Perros calientes"}],
         product:"",
-        nameAdditional:"",
-        price:0,
         productsParsed: [],
         registeredUsers: [],
         allAdditionals: [],
-        allProducts: [],
         PRODUCTS_KEY: 'all-products',
+        ADDITIONALS_KEY: 'all-additionals',
+        REGISTERED_USERS_KEY: 'registered-users',
+        CURRENT_LOGUED_USER_KEY: 'current-user',
     },
     created(){
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
+      this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
     },
     methods: {
         setterLocalStorage(key, data) {
@@ -51,52 +51,47 @@ new Vue({
           getterLocalStorage(key) {
             return JSON.parse(localStorage.getItem(key) || "[]")
         },
-        validationFlag1(){
-            this.flag1=true;
-            if(this.flag1==true){
-                this.flag2=false;
-                this.flag3=false;
-                this.flag4=false;
-            }
-        },
-        validationFlag2(){
-            this.flag2=true;
-            if(this.flag2==true){
-                this.flag1=false;
-                this.flag3=false;
-                this.flag4=false;
-            }
-        },
-        validationFlag3(){
-            this.flag3=true;
-            if(this.flag3==true){
-                this.flag1=false;
-                this.flag2=false;
-                this.flag4=false;
-            }
-        },
-        validationFlag4(){
-            this.flag4=true;
-            if(this.flag4==true){
-                this.flag1=false;
-                this.flag2=false;
-                this.flag3=false;
-            }
-        },
         validateCredentials(){
 
         },
         validateErrorLogin(){
 
         },
-        createProduct(){
-
+        createNewBurger(){
+            this.productsParsed.burgers.push({
+            id:this.v4(),
+            name: this.forms.product.name,
+            price: this.forms.product.price,
+            description: this.forms.product.description,
+            image: this.forms.product.image,
+        })
+        this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
+        },
+        createNewHotDog(){
+            this.productsParsed.hot_dogs.push({
+            id:this.v4(),
+            name: this.forms.product.name,
+            price: this.forms.product.price,
+            description: this.forms.product.description,
+            image: this.forms.product.image,
+        })
+        this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
         },
         createAdditional(){
-
+          this.allAdditionals.push({
+            name: this.forms.additional.name,
+            price: this.forms.additional.price
+          })
+        this.setterLocalStorage(this.ADDITIONALS_KEY,this.allAdditionals)
         },
         createEmployee(){
-
+          this.registeredUsers.push({
+            name: this.forms.user.name,
+            username: this.forms.user.username,
+            password:this.forms.user.password,
+            rol:this.forms.user.rolDefault
+          })
+        this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)
         },
 
         //yeni

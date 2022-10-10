@@ -9,19 +9,19 @@ new Vue({
   username: "",
   loguedUser:[],
   registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrator"}],
-  REGISTERED_USERS_KEY: 'registered-users',
-  CURRENT_LOGUED_USER_KEY: 'current-user',
   allAdditionals: [],
   productsParsed: [],
   allProducts: [],
   PRODUCTS_KEY: 'all-products',
+  REGISTERED_USERS_KEY: 'registered-users',
+  CURRENT_LOGUED_USER_KEY: 'current-user',
+  ADDITIONALS_KEY: 'all-additionals',
+  additionalOption:"",
   },
   created(){
       this.setDataProducts()
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.createNewProduct()
-      console.log('new data');
-      console.log(this.allProducts)
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
   },
   methods: {
@@ -61,7 +61,8 @@ new Vue({
           false)
       
     setTimeout(() => window.location.href = `./..frontend/..views${this.validateRolUser(this.username)}.html`, 2400)
-  }, validateCredentials(user, key) {
+  }, 
+  validateCredentials(user, key) {
     this.login();
   
     let loguedUser = [];
@@ -144,7 +145,7 @@ new Vue({
         "name": "Triple Carne",
         "price": 35000,
         "description": "Hamburguesa con tres carnes de 50gr, dos queso cheddar, cebolla, pepinillos, salsa de tomate y mostaza.",
-        "image": "https://res.cloudinary.com/jorge-tarifa/image/upload/v1665118196/carrito-market-mix/Medium_numhp4.jpg",
+        "image": "https://st3.depositphotos.com/3957801/12810/i/600/depositphotos_128102518-stock-photo-big-beef-burger.jpg",
         "additional": []
       }],
       hot_dogs:[{
@@ -181,14 +182,7 @@ new Vue({
     this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
   },
   createNewProduct(){
-    this.allProducts.burgers.push({
-        name: 'Vegana',
-        price: 22000,
-        description: 'Prueba la deliciosa Vegana. Porción de vegetales de 125gr con un increible sabor y textura a carne, salsas de la casa y los más frescos vegetales.',
-        image: 'https://res.cloudinary.com/jorge-tarifa/image/upload/v1665290581/carrito-market-mix/vegana_gnvfth.jpg',
-        id: this.v4()
-    })
-    this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
+  
 },
     addCart(itemId) {
       this.productBuy = this.products.burgers.find((prod)=> {
@@ -205,5 +199,11 @@ new Vue({
       this.cartData.push(this.productBuy);
       return this.cartData;
     },
+  },
+  computed: {
+    validation(){
+    return console.log(this.additionalOption);
+    }
+    
   },
 })
