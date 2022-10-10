@@ -34,3 +34,63 @@ body{
   color: var(--blanco);
   font-family: 'Source Sans Pro', sans-serif;
 } 
+
+/* yeni */
+.burger #medio{
+    width: 100%;
+}
+.burger  #mas, #menos{
+    width: 60%;
+    border: none;
+}
+.burger  #mas{
+    background-color: green;
+}
+.burger  #menos{
+    background-color: red;
+}
+.burguer #adicionales{
+    color: var(--negro);
+}
+.hot_dogs #medio{
+    width: 100%;
+}
+.hot_dogs  #mas, #menos{
+    width: 60%;
+    border: none;
+}
+.hot_dogs #adicionales{
+    color: var(--negro);
+}
+.container .burger .card{
+    margin-bottom: 5%;
+}
+.container .burger .card .card-body{
+    height:8rem;
+   
+}
+.container .burger .card img{
+    height:16rem;
+   
+}
+.container .hot_dogs .card{
+    margin-bottom: 5%;
+}
+.container .hot_dogs .card .card-body{
+    height:8rem;
+  
+}
+.container .hot_dogs .card img{
+    height:16rem;
+   
+}
+.hot_dogs  #mas{
+    background-color: green;
+}
+.hot_dogs  #menos{
+    background-color: red;
+}
+.hot_dogs #adicionales{
+    color: var(--negro);
+}
+
