@@ -46,7 +46,7 @@
             <button  class="btn btn-outline-light" type="button" > <a href="#hamburguesa" id="hamburguesa-nav" class="nav-link">Hamburguesas</a></button>
             <button  class="btn btn-outline-light" type="button" > <a href="#hotdogs"  id="hotdogs-nav" class="nav-link">Perros Calientes</a></button>
             <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Iniciar sesión</button>
-            <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal"><span class="position-absolute top-50  right-4 translate-middle badge rounded-pill">0</span> <img src="https://i.ibb.co/9g9Bym6/logo-Secundary.png" alt="Carrito" ></button>
+            <button id="car"  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal1"><span class="position-absolute top-50  right-4 translate-middle badge rounded-pill">0</span> <img src="https://i.ibb.co/9g9Bym6/logo-Secundary.png" alt="Carrito" ></button>
           </form>
         </div>
       </nav>
@@ -156,10 +156,10 @@
             <!--Fin tabla-->
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               Close
             </button>
-            <button type="button" class="btn btn-primary">Pagar</button>
+            <button data-bs-toggle="modal" data-bs-target="#exampleModal1"  type="button" class="btn btn-primary">Pagar</button>
           </div>
         </div>
       </div>
@@ -249,7 +249,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Adicionales</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" id="segI"  data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -260,7 +260,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <button @click="validation()" id="not" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               No
             </button>
             <button  data-bs-toggle="modal"
@@ -292,11 +292,11 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <button @click="validation2()"  type="button" id="not1"  class="btn btn-secondary" data-bs-dismiss="modal">
               Close
             </button>
-            <button type="button" class="btn btn-primary">
-              Save changes
+            <button @click="validation()" type="button" class="btn btn-primary">
+              Pagar
             </button>
           </div>
         </div>

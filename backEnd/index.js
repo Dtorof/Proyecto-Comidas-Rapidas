@@ -206,11 +206,19 @@ new Vue({
       this.cartData.push(this.productBuy);
       return this.cartData;
     },
-  },
-  computed: {
     validation(){
-    return console.log(this.additionalOption);
+      let closeModal = document.getElementById('not');
+          closeModal.click();
+      let closeModal2 = document.getElementById('not1');
+          closeModal2.click();
+      let openCar = document.getElementById('car');
+      openCar.click()
+    },
+    validation2(){
+      let closeModal5 = document.getElementById('segI');
+      closeModal5.click();
     }
     
   },
+  
 })
