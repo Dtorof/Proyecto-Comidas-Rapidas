@@ -11,7 +11,6 @@ new Vue({
   registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrator"}],
   REGISTERED_USERS_KEY: 'registered-users',
   CURRENT_LOGUED_USER_KEY: 'current-user',
-  registeredUsers: [],
   allAdditionals: [],
   productsParsed: [],
   allProducts: [],
@@ -23,6 +22,7 @@ new Vue({
       this.createNewProduct()
       console.log('new data');
       console.log(this.allProducts)
+      this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
   },
   methods: {
     setterLocalStorage(key, data) {
