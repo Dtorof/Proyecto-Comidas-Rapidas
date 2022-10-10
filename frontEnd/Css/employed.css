@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Source+Sans+Pro:wght@900&display=swap');
+:root{
+    --dorado:rgb(212, 175, 55);
+    --negro:rgb(0, 0, 0);
+    --blanco:#fff;
+}
+body{
+    background-color: var(--negro);
+}
+.container .title{
+    color: var(--dorado);
+    font-family: 'Source Sans Pro', sans-serif;
+  } 
+  .container .title2{
+    color: var(--blanco);
+    font-family: 'Source Sans Pro', sans-serif;
+  } 
+ #tabla th{
+    color: var(--blanco);
+    font-size: 150%;
+ }
+ #tabla tr{
+    color: var(--blanco);
+ }
