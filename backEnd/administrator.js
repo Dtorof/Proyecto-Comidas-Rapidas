@@ -1,26 +1,26 @@
-new Vue({   
+new Vue({
     el: '#app',
     data: {
         roles: ['administrador', 'chef', 'empleado','domiciliario'],
         forms: {
-        user: {
-        name: "",
-        username: "",
-        password:"",
-        rolDefault:null
-        },
-        product:{
-        name: "",
-        description: "",
-        price:"",
-        image:""
-        },
-        additional:{
-        name: "",
-        description: "",
-        price:"",
-        image:""
-        }
+          user: {
+            name: "",
+            username: "",
+            password:"",
+            rolDefault:null
+          },
+          product:{
+            name: "",
+            description: "",
+            price:"",
+            image:""
+          },
+          additional:{
+            name: "",
+            description: "",
+            price:"",
+            image:""
+          }
         },
         flag1:false,
         flag2:false,
@@ -97,14 +97,11 @@ new Vue({
         createProduct(){
 
           if(this.product==="Hamburguesas"){
-             this.createNewBurger();
+            this.createNewBurger();
           }else{
             this.createNewHotDog()
           }
         }
-        
-        
-
     },
     //yeni
     watch:{
