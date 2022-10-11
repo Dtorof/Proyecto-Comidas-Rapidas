@@ -92,13 +92,13 @@ new Vue({
     messageSuccessLogin(user){
       this.message(
           "success", 
-          "¡Enhorabuena!",
-          2400,
+          "Login exitoso!",
+          2600,
           "center",
-          "¡Login exitoso!",
+          "¡Será redireccionado en unos segundos!",
           false)
       
-    setTimeout(() => window.location.href = `/frontEnd/view/${this.validateRolUser(user)}.html`, 2000)
+    setTimeout(() => window.location.href = `/frontEnd/view/${this.validateRolUser(user)}.html`, 2600)
   }, 
   loginUser(user,key){
     let loguedUser = [];
