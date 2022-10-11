@@ -92,7 +92,7 @@ new Vue({
     messageSuccessLogin(user){
       this.message(
           "success", 
-          "Login exitoso!",
+          "!Login exitoso!",
           2600,
           "center",
           "¡Será redireccionado en unos segundos!",
@@ -218,12 +218,25 @@ new Vue({
           closeModal.click();
       let closeModal2 = document.getElementById('not1');
           closeModal2.click();
+      
+    },
+    validationmodalpay(){
       let openCar = document.getElementById('car');
       openCar.click()
     },
     validation2(){
       let closeModal5 = document.getElementById('segI');
       closeModal5.click();
+    },
+    valadation1(){
+      let closeModal5 = document.getElementById('segI');
+      closeModal5.click();
+      let closeModal = document.getElementById('not');
+          closeModal.click();
+      let closeModal2 = document.getElementById('not1');
+          closeModal2.click();
+      let closeModal3 = document.getElementById('not2');
+      closeModal3.click();
     }
     
   },
