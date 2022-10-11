@@ -17,6 +17,10 @@ new Vue({
   CURRENT_LOGUED_USER_KEY: 'current-user',
   ADDITIONALS_KEY: 'all-additionals',
   additionalOption:"",
+<<<<<<< HEAD
+=======
+  
+>>>>>>> fb6d53c857f98e170ef88afcb88e6c98c260c44f
   },
   created(){
       this.setDataProducts()

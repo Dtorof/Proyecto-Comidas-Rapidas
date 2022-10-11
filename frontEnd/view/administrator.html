@@ -17,7 +17,12 @@
     <div class="container align-items-center justify-content-center" id="app">
         <!--Select-->
         <div class="row text-center title">
-            <h1>Administración</h1>
+            <div class="col-11 justify-content-start text-start">
+                <h1>Administración</h1>
+            </div>
+            <div class="col-1  justify-content-end" >
+               <a href="../../index.html"><i class="fa-solid fa-door-open open"style="width: 40%; height: 50%;"></i></a> 
+            </div>
         </div>
         <div class="row ">
             <div class="select " style="width: 40%; padding: 1%;">
@@ -29,7 +34,7 @@
         </div>
         <!--Fin select-->
         <!--Crear usuarios-->
-        <div v-if="flag1" class="row usuarios m-3  border border-white border-5  justify-content-center">
+        <div v-if="flag1" class="row usuarios m-3  border border-dark border-2  justify-content-center">
             <div class="row mt-3 text-center ">
                 <h3>Crear usuarios</h3>
             </div>
@@ -72,7 +77,7 @@
         </div>
         <!--Fin crear usuarios-->
         <!--Crear productos-->
-        <div v-if="flag2" class="row usuarios  border border-white border-5 m-3  justify-content-center">
+        <div v-if="flag2" class="row usuarios  border border-dark border-2 m-3  justify-content-center">
             <div class="row">
                 <div class="row mt-3 text-center ">
                     <h3>Crear productos</h3>
@@ -138,7 +143,7 @@
         <!--Fin chef-->
 
         <!--Crear adicionales-->
-        <div v-if="flag5" class="row usuarios  border border-white border-5 m-3  justify-content-center">
+        <div v-if="flag5" class="row usuarios  border border-dark border-2 m-3  justify-content-center">
             <div class="col">
                 <div class="row">
                     <div class="row mt-3 text-center ">
@@ -175,9 +180,9 @@
                 <div class="row" id="tabla">
                     <div class="container pe-4 ps-4">
                         <div class="table-responsive">
-                            <table class="table table-bordered border-white border-5 text-center">
+                            <table class="table table-bordered border-dark border-2 ">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-center">
                                         <th class="col-3">Numero pedido</th>
                                         <th class="col-3">Descripción</th>
                                         <th class="col-3">Total</th>
@@ -261,6 +266,8 @@
 
 
     </div>
+    <script src="https://kit.fontawesome.com/eb9c72ba98.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="../../backEnd/administrator.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
