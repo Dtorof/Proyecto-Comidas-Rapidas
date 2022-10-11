@@ -8,7 +8,8 @@ new Vue({
   password: "",
   username: "",
   loguedUser:[],
-  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrator"}],
+  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"},{name: "Oscar",username:"lol",password:"1234", rol: "domiciliario"}
+],
   allAdditionals: [],
   productsParsed: [],
   allProducts: [],
@@ -47,8 +48,8 @@ new Vue({
       } else if(user.rol === 'chef'){
         return 'chef'
       }else if(user.rol === 'empleado'){
-        return 'employee'
-      }else return 'domiciliario'
+        return 'employed'
+      }else return 'domiciliary'
     },
     messageSuccessLogin(user){
       this.message(
@@ -59,7 +60,7 @@ new Vue({
           "¡Login exitoso!",
           false)
       
-    setTimeout(() => window.location.href = `./..frontend/..views/${this.validateRolUser(user)}.html`, 2400)
+    setTimeout(() => window.location.href = `/frontEnd/view/${this.validateRolUser(user)}.html`, 2400)
   }, 
   loginUser(user,key){
     let loguedUser = [];
@@ -67,8 +68,7 @@ new Vue({
      (({username, password})  => username === user && password === key)
      )
      loguedUser = [...session]
-     console.log('logued user');
-     console.log(loguedUser);
+     let [currentUser] = loguedUser
      this.setterLocalStorage(this.CURRENT_LOGUED_USER_KEY,loguedUser )
 
      this.password = ""
@@ -85,7 +85,7 @@ new Vue({
     false
     )
     : 
-    this.messageSuccessLogin(loguedUser)
+    this.messageSuccessLogin(currentUser)
 },
   v4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
