@@ -110,7 +110,7 @@ new Vue({
               this.error3 = false;
             }
   
-          if (this.forms.user.rolDefault != 'administrador' || this.forms.user.rolDefault != 'chef' || this.forms.user.rolDefault != 'empleado' || this.forms.user.rolDefault != 'domiciliario' ) {
+          if (this.forms.user.rolDefault == null) {
           this.error4 = true;
           } else {
           this.error4 = false;
