@@ -31,7 +31,6 @@ new Vue({
       this.setDataProducts()
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.createNewProduct()
-      console.log(this.allProducts)
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
       this.dataStorage = JSON.parse(localStorage.getItem("dbOrder") || null)
   },
