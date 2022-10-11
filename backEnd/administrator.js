@@ -1,6 +1,8 @@
 new Vue({
     el: '#app',
     data: {
+        hotDogsoptionalImages: ['https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525209/carrito-market-mix/hot-dog-2_w0bkos.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525201/carrito-market-mix/hot-dog-3_dhqaka.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525196/carrito-market-mix/hot-dog-4_fka3ay.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525190/carrito-market-mix/hot-dog-1_qpjgb1.jpg'],
+        burgersOptionalImages: ['https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525205/carrito-market-mix/burger-1_ixxrg1.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525196/carrito-market-mix/burger-2_c33tcx.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525190/carrito-market-mix/burger-3_aoiknm.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525189/carrito-market-mix/burger-4_of9olc.jpg'],
         roles: ['administrador', 'chef', 'empleado','domiciliario'],
         forms: {
         user: {
@@ -56,7 +58,41 @@ new Vue({
           getterLocalStorage(key) {
             return JSON.parse(localStorage.getItem(key) || "[]")
         },
+        message(icon,title, timer, position, text, button) {
+          swal({
+            position,
+            text,
+            icon,
+            title,
+            dangerMode: false,
+            timer,
+            button,
+        })
+        },
         validateCredentials(){
+        },
+        v4() {
+          return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16)
+          })
+        },
+        clearProduct(){
+          this.product = null
+          this.forms.product.name = ""
+          this.forms.product.price = ""
+          this.forms.product.description = ""
+          this.forms.product.image = ""
+        },
+        clearInputs(){
+          this.forms.user.name="";
+          this.forms.user.username="",
+          this.forms.user.password="",
+          this.forms.user.rolDefault=null;
+        },
+        clearAdditional(){
+          this.forms.additional.name = ""
+          this.forms.additional.price = ""
         },
         createNewBurger(){
             this.productsParsed.burgers.push({
@@ -68,6 +104,14 @@ new Vue({
             additional:[]
         })
         this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
+        this.message(
+          "success", 
+          "!Creación exitosa!",
+          2200,
+          "center",
+          "¡Ahora tienes un nuevo tipo de hamburguesa!",
+          false)
+          this.clearProduct()
         },
         createNewHotDog(){
             this.productsParsed.hot_dogs.push({
@@ -79,6 +123,14 @@ new Vue({
             additional:[]
         })
         this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
+        this.message(
+          "success", 
+          "!Creación exitosa!",
+          2200,
+          "center",
+          "¡Ahora tienes un nuevo tipo de perro caliente!",
+          false)
+          this.clearProduct()
         },
         createProduct(){
         if(this.product==="Hamburguesas"){
@@ -93,6 +145,14 @@ new Vue({
             price: this.forms.additional.price
           })
         this.setterLocalStorage(this.ADDITIONALS_KEY,this.allAdditionals)
+        this.clearAdditional();
+        this.message(
+          "success", 
+          "!Creación exitosa!",
+          2200,
+          "center",
+          "¡Ahora tienes un nuevo tipo de adicional!",
+          false)
         },
         getError() {
           
@@ -130,14 +190,17 @@ new Vue({
             rol:this.forms.user.rolDefault
           })
          this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)}
+         this.message(
+          "success", 
+          "!Creación exitosa!",
+          2200,
+          "center",
+          `¡Ahora tienes un nuevo ${this.forms.user.rolDefault} en el sistema!`,
+          false)
          this.clearInputs();
+         
         },
-        clearInputs(){
-          this.forms.user.name="";
-          this.forms.user.username="",
-          this.forms.user.password="",
-          this.forms.user.rolDefault=null;
-        }
+        
     },
     //yeni
     watch:{
