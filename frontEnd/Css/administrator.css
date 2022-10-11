@@ -105,3 +105,13 @@ body{
   color: var(--blanco);
   font-size: 150%;
 }
+.btn-89{
+  background-color: var(--dorado);
+  color:var(--blanco);
+  border: none;
+}
+.btn-89:hover{
+  background-color:var(--blanco);
+  color:var(--negro);
+  border: 1px solid var(--negro);
+}

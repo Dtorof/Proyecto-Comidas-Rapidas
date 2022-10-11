@@ -46,7 +46,7 @@
             <button  class="btn btn-outline-light" type="button" > <a href="#hamburguesa" id="hamburguesa-nav" class="nav-link">Hamburguesas</a></button>
             <button  class="btn btn-outline-light" type="button" > <a href="#hotdogs"  id="hotdogs-nav" class="nav-link">Perros Calientes</a></button>
             <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Iniciar sesión</button>
-            <button id="car"  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal1"><span class="position-absolute top-50  right-4 translate-middle badge rounded-pill">0</span> <img src="https://i.ibb.co/9g9Bym6/logo-Secundary.png" alt="Carrito" ></button>
+            <button id="car"  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal1"><span class="position-absolute top-50  right-4 translate-middle badge rounded-pill">{{cartData.length}}</span> <img src="https://i.ibb.co/9g9Bym6/logo-Secundary.png" alt="Carrito" ></button>
           </form>
         </div>
       </nav>
@@ -163,7 +163,7 @@
             <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               Close
             </button>
-            <button data-bs-toggle="modal" data-bs-target="#exampleModal1"  type="button" class="btn btn-primary" @click="totalToPay">Pagar</button>
+            <button data-bs-toggle="modal" data-bs-target="#exampleModal1"  type="button" class="btn btn-primary">Pagar</button>
           </div>
         </div>
       </div>
@@ -202,7 +202,7 @@
                 </div>
               </div>
               <button id="adicionales" type="button" class="btn btn-outline-warning mt-3" data-bs-toggle="modal"
-                data-bs-target="#exampleModal22">
+                data-bs-target="#exampleModal22" @click="addCartButton(item)">
                 Agregar
               </button>
           </div>
@@ -239,7 +239,8 @@
                   <button id="mas" type="button" @click="updateQtyHotDogs('add',  item.id)"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div>
-              <button id="adicionales" type="button" class="btn btn-outline-warning mt-3 align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal22">
+              <button id="adicionales" type="button" class="btn btn-outline-warning mt-3 align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal22"
+              @click="addCartButton(item)">
                 Agregar
               </button>
           </div>

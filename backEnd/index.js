@@ -6,8 +6,8 @@ new Vue({
   totalPayment: "",
   password: "",
   username: "",
-  quantity: 0,
   loguedUser:[],
+  check:[],
   registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrator"}],
   allAdditionals: [],
   productsParsed: [],
@@ -22,7 +22,6 @@ new Vue({
       this.setDataProducts()
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.createNewProduct()
-      // console.log('new data');
       console.log(this.allProducts)
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
   },
@@ -33,28 +32,21 @@ new Vue({
     getterLocalStorage(key) {
       return JSON.parse(localStorage.getItem(key) || "[]");
     },
-    addCartBurgers(itemId) {
-      const productBuy = this.allProducts.burgers.find((prod)=> prod.id === itemId)
-      productBuy.quantity = productBuy.qty;
-      productBuy.subTotal = this.thousandSeparator((productBuy.qty * productBuy.price) + this.additionals);
-      productBuy.subTotalNumber =  (productBuy.qty * productBuy.price) + this.additionals;
-      // this.addProduct(productBuy)
+    addCartButton(item){
+      const productBuy = {
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.qty,
+        description: item.description,
+        image: item.image,
+        additional: item.additional
+      }
+      productBuy.subTotal = this.thousandSeparator(productBuy.quantity * productBuy.price);
+      productBuy.subTotalNumber =  (item.qty * item.price)
       this.cartData.push(productBuy);
-      console.log(productBuy)
-    },
-    addCartHotDog(itemId) {
-      const productBuy = this.allProducts.hot_dogs.find((prod)=> prod.id === itemId)
-      productBuy.quantity = productBuy.qty;
-      productBuy.subTotal =  this.thousandSeparator((productBuy.qty * productBuy.price) + this.additionals);
-      productBuy.subTotalNumber =  (productBuy.qty * productBuy.price) + this.additionals;
-      this.cartData.push(productBuy);
-      // this.addProduct(productBuy)
-    },
-
-    addProduct(productBuy){
-      this.cartData.push(productBuy);
-      // this.showConfirmation();
-      console.log(this.cartData)       
+      console.log(this.cartData)  
+      this.totalToPay(); 
     },
     thousandSeparator(number = 0, decimalsQuantity = 2) {
       return Number(number).toFixed(decimalsQuantity).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -90,13 +82,13 @@ new Vue({
     })
     },
     validateRolUser(user){
-      if(user.rol === 'administrator') {
+      if(user.rol === 'administrador') {
         return 'administrator'
       } else if(user.rol === 'chef'){
         return 'chef'
-      }else if(user.rol === 'employee'){
+      }else if(user.rol === 'empleado'){
         return 'employee'
-      }else return 'domiciliary'
+      }else return 'domiciliario'
     },
     messageSuccessLogin(){
       this.message(
@@ -236,22 +228,22 @@ new Vue({
     this.allProducts = products
     this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
   },
-  createNewProduct(){
+   createNewProduct(){
   
+    },
+    validation(){
+      let closeModal = document.getElementById('not');
+          closeModal.click();
+      let closeModal2 = document.getElementById('not1');
+          closeModal2.click();
+      let openCar = document.getElementById('car');
+      openCar.click()
+    },
+    validation2(){
+      let closeModal5 = document.getElementById('segI');
+      closeModal5.click();
+    }
+    
   },
-      validation(){
-
-        let closeModal = document.getElementById('not');
-            closeModal.click();
-        let closeModal2 = document.getElementById('not1');
-            closeModal2.click();
-        let openCar = document.getElementById('car');
-        openCar.click()
-      },
-      validation2(){
-        let closeModal5 = document.getElementById('segI');
-        closeModal5.click();
-      }
-      
-    }  
+  
 })
