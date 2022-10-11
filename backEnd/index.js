@@ -17,7 +17,7 @@ new Vue({
   CURRENT_LOGUED_USER_KEY: 'current-user',
   ADDITIONALS_KEY: 'all-additionals',
   additionalOption:"",
-  flag:0,
+  
   },
   created(){
       this.setDataProducts()
