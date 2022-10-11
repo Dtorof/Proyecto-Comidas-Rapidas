@@ -8,7 +8,8 @@ new Vue({
   password: "",
   username: "",
   loguedUser:[],
-  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrator"}],
+  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"},{name: "Fernando",username:"user",password:"1234", rol: "chef"}
+],
   allAdditionals: [],
   productsParsed: [],
   allProducts: [],
@@ -47,10 +48,10 @@ new Vue({
       } else if(user.rol === 'chef'){
         return 'chef'
       }else if(user.rol === 'empleado'){
-        return 'employee'
-      }else return 'domiciliario'
+        return 'employed'
+      }else return 'domiciliary'
     },
-    messageSuccessLogin(){
+    messageSuccessLogin(user){
       this.message(
           "success", 
           "¡Enhorabuena!",
@@ -59,50 +60,33 @@ new Vue({
           "¡Login exitoso!",
           false)
       
-    setTimeout(() => window.location.href = `./..frontend/..views${this.validateRolUser(this.username)}.html`, 2400)
+    setTimeout(() => window.location.href = `/frontEnd/view/${this.validateRolUser(user)}.html`, 2000)
   }, 
-  validateCredentials(user, key) {
-    this.login();
-  
+  loginUser(user,key){
     let loguedUser = [];
-    let res = this.userCredentials.filter(
-      (usr) => usr.username === user && usr.password === key
+    let session = this.registeredUsers.filter(
+     (({username, password})  => username === user && password === key)
+     )
+     loguedUser = [...session]
+     let [currentUser] = loguedUser
+     this.setterLocalStorage(this.CURRENT_LOGUED_USER_KEY,loguedUser )
+
+     this.password = ""
+     this.username = ""
+
+    return loguedUser.length === 0
+    ?
+    this.message(
+    "warning",
+    "Oops",
+    2200,
+    "center",
+    "Verifique que los datos sean correctos",
+    false
     )
-    loguedUser = [...res];
-    this.loguedUser = [...res]
-    
-    console.log(this.loguedUser)
-    if(loguedUser.length === 0){
-      this.message('https://media2.giphy.com/media/jSQCODNIa6k5myYjyL/200w.webp',"Oops",2200,"center", "Verifique que los datos sean correctos", "error");
-      }else{
-        this.updateLocalStorage()
-      if(loguedUser[0].type=='1'){
-        if(loguedUser.length === 0){
-          this.message("Oops", 2400,"center","Verifique que los datos sean correctos","error");
-          }else{
-            this.message("https://media1.giphy.com/media/J1XU9sjU2K2pCluvXo/200w.webp","¡Enhorabuena!", 2400, "center",
-              "Ingreso exitoso",
-              "success"
-            ) ;
-            setTimeout(function() {location.href="./frontEnd/administrator.html"}, 2000);
-          }      
-      } else if(loguedUser[0].type=='2'){
-          if(loguedUser.length === 0){
-              this.message(
-                'https://media2.giphy.com/media/jSQCODNIa6k5myYjyL/200w.webp',
-                "Oops",
-                2200,
-                "center",
-                "Verifique que los datos sean correctos",
-                "error"
-              );
-              }else{
-              this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)
-              this.setterLocalStorage(this.CURRENT_LOGUED_USER_KEY, this.loguedUser)
-              this.messageSuccessLogin()
-              }
-      }
-  }},
+    : 
+    this.messageSuccessLogin(currentUser)
+},
   v4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -195,11 +179,19 @@ new Vue({
       this.cartData.push(this.productBuy);
       return this.cartData;
     },
-  },
-  computed: {
     validation(){
-    return console.log(this.additionalOption);
+      let closeModal = document.getElementById('not');
+          closeModal.click();
+      let closeModal2 = document.getElementById('not1');
+          closeModal2.click();
+      let openCar = document.getElementById('car');
+      openCar.click()
+    },
+    validation2(){
+      let closeModal5 = document.getElementById('segI');
+      closeModal5.click();
     }
     
   },
+  
 })

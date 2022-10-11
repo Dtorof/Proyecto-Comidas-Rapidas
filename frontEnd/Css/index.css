@@ -109,4 +109,10 @@ body{
     position: relative;
     filter: grayscale(30%);
 }
+#user{
+    width: 30vh;
+    height: 30vh;
+    display:block;
+    margin:auto;
+}
 
