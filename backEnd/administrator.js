@@ -69,6 +69,7 @@ new Vue({
             price: this.forms.product.price,
             description: this.forms.product.description,
             image: this.forms.product.image,
+            additional:[]
         })
         this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
         },
@@ -79,6 +80,7 @@ new Vue({
             price: this.forms.product.price,
             description: this.forms.product.description,
             image: this.forms.product.image,
+            additional:[]
         })
         this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
         },
