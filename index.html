@@ -78,13 +78,13 @@
                 <div class="row">
                   <div class="col">
                     <label class="form-label">Usuario</label>
-                    <input class="form-control" type="text" />
+                    <input  v-model="username"class="form-control" type="text" />
                   </div>
                 </div>
                 <div class="row">
                   <div class="col">
                     <label class="form-label">Contraseña</label>
-                    <input class="form-control" type="password" />
+                    <input v-model="password" class="form-control" type="password" />
                   </div>
                 </div>
                 <button type="button" class="btn btn-primary">
@@ -313,6 +313,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="./backEnd/index.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
