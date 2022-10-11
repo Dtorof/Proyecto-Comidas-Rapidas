@@ -8,7 +8,7 @@ new Vue({
   password: "",
   username: "",
   loguedUser:[],
-  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"},{name: "Oscar",username:"lol",password:"1234", rol: "domiciliario"}
+  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"},{name: "Fernando",username:"user",password:"1234", rol: "chef"}
 ],
   allAdditionals: [],
   productsParsed: [],
@@ -60,7 +60,7 @@ new Vue({
           "¡Login exitoso!",
           false)
       
-    setTimeout(() => window.location.href = `/frontEnd/view/${this.validateRolUser(user)}.html`, 2400)
+    setTimeout(() => window.location.href = `/frontEnd/view/${this.validateRolUser(user)}.html`, 2000)
   }, 
   loginUser(user,key){
     let loguedUser = [];
