@@ -47,7 +47,6 @@ new Vue({
     created(){
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
-      
     },
     methods: {
         setterLocalStorage(key, data) {
@@ -57,10 +56,6 @@ new Vue({
             return JSON.parse(localStorage.getItem(key) || "[]")
         },
         validateCredentials(){
-
-        },
-        validateErrorLogin(){
-
         },
         createNewBurger(){
             this.productsParsed.burgers.push({
@@ -84,6 +79,13 @@ new Vue({
         })
         this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
         },
+        createProduct(){
+        if(this.product==="Hamburguesas"){
+          this.createNewBurger();
+        }else{
+          this.createNewHotDog()
+        }
+        },
         createAdditional(){
           this.allAdditionals.push({
             name: this.forms.additional.name,
@@ -91,7 +93,6 @@ new Vue({
           })
         this.setterLocalStorage(this.ADDITIONALS_KEY,this.allAdditionals)
         },
-       
         getError() {
           
           if (this.forms.user.name.length == 0) {
@@ -99,31 +100,26 @@ new Vue({
           } else {
             this.error = false;
           }
-  
           if (this.forms.user.username.length == 0) {
               this.error2 = true;
-            } else {
+          } else {
               this.error2 = false;
-            }
-  
+          }
           if (this.forms.user.password.length == 0) {
               this.error3 = true;
-            } else {
+          } else {
               this.error3 = false;
-            }
-  
+          }
           if (this.forms.user.rolDefault != 'administrador' || this.forms.user.rolDefault != 'chef' || this.forms.user.rolDefault != 'empleado' || this.forms.user.rolDefault != 'domiciliario' ) {
           this.error4 = true;
           } else {
           this.error4 = false;
           }
-  
         },
         createEmployee(){
           this.getError();
           if(this.error == true || this.error2 == true || this.error3 == true || this.error4 == true  ){
                
-  
           }else{
           console.log(this.forms.user.name.length)
           this.registeredUsers.push({
@@ -131,21 +127,9 @@ new Vue({
             username: this.forms.user.username,
             password:this.forms.user.password,
             rol:this.forms.user.rolDefault
-
           })
         this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)}
-        },
-        createProduct(){
-
-          if(this.product==="Hamburguesas"){
-             this.createNewBurger();
-          }else{
-            this.createNewHotDog()
-          }
         }
-        
-        
-
     },
     //yeni
     watch:{
