@@ -1,19 +1,13 @@
 new Vue({   
   el: '#app',
   data: {
-  item:{
-    additional:[]
-  },
-  userName: "",
-  userPhone: "",
-  userDirection: "",
-  orders:[],
   cartData: [],
   additionals:0,
   totalPayment: "",
   password: "",
   username: "",
   loguedUser:[],
+  check:[],
   registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"},{name: "Fernando",username:"user",password:"1234", rol: "chef"}],
   allAdditionals: [],
   productsParsed: [],
@@ -31,7 +25,6 @@ new Vue({
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.createNewProduct()
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
-      this.dataStorage = JSON.parse(localStorage.getItem("dbOrder") || null)
   },
   methods: {
     setterLocalStorage(key, data) {
@@ -44,7 +37,6 @@ new Vue({
       localStorage.setItem("dbOrder", JSON.stringify(this.orders))
   },
     addCartButton(item){
-      
       const productBuy = {
         id: item.id,
         name: item.name,
@@ -52,36 +44,13 @@ new Vue({
         quantity: item.qty,
         description: item.description,
         image: item.image,
+        additional: item.additional
       }
       productBuy.subTotal = this.thousandSeparator(productBuy.quantity * productBuy.price);
       productBuy.subTotalNumber =  (item.qty * item.price)
-      console.log(item.additional)
-      console.log(item.additional.push(this.item.adicional))
-      productBuy.additional = item.additional
-      console.log(productBuy.additional)
       this.cartData.push(productBuy);
+      console.log(this.cartData)  
       this.totalToPay(); 
-    },
-    addOrder(){
-       let order = {
-         user: this.userName,
-         phone: this.userPhone,
-         direction: this.userDirection, 
-         totalPayment: this.totalPayment
-      }
-      order.description = this.cartData.map(prod => {
-        return `${prod.quantity} ${prod.name}`
-      })
-      this.orders.push(order)
-      console.log(order)
-      this.updateLocalStorage(this.orders)
-      this.clearForm()
-      console.log(this.orders)
-    },
-    clearForm(){    
-      this.userName = ""
-      this.userPhone = "" 
-      this.userDirection = ""
     },
     thousandSeparator(number = 0, decimalsQuantity = 2) {
       return Number(number).toFixed(decimalsQuantity).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -128,7 +97,7 @@ new Vue({
     messageSuccessLogin(user){
       this.message(
           "success", 
-          "!Login exitoso!",
+          "Login exitoso!",
           2600,
           "center",
           "¡Será redireccionado en unos segundos!",
@@ -249,55 +218,18 @@ new Vue({
    createNewProduct(){
   
     },
-    closeTotal(){
+    validation(){
       let closeModal = document.getElementById('not');
-      closeModal.click();
+          closeModal.click();
       let closeModal2 = document.getElementById('not1');
-      closeModal2.click();
-      let closeModal5 = document.getElementById('segI');
-      closeModal5.click();
-      let closeModal3 = document.getElementById('not2');
-      closeModal3.click();
-    },
-    
-    validationmodalpay(){
+          closeModal2.click();
       let openCar = document.getElementById('car');
       openCar.click()
     },
     validation2(){
       let closeModal5 = document.getElementById('segI');
       closeModal5.click();
-    },
-    valadation1(){
-      let closeModal5 = document.getElementById('segI');
-      closeModal5.click();
-      let closeModal = document.getElementById('not');
-          closeModal.click();
-      let closeModal2 = document.getElementById('not1');
-          closeModal2.click();
-      let closeModal3 = document.getElementById('not2');
-      closeModal3.click();
-    },
-    messageDelete(index) {
-      swal({
-        title: "listo",
-        text: "Enviar pedido",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true
-      }).then((result) => {
-        if (result) {
-          this.dataOrder.splice(index,1);
-          this.message(
-            "Se envio el pedido",
-            2000,
-            "center",
-            "¡Bien!"
-          )
-          this.updateLocalStorage()
-        }
-      })
-  }
+    }
     
   },
   

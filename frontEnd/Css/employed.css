@@ -7,7 +7,7 @@
     --blanco:#fff;
 }
 body{
-    background-color: var(--negro);
+    background-color: var(--blanco);
 }
 .container .title{
     color: var(--dorado);
@@ -18,11 +18,11 @@ body{
     font-family: 'Source Sans Pro', sans-serif;
   } 
  #tabla th{
-    color: var(--blanco);
+    color: var(--negro);
     font-size: 150%;
  }
  #tabla tr{
-    color: var(--blanco);
+    color: var(--negro);
  }
  .custom-btn{
     width: 50%;
@@ -85,4 +85,9 @@ body{
   background-color:var(--blanco);
   color:var(--negro);
   border: 1px solid var(--negro);
+}
+.open {
+  font-size: 2rem;
+  color: var(--negro); 
+  
 }
