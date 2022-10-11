@@ -1,4 +1,4 @@
-new Vue({   
+new Vue({
     el: '#app',
     data: {
         roles: ['administrador', 'chef', 'empleado','domiciliario'],
@@ -31,6 +31,7 @@ new Vue({
         flag3:false,
         flag4:false,
         flag5:false,
+        prueba:"23",
         option:[{name:"Crear usuarios"},{name:"Crear productos"},{name:"Crear adicionales"}],
         option1:"",
         products:"",
@@ -47,7 +48,6 @@ new Vue({
     created(){
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
-      console.log(this.productsParsed);
     },
     methods: {
         setterLocalStorage(key, data) {
@@ -57,10 +57,6 @@ new Vue({
             return JSON.parse(localStorage.getItem(key) || "[]")
         },
         validateCredentials(){
-
-        },
-        validateErrorLogin(){
-
         },
         createNewBurger(){
             this.productsParsed.burgers.push({
@@ -69,6 +65,7 @@ new Vue({
             price: this.forms.product.price,
             description: this.forms.product.description,
             image: this.forms.product.image,
+            additional:[]
         })
         this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
         },
@@ -79,8 +76,16 @@ new Vue({
             price: this.forms.product.price,
             description: this.forms.product.description,
             image: this.forms.product.image,
+            additional:[]
         })
         this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
+        },
+        createProduct(){
+        if(this.product==="Hamburguesas"){
+          this.createNewBurger();
+        }else{
+          this.createNewHotDog()
+        }
         },
         createAdditional(){
           this.allAdditionals.push({
@@ -89,7 +94,6 @@ new Vue({
           })
         this.setterLocalStorage(this.ADDITIONALS_KEY,this.allAdditionals)
         },
-       
         getError() {
           
           if (this.forms.user.name.length == 0) {
@@ -97,31 +101,26 @@ new Vue({
           } else {
             this.error = false;
           }
-  
           if (this.forms.user.username.length == 0) {
               this.error2 = true;
-            } else {
+          } else {
               this.error2 = false;
-            }
-  
+          }
           if (this.forms.user.password.length == 0) {
               this.error3 = true;
-            } else {
+          } else {
               this.error3 = false;
-            }
-  
-          if (this.forms.user.rolDefault == null) {
+          }
+          if (this.forms.user.rolDefault == null ) {
           this.error4 = true;
           } else {
           this.error4 = false;
           }
-  
         },
         createEmployee(){
           this.getError();
           if(this.error == true || this.error2 == true || this.error3 == true || this.error4 == true  ){
                
-  
           }else{
           console.log(this.forms.user.name.length)
           this.registeredUsers.push({
@@ -129,21 +128,16 @@ new Vue({
             username: this.forms.user.username,
             password:this.forms.user.password,
             rol:this.forms.user.rolDefault
-
           })
-        this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)}
+         this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)}
+         this.clearInputs();
         },
-        createProduct(){
-
-          if(this.product==="Hamburguesas"){
-             this.createNewBurger();
-          }else{
-            this.createNewHotDog()
-          }
+        clearInputs(){
+          this.forms.user.name="";
+          this.forms.user.username="",
+          this.forms.user.password="",
+          this.forms.user.rolDefault=null;
         }
-        
-        
-
     },
     //yeni
     watch:{
