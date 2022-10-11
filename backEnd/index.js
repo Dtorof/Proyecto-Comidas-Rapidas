@@ -22,7 +22,6 @@ new Vue({
       this.setDataProducts()
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.createNewProduct()
-      console.log(this.allProducts)
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
   },
   methods: {
@@ -96,13 +95,13 @@ new Vue({
     messageSuccessLogin(user){
       this.message(
           "success", 
-          "¡Enhorabuena!",
-          2400,
+          "Login exitoso!",
+          2600,
           "center",
-          "¡Login exitoso!",
+          "¡Será redireccionado en unos segundos!",
           false)
       
-    setTimeout(() => window.location.href = `/frontEnd/view/${this.validateRolUser(user)}.html`, 2000)
+    setTimeout(() => window.location.href = `/frontEnd/view/${this.validateRolUser(user)}.html`, 2600)
   }, 
   loginUser(user,key){
     let loguedUser = [];
@@ -222,12 +221,25 @@ new Vue({
           closeModal.click();
       let closeModal2 = document.getElementById('not1');
           closeModal2.click();
+      
+    },
+    validationmodalpay(){
       let openCar = document.getElementById('car');
       openCar.click()
     },
     validation2(){
       let closeModal5 = document.getElementById('segI');
       closeModal5.click();
+    },
+    valadation1(){
+      let closeModal5 = document.getElementById('segI');
+      closeModal5.click();
+      let closeModal = document.getElementById('not');
+          closeModal.click();
+      let closeModal2 = document.getElementById('not1');
+          closeModal2.click();
+      let closeModal3 = document.getElementById('not2');
+      closeModal3.click();
     }
     
   },

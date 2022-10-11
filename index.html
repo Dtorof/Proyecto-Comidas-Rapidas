@@ -164,10 +164,11 @@
             <!--Fin tabla-->
           </div>
           <div class="modal-footer">
-            <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-              Close
+            <button  id ="not2" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Cerrar
             </button>
-            <button data-bs-toggle="modal" data-bs-target="#exampleModal1"  type="button" class="btn btn-primary">Pagar</button>
+            <button data-bs-toggle="modal"
+            data-bs-target="#exampleModal99"  type="button" class="btn btn-primary">Pagar</button>
           </div>
         </div>
       </div>
@@ -306,7 +307,7 @@
             <button @click="validation2()"  type="button" id="not1"  class="btn btn-secondary" data-bs-dismiss="modal">
               Close
             </button>
-            <button @click="validation()" type="button" class="btn btn-primary">
+            <button @click="validationmodalpay()" type="button" class="btn btn-primary">
               Pagar
             </button>
           </div>
@@ -314,9 +315,49 @@
       </div>
     </div>
     <!--Fin modal adicionales-->
+    <!--Modal Preguntar Datos usuario-->
+    <div class="modal fade" id="exampleModal99" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Datos usuario</h5>
+            <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <label class="form-label">Nombre</label>
+              <input class="form-control" type="text">
+            </div>
+            <div class="row">
+              <label class="form-label">Teléfono</label>
+              <input class="form-control" type="text">
+            </div>
+            <div class="row">
+              <label class="form-label">Dirección</label>
+              <input class="form-control" type="text">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button  @click="valadation1()" type="button"class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button  type="button" class="btn btn-primary">
+              Pagar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Fin Modal Preguntar Datos usuario-->
 
 
     <!-- Fin yeni -->
+    <div class="row">
+      <button  data-bs-toggle="modal"
+            data-bs-target="#exampleModal99" type="button" class="btn btn-primary">
+              Si
+            </button>
+    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="./backEnd/index.js"></script>
