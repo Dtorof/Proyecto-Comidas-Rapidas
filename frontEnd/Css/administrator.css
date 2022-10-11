@@ -19,7 +19,7 @@ body{
 .select select{
     border-style: solid;
     border-width: 3px;
-    border-radius: 30px;
+    border-radius: 15px;
     border-color: var(--negro);
 }
 .usuarios{
@@ -114,4 +114,8 @@ body{
   background-color:var(--blanco);
   color:var(--negro);
   border: 1px solid var(--negro);
+}
+#bordeTable{
+  border-bottom:1px solid rgb(0, 0, 0);
+  border-left:1px solid rgb(0, 0, 0);
 }

@@ -24,7 +24,8 @@ new Vue({
   ADDITIONALS_KEY: 'all-additionals',
   additionalOption:"",
   dataOrders: [],
-  dataStorage: []
+  dataStorage: [],
+  flag:0,
   },
   created(){
       this.setDataProducts()
@@ -45,6 +46,7 @@ new Vue({
       localStorage.setItem("dbOrder", JSON.stringify(this.dataOrder))
   },
     addCartButton(item){
+      
       const productBuy = {
         id: item.id,
         name: item.name,
@@ -60,7 +62,6 @@ new Vue({
       productBuy.additional = item.additional
       console.log(productBuy.additional)
       this.cartData.push(productBuy);
-      console.log(this.cartData)  
       this.totalToPay(); 
     },
     addOrder(){
@@ -129,7 +130,7 @@ new Vue({
     messageSuccessLogin(user){
       this.message(
           "success", 
-          "Login exitoso!",
+          "!Login exitoso!",
           2600,
           "center",
           "¡Será redireccionado en unos segundos!",
@@ -250,13 +251,17 @@ new Vue({
    createNewProduct(){
   
     },
-    validation(){
+    closeTotal(){
       let closeModal = document.getElementById('not');
-          closeModal.click();
+      closeModal.click();
       let closeModal2 = document.getElementById('not1');
-          closeModal2.click();
-      
+      closeModal2.click();
+      let closeModal5 = document.getElementById('segI');
+      closeModal5.click();
+      let closeModal3 = document.getElementById('not2');
+      closeModal3.click();
     },
+    
     validationmodalpay(){
       let openCar = document.getElementById('car');
       openCar.click()
