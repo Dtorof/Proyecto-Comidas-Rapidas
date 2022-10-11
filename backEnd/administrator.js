@@ -82,6 +82,16 @@ new Vue({
           this.forms.product.description = ""
           this.forms.product.image = ""
         },
+        clearInputs(){
+          this.forms.user.name="";
+          this.forms.user.username="",
+          this.forms.user.password="",
+          this.forms.user.rolDefault=null;
+        },
+        clearAdditional(){
+          this.forms.additional.name = ""
+          this.forms.additional.price = ""
+        },
         createNewBurger(){
             this.productsParsed.burgers.push({
             id:this.v4(),
@@ -133,8 +143,7 @@ new Vue({
             price: this.forms.additional.price
           })
         this.setterLocalStorage(this.ADDITIONALS_KEY,this.allAdditionals)
-        this.forms.additional.name = ""
-        this.forms.additional.price = ""
+        this.clearAdditional();
         this.message(
           "success", 
           "!Creación exitosa!",
@@ -189,12 +198,7 @@ new Vue({
          this.clearInputs();
          
         },
-        clearInputs(){
-          this.forms.user.name="";
-          this.forms.user.username="",
-          this.forms.user.password="",
-          this.forms.user.rolDefault=null;
-        }
+        
     },
     //yeni
     watch:{
