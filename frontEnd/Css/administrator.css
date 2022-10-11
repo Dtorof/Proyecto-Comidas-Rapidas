@@ -7,7 +7,7 @@
     --blanco:#fff;
 }
 body{
-    background-color: black;
+    
     margin-bottom: 0;
     
 }
@@ -17,13 +17,14 @@ body{
     
 }
 .select select{
-    border-style: solid;
-    border-width: 3px;
-    border-radius: 15px;
-    border-color: var(--negro);
+  width: 70%;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 11px;
+  border-color: var(--negro);
 }
 .usuarios{
-    color: #fff;
+    color: var(--negro);
    
 }
 .modal .modal-dialog .modal-content .modal-body .card img{
@@ -91,18 +92,19 @@ body{
 }
 .btn-8:hover{
     background-color:var(--dorado);
-    color:var(--blanco);
+    color:var(--negro);
 }
 .container .title{
+  
   color: var(--dorado);
   font-family: 'Source Sans Pro', sans-serif;
 } 
 .container .title2{
-  color: var(--blanco);
+  color: var(--negro);
   font-family: 'Source Sans Pro', sans-serif;
 } 
-#tabla th{
-  color: var(--blanco);
+#tabla thead  th{
+  color: var(--negro);
   font-size: 150%;
 }
 .btn-89{
@@ -116,6 +118,11 @@ body{
   border: 1px solid var(--negro);
 }
 #bordeTable{
-  border-bottom:1px solid rgb(0, 0, 0);
-  border-left:1px solid rgb(0, 0, 0);
+  border-bottom:1px solid rgb(243, 243, 243);
+  border-left:1px solid rgb(244, 244, 244);
+}
+.open {
+  font-size: 2rem;
+  color: var(--negro); 
+  
 }
