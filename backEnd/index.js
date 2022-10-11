@@ -17,6 +17,7 @@ new Vue({
   CURRENT_LOGUED_USER_KEY: 'current-user',
   ADDITIONALS_KEY: 'all-additionals',
   additionalOption:"",
+  flag:0,
   },
   created(){
       this.setDataProducts()
@@ -32,6 +33,7 @@ new Vue({
       return JSON.parse(localStorage.getItem(key) || "[]");
     },
     addCartButton(item){
+      
       const productBuy = {
         id: item.id,
         name: item.name,
@@ -213,32 +215,21 @@ new Vue({
    createNewProduct(){
   
     },
-    validation(){
+    closeTotal(){
       let closeModal = document.getElementById('not');
-          closeModal.click();
+      closeModal.click();
       let closeModal2 = document.getElementById('not1');
-          closeModal2.click();
-      
+      closeModal2.click();
+      let closeModal5 = document.getElementById('segI');
+      closeModal5.click();
+      let closeModal3 = document.getElementById('not2');
+      closeModal3.click();
     },
+    
     validationmodalpay(){
       let openCar = document.getElementById('car');
       openCar.click()
     },
-    validation2(){
-      let closeModal5 = document.getElementById('segI');
-      closeModal5.click();
-    },
-    valadation1(){
-      let closeModal5 = document.getElementById('segI');
-      closeModal5.click();
-      let closeModal = document.getElementById('not');
-          closeModal.click();
-      let closeModal2 = document.getElementById('not1');
-          closeModal2.click();
-      let closeModal3 = document.getElementById('not2');
-      closeModal3.click();
-    }
-    
   },
   
 })
