@@ -90,25 +90,29 @@
                         class="form-select text-center">
                         <option v-for="(item,index) in productType" v-text="item.name">Seleccione</option>
                     </select>
-
+                    <span class="error" v-if="error5" style="color: red;">Por favor ingrese el tipo de producto</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label class="form-label">Nombre del producto</label>
                     <input v-model="forms.product.name" class="form-control" type="text">
+                    <span class="error" v-if="error6" style="color: red;">Por favor ingrese el nombre del producto</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label class="form-label">Descripción del producto</label>
                     <input v-model="forms.product.description" class="form-control" type="text">
+                    <span class="error" v-if="error7" style="color: red;">Por favor ingrese una descripción del producto</span>
+
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label class="form-label">Precio</label>
                     <input v-model="forms.product.price" class="form-control" type="number">
+                    <span class="error" v-if="error8" style="color: red;">Por favor ingrese el precio del producto</span>
                 </div>
             </div>
             <div class="row">
@@ -122,7 +126,6 @@
                     <button type="button" class="btn-8" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Imagenes
                     </button>
-
                 </div>
             </div>
             <!--Imagenes Perritos-->
@@ -134,7 +137,13 @@
 
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <span class="error" v-if="error9" style="color: red;">Por favor seleccione una imagen</span>
+                </div>
+            </div>
             <div class="row m-3">
+                
                 <div class="col">
                     <button @click="createProduct()" type="button" class="custom-btn btn-9">Guardar</button>
                 </div>
@@ -154,12 +163,16 @@
                     <div class="col">
                         <label class="form-label">Nombre del producto</label>
                         <input v-model="forms.additional.name" class="form-control" type="text">
+                        <span class="error" v-if="error10" style="color: red;">Por favor ingrese el nombre del producto</span>
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <label class="form-label">Precio</label>
                         <input v-model.number="forms.additional.price" class="form-control" type="number">
+                        <span class="error" v-if="error11" style="color: red;">Por favor ingrese el precio del producto</span>
+
                     </div>
                 </div>
                 <div class="row mt-3 mb-3">
@@ -220,10 +233,10 @@
                         <div class="row  align-items-center">
                             <h1 class="text-center title">Elegir imagen de su producto</h1>
                             <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center"
-                                v-for="item in productsParsed.burgers">
+                                v-for="item in burgersOptionalImages">
                                 <div class="card" style="width: 18rem;">
-                                    <img :src="item.image" class="card-img-top" alt="...">
-                                    <button class="btn-8 ">Elegir</button>
+                                    <img :src="item" class="card-img-top" alt="...">
+                                    <button @click="saveOptionImage(item)" class="btn-8 ">Elegir</button>
                                 </div>
                             </div>
                         </div>
@@ -245,10 +258,10 @@
                         <div class="row  align-items-center">
                             <h1 class="text-center title">Elegir imagen de su producto</h1>
                             <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center"
-                                v-for="item in productsParsed.hot_dogs">
+                                v-for="item in hotDogsoptionalImages">
                                 <div class="card" style="width: 18rem;">
-                                    <img :src="item.image" class="card-img-top" alt="...">
-                                    <button class="btn-8 ">elegir</button>
+                                    <img :src="item" class="card-img-top" alt="...">
+                                    <button @click="saveOptionImage(item)"  class="btn-8 ">elegir</button>
                                 </div>
                             </div>
                         </div>
