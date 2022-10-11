@@ -46,7 +46,7 @@
             <button  class="btn btn-outline-light" type="button" > <a href="#hamburguesa" id="hamburguesa-nav" class="nav-link">Hamburguesas</a></button>
             <button  class="btn btn-outline-light" type="button" > <a href="#hotdogs"  id="hotdogs-nav" class="nav-link">Perros Calientes</a></button>
             <button  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal">Iniciar sesión</button>
-            <button id="car"  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal1"><span class="position-absolute top-50  right-4 translate-middle badge rounded-pill">0</span> <img src="https://i.ibb.co/9g9Bym6/logo-Secundary.png" alt="Carrito" ></button>
+            <button id="car"  class="btn btn-outline-light" type="button" data-bs-toggle="modal"data-bs-target="#exampleModal1"><span class="position-absolute top-50  right-4 translate-middle badge rounded-pill">{{cartData.length}}</span> <img src="https://i.ibb.co/9g9Bym6/logo-Secundary.png" alt="Carrito" ></button>
           </form>
         </div>
       </nav>
@@ -146,14 +146,18 @@
                         <th class="col-3">Total</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr class="body" v-for="">
-                        <td v-text=""></td>
-                        <td v-text=""></td>
-                        <td v-text=""></td>
+                    <tbody v-if="cartData.length">
+                      <tr class="body" v-for="(item, i) in cartData">
+                        <td v-text="item.name"></td>
+                        <td v-text="item.quantity"></td>
+                        <td v-text="item.subTotal"></td>
                       </tr>
                     </tbody>
                   </table>
+                  <div>
+                    <h6>Total a Pagar</h6>
+                    <span>{{totalPayment}}</span>
+                </div>
                 </div>
               </div>
             </div>
@@ -192,17 +196,17 @@
             </div>
               <div class="row">
                 <div class="col-3">
-                  <button  id="menos" type="button"><i class="fa-solid fa-minus"></i></button>
+                  <button  id="menos" type="button" @click="updateQtyBurgers('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
                 </div>
                 <div class="col-6">
-                  <input id="medio" type="number">
+                  <input id="medio" type="number" v-model.number="item.qty">
                 </div>
                 <div class="col-3">
-                  <button id="mas" type="button"><i class="fa-solid fa-plus"></i></button>
+                  <button id="mas" type="button" @click="updateQtyBurgers('add', item.id )"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div>
               <button id="adicionales" type="button" class="btn btn-outline-warning mt-3" data-bs-toggle="modal"
-                data-bs-target="#exampleModal22">
+                data-bs-target="#exampleModal22" @click="addCartButton(item)">
                 Agregar
               </button>
           </div>
@@ -230,16 +234,17 @@
             </div>
               <div class="row justify-content-center align-items-center">
                 <div class="col-3">
-                  <button id="menos" type="button"><i class="fa-solid fa-minus"></i></button>
+                  <button id="menos" type="button" @click="updateQtyHotDogs('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
                 </div>
                 <div class="col-6">
-                  <input id="medio" type="number">
+                  <input id="medio" type="number" v-model.number="item.qty">
                 </div>
                 <div class="col-3">
-                  <button id="mas" type="button"><i class="fa-solid fa-plus"></i></button>
+                  <button id="mas" type="button" @click="updateQtyHotDogs('add',  item.id)"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div>
-              <button id="adicionales" type="button" class="btn btn-outline-warning mt-3 align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal22">
+              <button id="adicionales" type="button" class="btn btn-outline-warning mt-3 align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal22"
+              @click="addCartButton(item)">
                 Agregar
               </button>
           </div>
