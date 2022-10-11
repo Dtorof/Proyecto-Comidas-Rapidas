@@ -19,7 +19,7 @@
         <div class="row text-center title">
             <h1>Administración</h1>
         </div>
-        <div class="row justify-content-center">
+        <div class="row ">
             <div class="select " style="width: 40%; padding: 1%;">
                 <select v-model="option1" name="seleccionProducto" id="seleccionProducto"
                     class="form-select  text-center">
@@ -29,7 +29,7 @@
         </div>
         <!--Fin select-->
         <!--Crear usuarios-->
-        <div v-if="flag1"  class="row usuarios m-3  border border-white border-5  justify-content-center">
+        <div v-if="flag1" class="row usuarios m-3  border border-white border-5  justify-content-center">
             <div class="row mt-3 text-center ">
                 <h3>Crear usuarios</h3>
             </div>
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <!--Imagenes Hamburguesas-->
-            <div v-if="flag3"  class="row mt-1">
+            <div v-if="flag3" class="row mt-1">
                 <div class="col">
                     <button type="button" class="btn-8" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Imagenes
@@ -138,8 +138,8 @@
         <!--Fin chef-->
 
         <!--Crear adicionales-->
-        <div v-if="flag5" class="row usuarios  border border-white border-5 m-3  justify-content-center">           
-            <div  class="col">
+        <div v-if="flag5" class="row usuarios  border border-white border-5 m-3  justify-content-center">
+            <div class="col">
                 <div class="row">
                     <div class="row mt-3 text-center ">
                         <h3>Crear adicionales</h3>
@@ -159,7 +159,7 @@
                 </div>
                 <div class="row mt-3 mb-3">
                     <div class="col">
-                        <button @click="createAdditional()"  class="custom-btn btn-9" type="button">Guardar</button>
+                        <button @click="createAdditional()" class="custom-btn btn-9" type="button">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -167,49 +167,58 @@
         <!--Fin Crear adicionales-->
         <!--Ventas realizadas-->
         <div class="row">
-            <div class="row text-center title2">
+            <div class="row  title2">
                 <h1>Ventas realizadas</h1>
             </div>
-            <div  class="col">
+            <div class="col">
                 <!-- tabla-->
                 <div class="row" id="tabla">
                     <div class="container pe-4 ps-4">
                         <div class="table-responsive">
                             <table class="table table-bordered border-white border-5 text-center">
-                                <thead >
+                                <thead>
                                     <tr>
                                         <th class="col-3">Numero pedido</th>
                                         <th class="col-3">Descripción</th>
-                                        <th class="col-3">Opción</th>
+                                        <th class="col-3">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="body" v-for="">
-                                        <td><img src="" class="rounded-circle" alt=""></td>
-                                        <td v-text=""></td>
-                                        <td v-text=""></td>
+                                    <tr class="body" v-for="item in roles">
+                                        <td v-text="item"></td>
+                                        <td v-text="item"></td>
+                                        <td v-text="item"></td>
                                     </tr>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th id="bordeTable" ></th>
+                                        <th  >Cantidad Total</th>
+                                        <th v-text="prueba" ></th>
+                                    </tr>
+                                </tfoot>
+
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
         <!--Fin Ventas realizadas-->
         <!--Modal imagenes hamburguesas-->
-        <div class="modal fade justify-content-center " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade justify-content-center " id="exampleModal" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-body justify-content-center">
                         <div class="row  align-items-center">
                             <h1 class="text-center title">Elegir imagen de su producto</h1>
-                            <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center" v-for="item in productsParsed.burgers">
-                                <div class="card" style="width: 18rem;" >
+                            <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center"
+                                v-for="item in productsParsed.burgers">
+                                <div class="card" style="width: 18rem;">
                                     <img :src="item.image" class="card-img-top" alt="...">
-                                    <button  class="btn-8 ">Elegir</button>
+                                    <button class="btn-8 ">Elegir</button>
                                 </div>
                             </div>
                         </div>
@@ -223,16 +232,18 @@
         </div>
         <!--Fin modal imagenes hamburguesas-->
         <!--Modal imagenes perros calientes-->
-        <div class="modal fade justify-content-center " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade justify-content-center " id="exampleModal1" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-body justify-content-center">
                         <div class="row  align-items-center">
                             <h1 class="text-center title">Elegir imagen de su producto</h1>
-                            <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center" v-for="item in productsParsed.hot_dogs">
-                                <div class="card" style="width: 18rem;" >
+                            <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center"
+                                v-for="item in productsParsed.hot_dogs">
+                                <div class="card" style="width: 18rem;">
                                     <img :src="item.image" class="card-img-top" alt="...">
-                                    <button  class="btn-8 ">elegir</button>
+                                    <button class="btn-8 ">elegir</button>
                                 </div>
                             </div>
                         </div>
@@ -245,9 +256,13 @@
             </div>
         </div>
         <!--Fin modal imagenes perros calientes-->
+
+
+
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="../../backEnd/administrator.js" ></script>
+    <script src="../../backEnd/administrator.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
