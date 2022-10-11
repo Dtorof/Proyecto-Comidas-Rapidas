@@ -1,14 +1,14 @@
 var app = new Vue({
     el: '#app',
     data:{
-        orderNumber:0,
-        description:"",
-        direction: ""
+        dbOrders:{}
     },
-    methods:{
-
+    created() {   
+        this.dbOrders = this.getParsedLocalStorage("dbOrder") 
     },
-    created(){
-        
-    }
+    methods: {
+        getParsedLocalStorage(key) {
+            return JSON.parse(localStorage.getItem(key) || null);
+          }
+    },
 })
