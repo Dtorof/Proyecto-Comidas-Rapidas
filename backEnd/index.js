@@ -23,7 +23,6 @@ new Vue({
   CURRENT_LOGUED_USER_KEY: 'current-user',
   ADDITIONALS_KEY: 'all-additionals',
   additionalOption:"",
-  dataOrders: [],
   dataStorage: [],
   flag:0,
   },
@@ -42,7 +41,7 @@ new Vue({
       return JSON.parse(localStorage.getItem(key) || "[]");
     },
     updateLocalStorage(){
-      localStorage.setItem("dbOrder", JSON.stringify(this.dataOrder))
+      localStorage.setItem("dbOrder", JSON.stringify(this.orders))
   },
     addCartButton(item){
       
