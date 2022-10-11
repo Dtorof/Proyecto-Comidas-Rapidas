@@ -1,13 +1,19 @@
 new Vue({   
   el: '#app',
   data: {
+  item:{
+    additional:[]
+  },
+  userName: "",
+  userPhone: "",
+  userDirection: "",
+  orders:[],
   cartData: [],
   additionals:0,
   totalPayment: "",
   password: "",
   username: "",
   loguedUser:[],
-  check:"",
   registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"},{name: "Fernando",username:"user",password:"1234", rol: "chef"}],
   allAdditionals: [],
   productsParsed: [],
@@ -17,12 +23,16 @@ new Vue({
   CURRENT_LOGUED_USER_KEY: 'current-user',
   ADDITIONALS_KEY: 'all-additionals',
   additionalOption:"",
+  dataOrders: [],
+  dataStorage: []
   },
   created(){
       this.setDataProducts()
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.createNewProduct()
+      console.log(this.allProducts)
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
+      this.dataStorage = JSON.parse(localStorage.getItem("dbOrder") || null)
   },
   methods: {
     setterLocalStorage(key, data) {
@@ -31,6 +41,9 @@ new Vue({
     getterLocalStorage(key) {
       return JSON.parse(localStorage.getItem(key) || "[]");
     },
+    updateLocalStorage(){
+      localStorage.setItem("dbOrder", JSON.stringify(this.dataOrder))
+  },
     addCartButton(item){
       const productBuy = {
         id: item.id,
@@ -42,13 +55,34 @@ new Vue({
       }
       productBuy.subTotal = this.thousandSeparator(productBuy.quantity * productBuy.price);
       productBuy.subTotalNumber =  (item.qty * item.price)
-      console.log(item.additional.push(this.check))
-      console.log(item.additional.push(this.check))
+      console.log(item.additional)
+      console.log(item.additional.push(this.item.adicional))
       productBuy.additional = item.additional
       console.log(productBuy.additional)
       this.cartData.push(productBuy);
       console.log(this.cartData)  
       this.totalToPay(); 
+    },
+    addOrder(){
+       let order = {
+         user: this.userName,
+         phone: this.userPhone,
+         direction: this.userDirection, 
+         totalPayment: this.totalPayment
+      }
+      order.description = this.cartData.map(prod => {
+        return `${prod.quantity} ${prod.name}`
+      })
+      this.orders.push(order)
+      console.log(order)
+      this.updateLocalStorage(this.orders)
+      this.clearForm()
+      console.log(this.orders)
+    },
+    clearForm(){    
+      this.userName = ""
+      this.userPhone = "" 
+      this.userDirection = ""
     },
     thousandSeparator(number = 0, decimalsQuantity = 2) {
       return Number(number).toFixed(decimalsQuantity).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -240,7 +274,27 @@ new Vue({
           closeModal2.click();
       let closeModal3 = document.getElementById('not2');
       closeModal3.click();
-    }
+    },
+    messageDelete(index) {
+      swal({
+        title: "listo",
+        text: "Enviar pedido",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then((result) => {
+        if (result) {
+          this.dataOrder.splice(index,1);
+          this.message(
+            "Se envio el pedido",
+            2000,
+            "center",
+            "¡Bien!"
+          )
+          this.updateLocalStorage()
+        }
+      })
+  }
     
   },
   
