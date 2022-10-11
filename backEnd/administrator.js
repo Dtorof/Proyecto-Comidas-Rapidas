@@ -43,7 +43,7 @@ new Vue({
     created(){
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
-      console.log(this.productsParsed);
+      
     },
     methods: {
         setterLocalStorage(key, data) {
