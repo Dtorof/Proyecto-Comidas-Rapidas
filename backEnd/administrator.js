@@ -56,7 +56,31 @@ new Vue({
           getterLocalStorage(key) {
             return JSON.parse(localStorage.getItem(key) || "[]")
         },
+        message(icon,title, timer, position, text, button) {
+          swal({
+            position,
+            text,
+            icon,
+            title,
+            dangerMode: false,
+            timer,
+            button,
+        })
+        },
         validateCredentials(){
+        },
+        v4() {
+          return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16)
+          })
+        },
+        clearProduct(){
+          this.product = null
+          this.forms.product.name = ""
+          this.forms.product.price = ""
+          this.forms.product.description = ""
+          this.forms.product.image = ""
         },
         createNewBurger(){
             this.productsParsed.burgers.push({
@@ -68,6 +92,14 @@ new Vue({
             additional:[]
         })
         this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
+        this.message(
+          "success", 
+          "!Creación exitosa!",
+          2200,
+          "center",
+          "¡Ahora tienes un nuevo tipo de hamburguesa!",
+          false)
+          this.clearProduct()
         },
         createNewHotDog(){
             this.productsParsed.hot_dogs.push({
@@ -79,6 +111,14 @@ new Vue({
             additional:[]
         })
         this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
+        this.message(
+          "success", 
+          "!Creación exitosa!",
+          2200,
+          "center",
+          "¡Ahora tienes un nuevo tipo de perro caliente!",
+          false)
+          this.clearProduct()
         },
         createProduct(){
         if(this.product==="Hamburguesas"){
@@ -93,6 +133,15 @@ new Vue({
             price: this.forms.additional.price
           })
         this.setterLocalStorage(this.ADDITIONALS_KEY,this.allAdditionals)
+        this.forms.additional.name = ""
+        this.forms.additional.price = ""
+        this.message(
+          "success", 
+          "!Creación exitosa!",
+          2200,
+          "center",
+          "¡Ahora tienes un nuevo tipo de adicional!",
+          false)
         },
         getError() {
           
@@ -130,7 +179,15 @@ new Vue({
             rol:this.forms.user.rolDefault
           })
          this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)}
+         this.message(
+          "success", 
+          "!Creación exitosa!",
+          2200,
+          "center",
+          `¡Ahora tienes un nuevo ${this.forms.user.rolDefault} en el sistema!`,
+          false)
          this.clearInputs();
+         
         },
         clearInputs(){
           this.forms.user.name="";
