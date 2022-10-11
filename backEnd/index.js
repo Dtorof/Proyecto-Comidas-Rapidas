@@ -92,7 +92,7 @@ new Vue({
     messageSuccessLogin(user){
       this.message(
           "success", 
-          "Login exitoso!",
+          "!Login exitoso!",
           2600,
           "center",
           "¡Será redireccionado en unos segundos!",
