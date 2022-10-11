@@ -87,10 +87,14 @@ new Vue({
       return Number(number).toFixed(decimalsQuantity).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },  
     updateQtyHotDogs(action, id){
-      const product = this.allProducts.hot_dogs.find(product => product.id === id)
-      if(product){
+      let product = this.allProducts.hot_dogs.find(product => product.id === id)
+      if(product.qty >=0){
         const qty = product.qty;
         product.qty = action === "add" ? qty + 1 : qty - 1;
+      }
+      else{
+        const qty = product.qty;
+        product.qty = action === "add" ? qty + 1 : qty - 0;
       }
     },
     updateQtyBurgers(action, id){

@@ -211,7 +211,7 @@
                 data-bs-target="#exampleModal22" @click="addCartButton(item)">
                 Agregar
               </button>
-              <button v-if="item.qty < 1"  id="adicionales" type="button" class="btn btn-outline-warning mt-3" @click="messageB()">
+              <button v-if="item.qty < 1"  type="button" class="btn btn-outline-warning mt-3" @click="messageB()">
                 Agregar
               </button>
               
@@ -240,7 +240,7 @@
             </div>
               <div class="row justify-content-center align-items-center">
                 <div class="col-3">
-                  <button id="menos" type="button" @click="updateQtyHotDogs('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
+                  <button  :disabled="item.qty <= 1"  id="menos" type="button" @click="updateQtyHotDogs('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
                 </div>
                 <div class="col-6">
                   <input id="medio" type="number" v-model.number="item.qty">
@@ -249,8 +249,11 @@
                   <button id="mas" type="button" @click="updateQtyHotDogs('add',  item.id)"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div>
-              <button id="adicionales" type="button" class="btn btn-outline-warning mt-3 align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal22"
+              <button  v-if="item.qty >= 1"  id="adicionales2" type="button" class="btn btn-outline-warning mt-3 align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal22"
               @click="addCartButton(item)">
+                Agregar
+              </button>
+              <button v-if="item.qty < 1"   type="button" class="btn btn-outline-warning mt-3" @click="messageB()">
                 Agregar
               </button>
           </div>
