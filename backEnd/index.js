@@ -7,7 +7,7 @@ new Vue({
   password: "",
   username: "",
   loguedUser:[],
-  check:[],
+  check:"",
   registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"},{name: "Fernando",username:"user",password:"1234", rol: "chef"}],
   allAdditionals: [],
   productsParsed: [],
@@ -40,10 +40,13 @@ new Vue({
         quantity: item.qty,
         description: item.description,
         image: item.image,
-        additional: item.additional
       }
       productBuy.subTotal = this.thousandSeparator(productBuy.quantity * productBuy.price);
       productBuy.subTotalNumber =  (item.qty * item.price)
+      console.log(item.additional.push(this.check))
+      console.log(item.additional.push(this.check))
+      productBuy.additional = item.additional
+      console.log(productBuy.additional)
       this.cartData.push(productBuy);
       console.log(this.cartData)  
       this.totalToPay(); 
