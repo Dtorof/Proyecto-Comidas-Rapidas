@@ -19,9 +19,13 @@ new Vue({
         name: "",
         description: "",
         price:"",
-        image:""
+        image:"",
         }
         },
+        error: false,
+        error2: false,
+        error3: false,
+        error4: false,
         flag1:false,
         flag2:false,
         flag3:false,
@@ -85,14 +89,49 @@ new Vue({
           })
         this.setterLocalStorage(this.ADDITIONALS_KEY,this.allAdditionals)
         },
+       
+        getError() {
+          
+          if (this.forms.user.name.length == 0) {
+            this.error = true;
+          } else {
+            this.error = false;
+          }
+  
+          if (this.forms.user.username.length == 0) {
+              this.error2 = true;
+            } else {
+              this.error2 = false;
+            }
+  
+          if (this.forms.user.password.length == 0) {
+              this.error3 = true;
+            } else {
+              this.error3 = false;
+            }
+  
+          if (this.forms.user.rolDefault != 'administrador' || this.forms.user.rolDefault != 'chef' || this.forms.user.rolDefault != 'empleado' || this.forms.user.rolDefault != 'domiciliario' ) {
+          this.error4 = true;
+          } else {
+          this.error4 = false;
+          }
+  
+        },
         createEmployee(){
+          this.getError();
+          if(this.error == true || this.error2 == true || this.error3 == true || this.error4 == true  ){
+               
+  
+          }else{
+          console.log(this.forms.user.name.length)
           this.registeredUsers.push({
             name: this.forms.user.name,
             username: this.forms.user.username,
             password:this.forms.user.password,
             rol:this.forms.user.rolDefault
+
           })
-        this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)
+        this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)}
         },
         createProduct(){
 
@@ -134,6 +173,6 @@ new Vue({
           this.flag3=false;
           this.flag4=true;
         }
-      }
+      },
     }
 })
