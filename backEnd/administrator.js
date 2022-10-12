@@ -1,7 +1,7 @@
 new Vue({
     el: '#app',
     data: {
-        hotDogsoptionalImages: ['https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525209/carrito-market-mix/hot-dog-2_w0bkos.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525201/carrito-market-mix/hot-dog-3_dhqaka.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525196/carrito-market-mix/hot-dog-4_fka3ay.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525190/carrito-market-mix/hot-dog-1_qpjgb1.jpg'],
+        hotDogsOptionalImages: ['https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525209/carrito-market-mix/hot-dog-2_w0bkos.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525201/carrito-market-mix/hot-dog-3_dhqaka.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525196/carrito-market-mix/hot-dog-4_fka3ay.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525190/carrito-market-mix/hot-dog-1_qpjgb1.jpg'],
         burgersOptionalImages: ['https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525205/carrito-market-mix/burger-1_ixxrg1.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525196/carrito-market-mix/burger-2_c33tcx.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525190/carrito-market-mix/burger-3_aoiknm.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525189/carrito-market-mix/burger-4_of9olc.jpg'],
         optionImage:"",
         roles: ['administrador', 'chef', 'empleado','domiciliario'],

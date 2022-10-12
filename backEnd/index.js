@@ -1,14 +1,24 @@
 new Vue({   
   el: '#app',
   data: {
+  item:{
+    additional:[]
+  },
+  userName: "",
+  userPhone: "",
+  userDirection: "",
+  orders:[],
   cartData: [],
   additionals:0,
   totalPayment: "",
   password: "",
   username: "",
   loguedUser:[],
+  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"},{name: "Fernando",username:"user",password:"1234", rol: "chef"}],
   check:[],
-  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"}],
+  usersRolChef:[],
+  usersRolDomiciliary: [],
+  usersRolEmployee: [],
   allAdditionals: [],
   productsParsed: [],
   allProducts: [],
@@ -20,12 +30,20 @@ new Vue({
   dataStorage: [],
   flag:0,
   error:false,
+  ///
+  error1:false,
+  error2:false,
+  error3:false,
   },
   created(){
+      this.setDefaultUsers()
       this.setDataProducts()
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
-      this.createNewProduct()
+      this.setterLocalStorage(this.DOMICILIARIES_KEY,this.usersRolDomiciliary)
+      this.setterLocalStorage(this.CHEFS_KEY,this.usersRolChef)
+      this.setterLocalStorage(this.EMPLOYEES_KEY,this.usersRolEmployee)
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
+      this.dataStorage = JSON.parse(localStorage.getItem("dbOrder") || null)
   },
   methods: {
     setterLocalStorage(key, data) {
@@ -33,6 +51,13 @@ new Vue({
     },
     getterLocalStorage(key) {
       return JSON.parse(localStorage.getItem(key) || "[]");
+    },
+    setDefaultUsers(){
+      if(localStorage.getItem(this.REGISTERED_USERS_KEY) == null){
+        this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)
+      }else{
+        this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
+      }
     },
     updateLocalStorage(){
       localStorage.setItem("dbOrder", JSON.stringify(this.orders))
@@ -45,30 +70,83 @@ new Vue({
         quantity: item.qty,
         description: item.description,
         image: item.image,
-        additional: item.additional
       }
       productBuy.subTotal = this.thousandSeparator(productBuy.quantity * productBuy.price);
       productBuy.subTotalNumber =  (item.qty * item.price)
+      console.log(item.additional)
+      console.log(item.additional.push(this.item.adicional))
+      productBuy.additional = item.additional
+      // console.log(productBuy.additional)
+
       this.cartData.push(productBuy);
-      console.log(this.cartData)  
       this.totalToPay(); 
+    },
+    getError() {
+          
+      if (this.userName == "") {
+        this.error1 = true;
+      } else {
+        this.error1 = false;
+      }
+      if (this.userPhone == "") {
+          this.error2 = true;
+      } else {
+          this.error2 = false;
+      }
+      if (this.userDirection == "") {
+          this.error3 = true;
+      } else {
+          this.error3 = false;
+      }
+      
+     
+    },
+    addOrder(){ ///////////////////////////////////////////////////////////////////
+      this.getError();
+          if(this.error1 == true || this.error2 == true || this.error3 == true ){
+               
+          }else{
+            console.log("Entro a fondo");
+            let order = {
+              user: this.userName,
+              phone: this.userPhone,
+              direction: this.userDirection, 
+              totalPayment: this.totalPayment
+            }
+            order.description = this.cartData.map(prod => {
+              return `${prod.quantity} ${prod.name}`
+            })
+              order.numOrder = this.numOrder();
+              this.orders.push(order)
+              this.updateLocalStorage(this.orders)
+              this.clearForm()
+              this.cartData =[]
+              this.totalPayment = ""
+              // setTimeout(function() {location.href="./index.html"}, 2000);
+              this.payMessage();
+          }
+    },
+    numOrder(){
+      let id =  `000${Math.floor(Math.random() * 101)}`;
+      return id 
+    },
+    clearForm(){    
+      this.userName = ""
+      this.userPhone = "" 
+      this.userDirection = ""
     },
     thousandSeparator(number = 0, decimalsQuantity = 2) {
       return Number(number).toFixed(decimalsQuantity).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },  
     updateQtyHotDogs(action, id){
-      let product = this.allProducts.hot_dogs.find(product => product.id === id)
-      if(product.qty >=0){
+      const product = this.productsParsed.hot_dogs.find(product => product.id === id)
+      if(product){
         const qty = product.qty;
         product.qty = action === "add" ? qty + 1 : qty - 1;
       }
-      else{
-        const qty = product.qty;
-        product.qty = action === "add" ? qty + 1 : qty - 0;
-      }
     },
     updateQtyBurgers(action, id){
-      let product = this.allProducts.burgers.find(product => product.id === id)
+      let product = this.productsParsed.burgers.find(product => product.id === id)
       if(product.qty >=0){
         const qty = product.qty;
         product.qty = action === "add" ? qty + 1 : qty - 1;
@@ -76,8 +154,6 @@ new Vue({
         const qty = product.qty;
         product.qty = action === "add" ? qty + 1 : qty - 0;
       }
-
-      
     },
     messageB(){
       alert("Ingrese una cantidad valida")
@@ -111,13 +187,13 @@ new Vue({
     messageSuccessLogin(user){
       this.message(
           "success", 
-          "Login exitoso!",
-          2450,
+          "!Login exitoso!",
+          2600,
           "center",
           "¡Será redireccionado en unos segundos!",
           false)
       
-    setTimeout(() => window.location.href = `/frontEnd/view/${this.validateRolUser(user)}.html`, 2450)
+    setTimeout(() => window.location.href = `/frontEnd/view/${this.validateRolUser(user)}.html`, 2600)
   }, 
   loginUser(user,key){
     let loguedUser = [];
@@ -227,11 +303,12 @@ new Vue({
       }]
     }
     this.allProducts = products
-    this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
+    if(localStorage.getItem(this.PRODUCTS_KEY) == null){
+      this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
+    }else{
+      this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
+    }
   },
-   createNewProduct(){
-  
-    },
     closeTotal(){
       let closeModal2 = document.getElementById('close2');
       closeModal2.click();
@@ -241,28 +318,22 @@ new Vue({
          closeModal.click();
       let closeModalCarrito = document.getElementById('closeCar');
         closeModalCarrito.click();
-      
     },
-
     closeModal1(){
       let closeModal1 = document.getElementById('close1');
       closeModal1.click();
       this.validationmodalpay()
     },
-
     cancelOrder(){
       let closeModal = document.getElementById('closeinvisible');
          closeModal.click();
       this.cartData.pop()
       this.totalToPay()
     },
-    
     validationmodalpay(){
     
         let openCar = document.getElementById('car');
         openCar.click()
-     
-      
     },
     payMessage(){
       this.message(
@@ -284,8 +355,26 @@ new Vue({
         button,
     })
     },
- 
+    messageDelete(index) {
+      swal({
+        title: "listo",
+        text: "Enviar pedido",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then((result) => {
+        if (result) {
+          this.dataOrder.splice(index,1);
+          this.message(
+            "Se envio el pedido",
+            2000,
+            "center",
+            "¡Bien!"
+          )
+          this.updateLocalStorage()
+        }
+      })
+  }
     
   },
-  
 })
