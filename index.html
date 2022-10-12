@@ -181,7 +181,7 @@
         <h1>Hamburguesas</h1>
       </div>
       <div class="row burger text-center align-items-center justify-content-center ">
-        <div class="col-6 col-sm-12 col-lg-4 col-xs-12 card1" v-for="item in allProducts.burgers">
+        <div class="col-6 col-sm-12 col-lg-4 col-xs-12 card1" v-for="item in productsParsed.burgers">
           <div class="card" style="width: 22rem" >
             <img :src="item.image" class="img-fluid rounded-start" alt="..." />
             <div class="card-body">
@@ -224,7 +224,7 @@
         <h1>Perros calientes</h1>
       </div>
       <div class="row hot_dogs text-center justify-content-center align-items-center">
-        <div class="col-5 col-sm-12 col-lg-4 col-xs-12 "v-for="item in allProducts.hot_dogs">
+        <div class="col-5 col-sm-12 col-lg-4 col-xs-12 "v-for="item in productsParsed.hot_dogs">
           <div class="card" style="width: 22rem" >
             <img :src="item.image" class="img-fluid rounded-start" alt="..." />
             <div class="card-body">

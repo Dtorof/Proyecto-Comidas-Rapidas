@@ -144,7 +144,7 @@
             </div>
             <div class="row m-3">
                 
-                <div class="col">
+                <div class="col"> 
                     <button @click="createProduct()" type="button" class="custom-btn btn-9">Guardar</button>
                 </div>
             </div>
@@ -258,7 +258,7 @@
                         <div class="row  align-items-center">
                             <h1 class="text-center title">Elegir imagen de su producto</h1>
                             <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center"
-                                v-for="item in hotDogsoptionalImages">
+                                v-for="item in hotDogsOptionalImages">
                                 <div class="card" style="width: 18rem;">
                                     <img :src="item" class="card-img-top" alt="...">
                                     <button @click="saveOptionImage(item)"  class="btn-8 ">elegir</button>
