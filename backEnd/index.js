@@ -14,7 +14,7 @@ new Vue({
   password: "",
   username: "",
   loguedUser:[],
-  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"},{name: "Fernando",username:"user",password:"1234", rol: "chef"}],
+  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"}],
   check:[],
   usersRolChef:[],
   usersRolDomiciliary: [],
@@ -124,6 +124,7 @@ new Vue({
               this.totalPayment = ""
               // setTimeout(function() {location.href="./index.html"}, 2000);
               this.payMessage();
+              this.closeTotal()
           }
     },
     numOrder(){
@@ -140,9 +141,12 @@ new Vue({
     },  
     updateQtyHotDogs(action, id){
       const product = this.productsParsed.hot_dogs.find(product => product.id === id)
-      if(product){
+      if(product.qty >=0){
         const qty = product.qty;
         product.qty = action === "add" ? qty + 1 : qty - 1;
+      }else{
+        const qty = product.qty;
+        product.qty = action === "add" ? qty + 1 : qty - 0;
       }
     },
     updateQtyBurgers(action, id){
