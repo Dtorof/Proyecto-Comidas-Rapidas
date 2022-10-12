@@ -16,11 +16,12 @@
 <body>
     <div class="container align-items-center justify-content-center" id="app">
         <!--Select-->
+        <div class="container  border border-dark border-1 " id="principalContainer">
         <div class="row text-center title">
             <div class="col-11 justify-content-start text-start">
                 <h1>Administración</h1>
             </div>
-            <div class="col-1  justify-content-end" >
+            <div class="col-1  justify-content-end"  id="exit">
                <a href="../../index.html"><i class="fa-solid fa-door-open open"style="width: 40%; height: 50%;"></i></a> 
             </div>
         </div>
@@ -34,7 +35,7 @@
         </div>
         <!--Fin select-->
         <!--Crear usuarios-->
-        <div v-if="flag1" class="row usuarios m-3  border border-dark border-2  justify-content-center">
+        <div v-if="flag1" class="row usuarios m-3  border border-dark border-1  justify-content-center">
             <div class="row mt-3 text-center ">
                 <h3>Crear usuarios</h3>
             </div>
@@ -193,7 +194,7 @@
                 <div class="row" id="tabla">
                     <div class="container pe-4 ps-4">
                         <div class="table-responsive">
-                            <table class="table table-bordered border-dark border- ">
+                            <table class="table table-bordered border-dark border-5 ">
                                 <thead>
                                     <tr class="text-center">
                                         <th class="col-3">Numero pedido</th>
@@ -210,9 +211,10 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Cantidad Total</th>
                                         <th id="bordeTable" ></th>
-                                        <th v-text="prueba" ></th>
+                                        <th class="bordeB">Cantidad Total</th>
+                                        
+                                        <th  class="bordeB" v-text="prueba" ></th>
                                     </tr>
                                 </tfoot>
 
@@ -227,14 +229,14 @@
         <!--Modal imagenes hamburguesas-->
         <div class="modal fade justify-content-center " id="exampleModal" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-body justify-content-center">
                         <div class="row  align-items-center">
                             <h1 class="text-center title">Elegir imagen de su producto</h1>
                             <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center"
                                 v-for="item in burgersOptionalImages">
-                                <div class="card" style="width: 18rem;">
+                                <div class="card" style="width: 18rem; margin:0px 45px;">
                                     <img :src="item" class="card-img-top" alt="...">
                                     <button @click="saveOptionImage(item)" class="btn-8 ">Elegir</button>
                                 </div>
@@ -252,14 +254,14 @@
         <!--Modal imagenes perros calientes-->
         <div class="modal fade justify-content-center " id="exampleModal1" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-body justify-content-center">
                         <div class="row  align-items-center">
                             <h1 class="text-center title">Elegir imagen de su producto</h1>
                             <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center"
                                 v-for="item in hotDogsoptionalImages">
-                                <div class="card" style="width: 18rem;">
+                                <div class="card" style="width: 18rem; margin:0px 45px;">
                                     <img :src="item" class="card-img-top" alt="...">
                                     <button @click="saveOptionImage(item)"  class="btn-8 ">elegir</button>
                                 </div>
@@ -277,7 +279,7 @@
 
 
 
-
+    </div>
     </div>
     <script src="https://kit.fontawesome.com/eb9c72ba98.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -292,6 +294,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
         crossorigin="anonymous"></script>
+
 </body>
 ​
 
