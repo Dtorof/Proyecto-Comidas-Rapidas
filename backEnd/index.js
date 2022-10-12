@@ -30,6 +30,10 @@ new Vue({
   dataStorage: [],
   flag:0,
   error:false,
+  ///
+  error1:false,
+  error2:false,
+  error3:false,
   },
   created(){
       this.setDefaultUsers()
@@ -77,23 +81,50 @@ new Vue({
       this.cartData.push(productBuy);
       this.totalToPay(); 
     },
-    addOrder(){
-       let order = {
-         user: this.userName,
-         phone: this.userPhone,
-         direction: this.userDirection, 
-         totalPayment: this.totalPayment
+    getError() {
+          
+      if (this.userName == "") {
+        this.error1 = true;
+      } else {
+        this.error1 = false;
       }
-      order.description = this.cartData.map(prod => {
-        return `${prod.quantity} ${prod.name}`
-      })
-      order.numOrder = this.numOrder();
-      this.orders.push(order)
-      this.updateLocalStorage(this.orders)
-      this.clearForm()
-      this.cartData =[]
-      this.totalPayment = ""
-      // setTimeout(function() {location.href="./index.html"}, 2000);
+      if (this.userPhone == "") {
+          this.error2 = true;
+      } else {
+          this.error2 = false;
+      }
+      if (this.userDirection == "") {
+          this.error3 = true;
+      } else {
+          this.error3 = false;
+      }
+      
+     
+    },
+    addOrder(){ ///////////////////////////////////////////////////////////////////
+      this.getError();
+          if(this.error1 == true || this.error2 == true || this.error3 == true ){
+               
+          }else{
+            console.log("Entro a fondo");
+            let order = {
+              user: this.userName,
+              phone: this.userPhone,
+              direction: this.userDirection, 
+              totalPayment: this.totalPayment
+            }
+            order.description = this.cartData.map(prod => {
+              return `${prod.quantity} ${prod.name}`
+            })
+              order.numOrder = this.numOrder();
+              this.orders.push(order)
+              this.updateLocalStorage(this.orders)
+              this.clearForm()
+              this.cartData =[]
+              this.totalPayment = ""
+              // setTimeout(function() {location.href="./index.html"}, 2000);
+              this.payMessage();
+          }
     },
     numOrder(){
       let id =  `000${Math.floor(Math.random() * 101)}`;
@@ -304,19 +335,25 @@ new Vue({
         let openCar = document.getElementById('car');
         openCar.click()
     },
-    validation2(){
-      let closeModal5 = document.getElementById('segI');
-      closeModal5.click();
+    payMessage(){
+      this.message(
+        "success", 
+        "!Transacción exitosa!",
+        2200,
+        "center",
+        "¡Tu pedido ya está en proceso!",
+        false)
     },
-    valadation1(){
-      let closeModal5 = document.getElementById('segI');
-      closeModal5.click();
-      let closeModal = document.getElementById('not');
-          closeModal.click();
-      let closeModal2 = document.getElementById('not1');
-          closeModal2.click();
-      let closeModal3 = document.getElementById('not2');
-      closeModal3.click();
+    message(icon,title, timer, position, text, button) {
+      swal({
+        position,
+        text,
+        icon,
+        title,
+        dangerMode: false,
+        timer,
+        button,
+    })
     },
     messageDelete(index) {
       swal({

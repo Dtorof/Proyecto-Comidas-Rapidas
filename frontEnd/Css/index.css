@@ -115,4 +115,11 @@ body{
     display:block;
     margin:auto;
 }
+#loginb{
+    margin-top: 10px;
+}
+.modal-footer  #closeinvisible{
+    display: none;
+}
+
 

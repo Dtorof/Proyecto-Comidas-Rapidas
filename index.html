@@ -87,7 +87,7 @@
                     <input v-model="password" class="form-control" type="password" />
                   </div>
                 </div>
-                <button @click="loginUser(username,password)" type="button" class="btn btn-primary">
+                <button @click="loginUser(username,password)" id="loginb" type="button" class="btn btn-primary">
                   login 
                 </button>
               </div>
@@ -335,14 +335,19 @@
             <div class="row">
               <label class="form-label">Nombre</label>
               <input class="form-control" type="text" v-model="userName">
+              <span class="error" v-if="error1" style="color: red;">Por favor ingresa tu nombre</span>
             </div>
             <div class="row">
               <label class="form-label">Teléfono</label>
               <input class="form-control" type="text"  v-model="userPhone">
+              <span class="error" v-if="error2" style="color: red;">Por favor ingresa tu teléfono</span>
+
             </div>
             <div class="row">
               <label class="form-label">Dirección</label>
               <input class="form-control" type="text"  v-model="userDirection">
+              <span class="error" v-if="error3" style="color: red;">Por favor ingresa tu dirección</span>
+
             </div>
           </div>
           <div class="modal-footer">
@@ -360,12 +365,6 @@
 
 
     <!-- Fin yeni -->
-    <div class="row">
-      <button  data-bs-toggle="modal"
-            data-bs-target="#exampleModal99" type="button" class="btn btn-primary">
-              Si
-            </button>
-    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="./backEnd/index.js"></script>

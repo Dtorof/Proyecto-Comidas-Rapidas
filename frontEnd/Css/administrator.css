@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Source+Sans+Pro:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Roboto:ital,wght@0,300;1,300&display=swap');
 :root{
     --dorado:rgb(212, 175, 55);
     --negro:rgb(0, 0, 0);
@@ -9,6 +10,8 @@
 body{
     
     margin-bottom: 0;
+    background-color: #f2f5f7;
+
     
 }
 #app{
@@ -18,6 +21,7 @@ body{
 }
 .select select{
   width: 70%;
+  margin-left: 15px;
   border-style: solid;
   border-width: 1px;
   border-radius: 11px;
@@ -38,52 +42,19 @@ body{
     width: 100%;
     height: 40px;
     color: var(--blanco);
-    border-radius: 5px;
-    padding: 10px 25px;
-    background: transparent;
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-    outline: none;
-    transition: all 0.3s ease;
+  
   }
   .btn-9 {
   border: none;
-  transition: all 0.3s ease;
-  overflow: hidden;
+  background-color: var(--dorado);
 }
-
-.btn-9:after {
-  position: absolute;
-  content: " ";
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #1fd1f9;
-  background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
-  background-image: linear-gradient(315deg,var(--negro) 0%,var(--dorado) 74%);
-  transition: all 0.3s ease;
-}
-
 .btn-9:hover {
-  background: transparent;
-  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
-    -4px -4px 6px 0 rgba(116, 125, 136, .2),
-    inset -4px -4px 6px 0 rgba(255, 255, 255, .5),
-    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
-  color: #fff;
-  color: var(--blanco);
-}
+  border-style: solid;
+  border-color: var(--negro);
+  border-width: 1px;
+  background-color:var(--blanco);
+  color: var(--negro);
 
-.btn-9:hover:after {
-  -webkit-transform: scale(2) rotate(180deg);
-  transform: scale(2) rotate(180deg);
-  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
-    -4px -4px 6px 0 rgba(116, 125, 136, .2),
-    inset -4px -4px 6px 0 rgba(255, 255, 255, .5),
-    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
 }
 .btn-8{
     background-color: grey;
@@ -95,17 +66,19 @@ body{
     color:var(--negro);
 }
 .container .title{
-  
+  margin-left: 10px;
   color: var(--dorado);
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Roboto', sans-serif;
 } 
 .container .title2{
-  color: var(--negro);
-  font-family: 'Source Sans Pro', sans-serif;
+  margin-left: 0px;
+  color: var(--dorado);
+  font-family: 'Roboto', sans-serif;
 } 
 #tabla thead  th{
   color: var(--negro);
   font-size: 150%;
+  border-right-style: groove;
 }
 .btn-89{
   background-color: var(--dorado);
@@ -118,11 +91,22 @@ body{
   border: 1px solid var(--negro);
 }
 #bordeTable{
-  border-bottom:1px solid rgb(243, 243, 243);
-  border-left:1px solid rgb(244, 244, 244);
+  border-bottom:1px solid rgb(255, 255, 255);
+  border-left:1px solid rgb(255, 255, 255);
 }
 .open {
   font-size: 2rem;
   color: var(--negro); 
   
 }
+#principalContainer{
+  background-color: rgb(255, 255, 255)!important;
+  border-color: white!important;
+}
+
+#exit{
+  margin-top: 15px;
+  margin-right: 0px;
+}
+
+
