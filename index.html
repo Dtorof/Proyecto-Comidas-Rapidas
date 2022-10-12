@@ -164,7 +164,7 @@
             <!--Fin tabla-->
           </div>
           <div class="modal-footer">
-            <button  id ="not2" @click="closeTotal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <button  id ="closeCar" @click="closeTotal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               Cerrar
             </button>
             <button data-bs-toggle="modal"
@@ -197,7 +197,7 @@
             </div>
               <div class="row">
                 <div class="col-3">
-                  <button  id="menos" type="button" @click="updateQtyBurgers('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
+                  <button  id="menos" :disabled="item.qty <= 1" type="button" @click="updateQtyBurgers('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
                 </div>
                 <div class="col-6">
                   <input id="medio" type="number" v-model.number="item.qty">
@@ -206,10 +206,15 @@
                   <button id="mas" type="button" @click="updateQtyBurgers('add', item.id )"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div>
-              <button id="adicionales" type="button" class="btn btn-outline-warning mt-3" data-bs-toggle="modal"
+              <span class="error" v-if="error" style="color: red;">Por favor ingrese una cantidad valida</span>
+              <button v-if="item.qty >= 1"  id="adicionales" type="button" class="btn btn-outline-warning mt-3" data-bs-toggle="modal"
                 data-bs-target="#exampleModal22" @click="addCartButton(item)">
                 Agregar
               </button>
+              <button v-if="item.qty < 1"  type="button" class="btn btn-outline-warning mt-3" @click="messageB()">
+                Agregar
+              </button>
+              
           </div>
         </div>
       </div>
@@ -235,7 +240,7 @@
             </div>
               <div class="row justify-content-center align-items-center">
                 <div class="col-3">
-                  <button id="menos" type="button" @click="updateQtyHotDogs('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
+                  <button  :disabled="item.qty <= 1"  id="menos" type="button" @click="updateQtyHotDogs('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
                 </div>
                 <div class="col-6">
                   <input id="medio" type="number" v-model.number="item.qty">
@@ -244,8 +249,11 @@
                   <button id="mas" type="button" @click="updateQtyHotDogs('add',  item.id)"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div>
-              <button id="adicionales" type="button" class="btn btn-outline-warning mt-3 align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal22"
+              <button  v-if="item.qty >= 1"  id="adicionales2" type="button" class="btn btn-outline-warning mt-3 align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal22"
               @click="addCartButton(item)">
+                Agregar
+              </button>
+              <button v-if="item.qty < 1"   type="button" class="btn btn-outline-warning mt-3" @click="messageB()">
                 Agregar
               </button>
           </div>
@@ -259,7 +267,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Adicionales</h5>
-            <button type="button" @click="closeTotal()"  class="btn-close" id="segI"  data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" @click="cancelOrder()"  class="btn-close" id="X1"  data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -270,9 +278,14 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button @click="closeTotal()" id="not" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <button @click="closeModal1()" id="close1" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               No
             </button>
+            <!--Boton invisible para cerrar-->
+            <button class="invisible" id="closeinvisible" type="button" class="btn btn-secondary" data-bs-dismiss="modal"></button>
+             
+            </button>
+            
             <button  data-bs-toggle="modal"
             data-bs-target="#exampleModal222" type="button" class="btn btn-primary">
               Si
@@ -288,7 +301,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Adicionales</h5>
-            <button type="button" @click="closeTotal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" @click="cancelOrder()" class="btn-close"  id="X2" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -302,7 +315,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button @click="closeTotal()" type="button" id="not1"  class="btn btn-secondary" data-bs-dismiss="modal">
+            <button @click="closeTotal()" type="button" id="close2"  class="btn btn-secondary" data-bs-dismiss="modal">
               Cerrar
             </button>
             <button @click="validationmodalpay()" type="button" class="btn btn-primary">
@@ -319,7 +332,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Datos usuario</h5>
-            <button  type="button" @click="closeTotal()"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button  type="button" @click="closeTotal();"  class="btn-close" id="X3" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -336,7 +349,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button @click="closeTotal()" type="button"class="btn btn-secondary" data-bs-dismiss="modal">
+            <button @click="closeTotal()" type="button"class="btn btn-secondary" id="close3" data-bs-dismiss="modal">
               Cerrar
             </button>
             <button  type="button" class="btn btn-primary" @click="addOrder">
