@@ -33,9 +33,9 @@ new Vue({
       this.createNewProduct()
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
       this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
-      this.setterLocalStorage(this.usersRolDomiciliary,this.DOMICILIARIES_KEY)
-      this.setterLocalStorage(this.usersRolChef,this.CHEFS_KEY)
-      this.setterLocalStorage(this.usersRolEmployee,this.EMPLOYEES_KEY)
+      this.setterLocalStorage(this.DOMICILIARIES_KEY,this.usersRolDomiciliary)
+      this.setterLocalStorage(this.CHEFS_KEY,this.usersRolChef)
+      this.setterLocalStorage(this.EMPLOYEES_KEY,this.usersRolEmployee)
   },
   methods: {
     setterLocalStorage(key, data) {
