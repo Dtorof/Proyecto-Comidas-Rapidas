@@ -15,6 +15,10 @@ new Vue({
   username: "",
   loguedUser:[],
   registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"},{name: "Fernando",username:"user",password:"1234", rol: "chef"}],
+  check:[],
+  usersRolChef:[],
+  usersRolDomiciliary: [],
+  usersRolEmployee: [],
   allAdditionals: [],
   productsParsed: [],
   allProducts: [],
@@ -273,7 +277,6 @@ new Vue({
     }else{
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
     }
-    
   },
     closeTotal(){
       let closeModal2 = document.getElementById('close2');
@@ -284,28 +287,22 @@ new Vue({
          closeModal.click();
       let closeModalCarrito = document.getElementById('closeCar');
         closeModalCarrito.click();
-      
     },
-
     closeModal1(){
       let closeModal1 = document.getElementById('close1');
       closeModal1.click();
       this.validationmodalpay()
     },
-
     cancelOrder(){
       let closeModal = document.getElementById('closeinvisible');
          closeModal.click();
       this.cartData.pop()
       this.totalToPay()
     },
-    
     validationmodalpay(){
     
         let openCar = document.getElementById('car');
         openCar.click()
-     
-      
     },
     validation2(){
       let closeModal5 = document.getElementById('segI');
@@ -343,5 +340,4 @@ new Vue({
   }
     
   },
-  
 })
