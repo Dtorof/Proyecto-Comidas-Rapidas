@@ -51,6 +51,9 @@ new Vue({
         products:"",
         productType:[{name:"Hamburguesas"},{name:"Perros calientes"}],
         product:"",
+        usersRolChef:[],
+        usersRolDomiciliary: [],
+        usersRolEmployee: [],
         productsParsed: [],
         registeredUsers: [],
         allAdditionals: [],
@@ -58,17 +61,19 @@ new Vue({
         ADDITIONALS_KEY: 'all-additionals',
         REGISTERED_USERS_KEY: 'registered-users',
         CURRENT_LOGUED_USER_KEY: 'current-user',
+        CHEFS_KEY: 'users-chef',
+        DOMICILIARIES_KEY: 'users-domiciliary',
+        EMPLOYEES_KEY: 'users-employee',
     },
-
     created(){
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
+      this.separateUsersByRol(this.registeredUsers)
+
     },
     methods: {
         saveOptionImage(url){
           this.optionImage=url;
-         
-
         },
         setterLocalStorage(key, data) {
             localStorage.setItem(key, JSON.stringify(data))
@@ -87,6 +92,21 @@ new Vue({
             button,
         })
         },
+        separateUsersByRol (arr) {
+          let data = [...arr]
+           data.map(user => {
+          if(user.rol === 'domiciliario'){
+              this.usersRolDomiciliary.push(user)
+              this.setterLocalStorage(this.DOMICILIARIES_KEY, this.usersRolDomiciliary)
+          }else if(user.rol === 'empleado'){
+              this.usersRolEmployee.push(user)
+              this.setterLocalStorage(this.EMPLOYEES_KEY, this.usersRolEmployee)
+          }else if(user.rol === 'chef') {
+              this.usersRolChef.push(user)
+              this.setterLocalStorage(this.CHEFS_KEY, this.usersRolChef)
+          }else return
+      })
+      },
         validateCredentials(){
         },
         v4() {
@@ -246,14 +266,14 @@ new Vue({
           if(this.error == true || this.error2 == true || this.error3 == true || this.error4 == true  ){
                
           }else{
-          console.log(this.forms.user.name.length)
           this.registeredUsers.push({
             name: this.forms.user.name,
             username: this.forms.user.username,
             password:this.forms.user.password,
             rol:this.forms.user.rolDefault
           })
-         this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)}
+         this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)
+        }
          this.message(
           "success", 
           "!Creación exitosa!",
@@ -262,9 +282,7 @@ new Vue({
           `¡Ahora tienes un nuevo ${this.forms.user.rolDefault} en el sistema!`,
           false)
          this.clearInputs();
-         
         },
-        
     },
     //yeni
     watch:{

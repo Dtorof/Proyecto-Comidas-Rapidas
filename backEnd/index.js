@@ -8,9 +8,9 @@ new Vue({
   username: "",
   loguedUser:[],
   check:[],
-  usersRolChef: [{name: "Oscar",username:"chef",password:"admin", rol: "chef"}],
-  usersRolDomiciliary: [{name: "Oscar",username:"domiciliary",password:"admin", rol: "domiciliary"}],
-  usersRolEmployee: [{name: "Oscar",username:"employee",password:"admin", rol: "employee"}],
+  usersRolChef:[],
+  usersRolDomiciliary: [],
+  usersRolEmployee: [],
   registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"}],
   allAdditionals: [],
   productsParsed: [],
@@ -28,11 +28,9 @@ new Vue({
   error:false,
   },
   created(){
+      this.setDefaultUsers()
       this.setDataProducts()
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
-      this.createNewProduct()
-      this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
-      this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
       this.setterLocalStorage(this.DOMICILIARIES_KEY,this.usersRolDomiciliary)
       this.setterLocalStorage(this.CHEFS_KEY,this.usersRolChef)
       this.setterLocalStorage(this.EMPLOYEES_KEY,this.usersRolEmployee)
@@ -44,23 +42,16 @@ new Vue({
     getterLocalStorage(key) {
       return JSON.parse(localStorage.getItem(key) || "[]");
     },
+    setDefaultUsers(){
+      if(localStorage.getItem(this.REGISTERED_USERS_KEY) == null){
+        this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)
+      }else{
+        this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
+      }
+    },
     updateLocalStorage(){
       localStorage.setItem("dbOrder", JSON.stringify(this.orders))
   },
-  separateUsersByRol (data ) {
-     data.map(user => {
-    if(user.rol === 'domiciliario'){
-        this.usersRolDomiciliary.push(user)
-        this.setterLocalStorage(this.DOMICILIARIES_KEY, this.usersRolDomiciliary)
-    }else if(user.rol === 'empleado'){
-        this.usersRolEmployee.push(user)
-        this.setterLocalStorage(this.EMPLOYEES_KEY, this.usersRolEmployee)
-    }else if(user.rol === 'chef') {
-        this.usersRolChef.push(user)
-        this.setterLocalStorage(this.CHEFS_KEY, this.usersRolChef)
-    }else return
-})
-},
     addCartButton(item){
       const productBuy = {
         id: item.id,
@@ -100,8 +91,6 @@ new Vue({
         const qty = product.qty;
         product.qty = action === "add" ? qty + 1 : qty - 0;
       }
-
-      
     },
     messageB(){
       alert("Ingrese una cantidad valida")
@@ -251,11 +240,12 @@ new Vue({
       }]
     }
     this.allProducts = products
-    this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
+    if(localStorage.getItem(this.PRODUCTS_KEY) == null){
+      this.setterLocalStorage(this.PRODUCTS_KEY,this.allProducts)
+    }else{
+      this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
+    }
   },
-   createNewProduct(){
-  
-    },
     closeTotal(){
       let closeModal2 = document.getElementById('close2');
       closeModal2.click();
@@ -265,31 +255,22 @@ new Vue({
          closeModal.click();
       let closeModalCarrito = document.getElementById('closeCar');
         closeModalCarrito.click();
-      
     },
-
     closeModal1(){
       let closeModal1 = document.getElementById('close1');
       closeModal1.click();
       this.validationmodalpay()
     },
-
     cancelOrder(){
       let closeModal = document.getElementById('closeinvisible');
          closeModal.click();
       this.cartData.pop()
       this.totalToPay()
     },
-    
     validationmodalpay(){
     
         let openCar = document.getElementById('car');
         openCar.click()
-     
-      
     },
- 
-    
   },
-  
 })
