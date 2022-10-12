@@ -73,7 +73,7 @@
                 </div>
                 <div class="row" id="user">
                                  
-                  <img  src="https://i.ibb.co/0sZ0W4f/pngwing-com-1.png"/>
+                  <img  src="https://i.ibb.co/r5zDPN1/pngwing-com-1.png"/>
               </div>
                 <div class="row">
                   <div class="col">
@@ -87,7 +87,7 @@
                     <input v-model="password" class="form-control" type="password" />
                   </div>
                 </div>
-                <button @click="loginUser(username,password)" id="loginb" type="button" class="btn btn-primary">
+                <button @click="loginUser(username,password)" id="loginb" type="button" class="custom-btn btn-9">
                   login 
                 </button>
               </div>
@@ -168,7 +168,7 @@
               Cerrar
             </button>
             <button data-bs-toggle="modal"
-            data-bs-target="#exampleModal99"  type="button" class="btn btn-primary">Pagar</button>
+            data-bs-target="#exampleModal99"  type="button" class="btn btn-primary modalsb">Pagar</button>
           </div>
         </div>
       </div>
@@ -206,7 +206,6 @@
                   <button id="mas" type="button" @click="updateQtyBurgers('add', item.id )"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div>
-              <span class="error" v-if="error" style="color: red;">Por favor ingrese una cantidad valida</span>
               <button v-if="item.qty >= 1"  id="adicionales" type="button" class="btn btn-outline-warning mt-3" data-bs-toggle="modal"
                 data-bs-target="#exampleModal22" @click="addCartButton(item)">
                 Agregar
@@ -240,7 +239,7 @@
             </div>
               <div class="row justify-content-center align-items-center">
                 <div class="col-3">
-                  <button id="menos" type="button" @click="updateQtyHotDogs('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
+                  <button id="menos" :disabled="item.qty <= 1"  type="button" @click="updateQtyHotDogs('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
                 </div>
                 <div class="col-6">
                   <input id="medio" type="number" v-model.number="item.qty">
@@ -249,8 +248,11 @@
                   <button id="mas" type="button" @click="updateQtyHotDogs('add',  item.id)"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div>
-              <button id="adicionales" type="button" class="btn btn-outline-warning mt-3 align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal22"
+              <button id="adicionales" v-if="item.qty >= 1"  type="button" class="btn btn-outline-warning mt-3 align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal22"
               @click="addCartButton(item)">
+                Agregar
+              </button>
+              <button v-if="item.qty < 1"  id="adicionales" type="button" class="btn btn-outline-warning mt-3" @click="messageB()">
                 Agregar
               </button>
           </div>
@@ -284,7 +286,7 @@
             </button>
             
             <button  data-bs-toggle="modal"
-            data-bs-target="#exampleModal222" type="button" class="btn btn-primary">
+            data-bs-target="#exampleModal222" type="button" class="btn btn-secondary modalsb">
               Si
             </button>
           </div>
@@ -315,7 +317,7 @@
             <button @click="closeTotal()" type="button" id="close2"  class="btn btn-secondary" data-bs-dismiss="modal">
               Cerrar
             </button>
-            <button @click="validationmodalpay()" type="button" class="btn btn-primary">
+            <button @click="validationmodalpay()" type="button" class="btn btn-primary modalsb">
               Pagar
             </button>
           </div>
@@ -354,7 +356,7 @@
             <button @click="closeTotal()" type="button"class="btn btn-secondary" id="close3" data-bs-dismiss="modal">
               Cerrar
             </button>
-            <button  type="button" class="btn btn-primary" @click="addOrder">
+            <button  type="button" class="btn btn-primary modalsb" @click="addOrder">
               Pagar
             </button>
           </div>
