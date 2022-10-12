@@ -181,7 +181,7 @@
         <h1>Hamburguesas</h1>
       </div>
       <div class="row burger text-center align-items-center justify-content-center ">
-        <div class="col-6 col-sm-12 col-lg-4 col-xs-12 card1" v-for="item in allProducts.burgers">
+        <div class="col-6 col-sm-12 col-lg-4 col-xs-12 card1" v-for="item in productsParsed.burgers">
           <div class="card" style="width: 22rem" >
             <img :src="item.image" class="img-fluid rounded-start" alt="..." />
             <div class="card-body">
@@ -211,7 +211,7 @@
                 data-bs-target="#exampleModal22" @click="addCartButton(item)">
                 Agregar
               </button>
-              <button v-if="item.qty < 1"  type="button" class="btn btn-outline-warning mt-3" @click="messageB()">
+              <button v-if="item.qty < 1"  id="adicionales" type="button" class="btn btn-outline-warning mt-3" @click="messageB()">
                 Agregar
               </button>
               
@@ -224,7 +224,7 @@
         <h1>Perros calientes</h1>
       </div>
       <div class="row hot_dogs text-center justify-content-center align-items-center">
-        <div class="col-5 col-sm-12 col-lg-4 col-xs-12 "v-for="item in allProducts.hot_dogs">
+        <div class="col-5 col-sm-12 col-lg-4 col-xs-12 "v-for="item in productsParsed.hot_dogs">
           <div class="card" style="width: 22rem" >
             <img :src="item.image" class="img-fluid rounded-start" alt="..." />
             <div class="card-body">
@@ -240,7 +240,7 @@
             </div>
               <div class="row justify-content-center align-items-center">
                 <div class="col-3">
-                  <button  :disabled="item.qty <= 1"  id="menos" type="button" @click="updateQtyHotDogs('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
+                  <button id="menos" type="button" @click="updateQtyHotDogs('remove', item.id)"><i class="fa-solid fa-minus"></i></button>
                 </div>
                 <div class="col-6">
                   <input id="medio" type="number" v-model.number="item.qty">
@@ -249,11 +249,8 @@
                   <button id="mas" type="button" @click="updateQtyHotDogs('add',  item.id)"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div>
-              <button  v-if="item.qty >= 1"  id="adicionales2" type="button" class="btn btn-outline-warning mt-3 align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal22"
+              <button id="adicionales" type="button" class="btn btn-outline-warning mt-3 align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal22"
               @click="addCartButton(item)">
-                Agregar
-              </button>
-              <button v-if="item.qty < 1"   type="button" class="btn btn-outline-warning mt-3" @click="messageB()">
                 Agregar
               </button>
           </div>
@@ -338,14 +335,19 @@
             <div class="row">
               <label class="form-label">Nombre</label>
               <input class="form-control" type="text" v-model="userName">
+              <span class="error" v-if="error1" style="color: red;">Por favor ingresa tu nombre</span>
             </div>
             <div class="row">
               <label class="form-label">Teléfono</label>
               <input class="form-control" type="text"  v-model="userPhone">
+              <span class="error" v-if="error2" style="color: red;">Por favor ingresa tu teléfono</span>
+
             </div>
             <div class="row">
               <label class="form-label">Dirección</label>
               <input class="form-control" type="text"  v-model="userDirection">
+              <span class="error" v-if="error3" style="color: red;">Por favor ingresa tu dirección</span>
+
             </div>
           </div>
           <div class="modal-footer">
@@ -363,12 +365,6 @@
 
 
     <!-- Fin yeni -->
-    <div class="row">
-      <button  data-bs-toggle="modal"
-            data-bs-target="#exampleModal99" type="button" class="btn btn-primary">
-              Si
-            </button>
-    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="./backEnd/index.js"></script>
