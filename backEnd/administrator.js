@@ -63,6 +63,7 @@ new Vue({
     created(){
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
+      this.separateUsersByRol(this.registeredUsers)
     },
     methods: {
         saveOptionImage(url){
@@ -87,6 +88,21 @@ new Vue({
             button,
         })
         },
+        separateUsersByRol (arr) {
+          let data = [...arr]
+           data.map(user => {
+          if(user.rol === 'domiciliario'){
+              this.usersRolDomiciliary.push(user)
+              this.setterLocalStorage(this.DOMICILIARIES_KEY, this.usersRolDomiciliary)
+          }else if(user.rol === 'empleado'){
+              this.usersRolEmployee.push(user)
+              this.setterLocalStorage(this.EMPLOYEES_KEY, this.usersRolEmployee)
+          }else if(user.rol === 'chef') {
+              this.usersRolChef.push(user)
+              this.setterLocalStorage(this.CHEFS_KEY, this.usersRolChef)
+          }else return
+      })
+      },
         validateCredentials(){
         },
         v4() {
