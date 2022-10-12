@@ -5,7 +5,7 @@ var app = new Vue({
         dbOrderServe: [],
         optionDomiciliary: "",
         dataStorageDomiciliary: [],
-        dbOrdersDomiciliary: {}    
+        dbOrdersDomiciliary: {},
     },
     created() {   
         this.dbOrdersEmployee = this.getParsedLocalStorage("dbOrderEmployee") 
