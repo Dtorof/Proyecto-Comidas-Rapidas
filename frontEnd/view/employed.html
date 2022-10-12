@@ -36,8 +36,8 @@
                                     <th class="col-3">Opción</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr class="body" v-for="">
+                            <tbody >
+                                <tr class="body">
                                     <td v-text=""></td>
                                     <td v-text=""></td>
                                     <td><button data-bs-toggle="modal" data-bs-target="#exampleModal222" type="button"
@@ -68,8 +68,8 @@
                             <div class="row justify-content-center">
                                 <div class="select " style="width: 40%; padding: 1%;">
                                     <select  name="seleccionProducto" id="seleccionProducto"
-                                        class="form-select  text-center">
-                                        <option>Seleccione</option>
+                                        class="form-select  text-center" v-model="optionDomiciliary">
+                                        <option v-for="(item, index) in dbOrdersDomiciliary" v-text="item.name">Seleccione</option>
                                     </select>
                                 </div>
                             </div>

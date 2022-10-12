@@ -1,17 +1,24 @@
 new Vue({   
   el: '#app',
   data: {
+  item:{
+    additional:[]
+  },
+  userName: "",
+  userPhone: "",
+  userDirection: "",
+  orders:[],
   cartData: [],
   additionals:0,
   totalPayment: "",
   password: "",
   username: "",
   loguedUser:[],
+  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"},{name: "Fernando",username:"user",password:"1234", rol: "chef"}],
   check:[],
   usersRolChef:[],
   usersRolDomiciliary: [],
   usersRolEmployee: [],
-  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"}],
   allAdditionals: [],
   productsParsed: [],
   allProducts: [],
@@ -19,9 +26,6 @@ new Vue({
   REGISTERED_USERS_KEY: 'registered-users',
   CURRENT_LOGUED_USER_KEY: 'current-user',
   ADDITIONALS_KEY: 'all-additionals',
-  CHEFS_KEY: 'users-chef',
-  DOMICILIARIES_KEY: 'users-domiciliary',
-  EMPLOYEES_KEY: 'users-employee',
   additionalOption:"",
   dataStorage: [],
   flag:0,
@@ -34,6 +38,8 @@ new Vue({
       this.setterLocalStorage(this.DOMICILIARIES_KEY,this.usersRolDomiciliary)
       this.setterLocalStorage(this.CHEFS_KEY,this.usersRolChef)
       this.setterLocalStorage(this.EMPLOYEES_KEY,this.usersRolEmployee)
+      this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
+      this.dataStorage = JSON.parse(localStorage.getItem("dbOrder") || null)
   },
   methods: {
     setterLocalStorage(key, data) {
@@ -60,30 +66,56 @@ new Vue({
         quantity: item.qty,
         description: item.description,
         image: item.image,
-        additional: item.additional
       }
       productBuy.subTotal = this.thousandSeparator(productBuy.quantity * productBuy.price);
       productBuy.subTotalNumber =  (item.qty * item.price)
+      console.log(item.additional)
+      console.log(item.additional.push(this.item.adicional))
+      productBuy.additional = item.additional
+      // console.log(productBuy.additional)
+
       this.cartData.push(productBuy);
-      console.log(this.cartData)  
       this.totalToPay(); 
+    },
+    addOrder(){
+       let order = {
+         user: this.userName,
+         phone: this.userPhone,
+         direction: this.userDirection, 
+         totalPayment: this.totalPayment
+      }
+      order.description = this.cartData.map(prod => {
+        return `${prod.quantity} ${prod.name}`
+      })
+      order.numOrder = this.numOrder();
+      this.orders.push(order)
+      this.updateLocalStorage(this.orders)
+      this.clearForm()
+      this.cartData =[]
+      this.totalPayment = ""
+      // setTimeout(function() {location.href="./index.html"}, 2000);
+    },
+    numOrder(){
+      let id =  `000${Math.floor(Math.random() * 101)}`;
+      return id 
+    },
+    clearForm(){    
+      this.userName = ""
+      this.userPhone = "" 
+      this.userDirection = ""
     },
     thousandSeparator(number = 0, decimalsQuantity = 2) {
       return Number(number).toFixed(decimalsQuantity).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },  
     updateQtyHotDogs(action, id){
-      let product = this.allProducts.hot_dogs.find(product => product.id === id)
-      if(product.qty >=0){
+      const product = this.productsParsed.hot_dogs.find(product => product.id === id)
+      if(product){
         const qty = product.qty;
         product.qty = action === "add" ? qty + 1 : qty - 1;
       }
-      else{
-        const qty = product.qty;
-        product.qty = action === "add" ? qty + 1 : qty - 0;
-      }
     },
     updateQtyBurgers(action, id){
-      let product = this.allProducts.burgers.find(product => product.id === id)
+      let product = this.productsParsed.burgers.find(product => product.id === id)
       if(product.qty >=0){
         const qty = product.qty;
         product.qty = action === "add" ? qty + 1 : qty - 1;
@@ -124,13 +156,13 @@ new Vue({
     messageSuccessLogin(user){
       this.message(
           "success", 
-          "Login exitoso!",
-          2450,
+          "!Login exitoso!",
+          2600,
           "center",
           "¡Será redireccionado en unos segundos!",
           false)
       
-    setTimeout(() => window.location.href = `/frontEnd/view/${this.validateRolUser(user)}.html`, 2450)
+    setTimeout(() => window.location.href = `/frontEnd/view/${this.validateRolUser(user)}.html`, 2600)
   }, 
   loginUser(user,key){
     let loguedUser = [];
@@ -272,5 +304,40 @@ new Vue({
         let openCar = document.getElementById('car');
         openCar.click()
     },
+    validation2(){
+      let closeModal5 = document.getElementById('segI');
+      closeModal5.click();
+    },
+    valadation1(){
+      let closeModal5 = document.getElementById('segI');
+      closeModal5.click();
+      let closeModal = document.getElementById('not');
+          closeModal.click();
+      let closeModal2 = document.getElementById('not1');
+          closeModal2.click();
+      let closeModal3 = document.getElementById('not2');
+      closeModal3.click();
+    },
+    messageDelete(index) {
+      swal({
+        title: "listo",
+        text: "Enviar pedido",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then((result) => {
+        if (result) {
+          this.dataOrder.splice(index,1);
+          this.message(
+            "Se envio el pedido",
+            2000,
+            "center",
+            "¡Bien!"
+          )
+          this.updateLocalStorage()
+        }
+      })
+  }
+    
   },
 })
