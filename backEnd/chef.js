@@ -3,7 +3,7 @@ var app = new Vue({
     data:{
         dbOrdersChef:{},
         dbOrderServe: [],
-        dataStorageEmployee: [] 
+        dataStorageEmployee: ""
     },
     created() {   
         this.dbOrdersChef = this.getParsedLocalStorage("dbOrder") 
@@ -14,7 +14,7 @@ var app = new Vue({
         getParsedLocalStorage(key) {
             return JSON.parse(localStorage.getItem(key) || null);
         },
-        cleverOrder(index){
+        clever(index){
           let serve = this.dbOrdersChef.splice(index,1)
           this.dbOrderServe.push(serve)
           this.updateLocalStorage( this.dbOrderServe)

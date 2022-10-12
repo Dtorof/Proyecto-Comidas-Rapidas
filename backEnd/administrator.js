@@ -1,7 +1,7 @@
 new Vue({
     el: '#app',
     data: {
-        hotDogsOptionalImages: ['https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525209/carrito-market-mix/hot-dog-2_w0bkos.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525201/carrito-market-mix/hot-dog-3_dhqaka.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525196/carrito-market-mix/hot-dog-4_fka3ay.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525190/carrito-market-mix/hot-dog-1_qpjgb1.jpg'],
+        hotDogsoptionalImages: ['https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525209/carrito-market-mix/hot-dog-2_w0bkos.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525201/carrito-market-mix/hot-dog-3_dhqaka.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525196/carrito-market-mix/hot-dog-4_fka3ay.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525190/carrito-market-mix/hot-dog-1_qpjgb1.jpg'],
         burgersOptionalImages: ['https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525205/carrito-market-mix/burger-1_ixxrg1.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525196/carrito-market-mix/burger-2_c33tcx.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525190/carrito-market-mix/burger-3_aoiknm.jpg','https://res.cloudinary.com/jorge-tarifa/image/upload/v1665525189/carrito-market-mix/burger-4_of9olc.jpg'],
         optionImage:"",
         roles: ['administrador', 'chef', 'empleado','domiciliario'],
@@ -58,17 +58,22 @@ new Vue({
         ADDITIONALS_KEY: 'all-additionals',
         REGISTERED_USERS_KEY: 'registered-users',
         CURRENT_LOGUED_USER_KEY: 'current-user',
+        CHEFS_KEY: 'users-chef',
+        DOMICILIARIES_KEY: 'users-domiciliary',
+        EMPLOYEES_KEY: 'users-employee',
+        usersRolChef:[],
+        usersRolDomiciliary: [],
+        usersRolEmployee: [],
     },
 
     created(){
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
+      this.separateUsersByRol(this.registeredUsers)
     },
     methods: {
         saveOptionImage(url){
           this.optionImage=url;
-         
-
         },
         setterLocalStorage(key, data) {
             localStorage.setItem(key, JSON.stringify(data))
@@ -87,6 +92,21 @@ new Vue({
             button,
         })
         },
+        separateUsersByRol (arr) {
+          let data = [...arr]
+           data.map(user => {
+          if(user.rol === 'domiciliario'){
+              this.usersRolDomiciliary.push(user)
+              this.setterLocalStorage(this.DOMICILIARIES_KEY, this.usersRolDomiciliary)
+          }else if(user.rol === 'empleado'){
+              this.usersRolEmployee.push(user)
+              this.setterLocalStorage(this.EMPLOYEES_KEY, this.usersRolEmployee)
+          }else if(user.rol === 'chef') {
+              this.usersRolChef.push(user)
+              this.setterLocalStorage(this.CHEFS_KEY, this.usersRolChef)
+          }else return
+      })
+      },
         validateCredentials(){
         },
         v4() {
