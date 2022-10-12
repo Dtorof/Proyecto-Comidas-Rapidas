@@ -192,6 +192,11 @@ new Vue({
             price: this.forms.additional.price
           })
             this.setterLocalStorage(this.ADDITIONALS_KEY,this.allAdditionals)
+            let newAdditionals = [...this.allAdditionals]
+            this.productsParsed.additional.push(newAdditionals)
+            this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
+
+            this.setterLocalStorage()
             this.clearAdditional();
             this.message(
               "success", 
