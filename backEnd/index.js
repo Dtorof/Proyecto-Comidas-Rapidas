@@ -8,6 +8,9 @@ new Vue({
   username: "",
   loguedUser:[],
   check:[],
+  usersRolChef: [],
+  usersRolDomiciliary: [],
+  usersRolEmployee: [],
   registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"}],
   allAdditionals: [],
   productsParsed: [],
@@ -16,6 +19,9 @@ new Vue({
   REGISTERED_USERS_KEY: 'registered-users',
   CURRENT_LOGUED_USER_KEY: 'current-user',
   ADDITIONALS_KEY: 'all-additionals',
+  CHEFS_KEY: 'users-chef',
+  DOMICILIARIES_KEY: 'users-domiciliary',
+  EMPLOYEES_KEY: 'users-employee',
   additionalOption:"",
   dataStorage: [],
   flag:0,
@@ -26,6 +32,8 @@ new Vue({
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.createNewProduct()
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
+      this.registeredUsers = getterLocalStorage(this.REGISTERED_USERS_KEY)
+      this.separateUsersByRol(this.registeredUsers)
   },
   methods: {
     setterLocalStorage(key, data) {
@@ -37,6 +45,20 @@ new Vue({
     updateLocalStorage(){
       localStorage.setItem("dbOrder", JSON.stringify(this.orders))
   },
+  separateUsersByRol (data ) {
+     data.map(user => {
+    if(user.rol === 'domiciliario'){
+        this.usersRolDomiciliary.push(user)
+        this.setterLocalStorage(this.DOMICILIARIES_KEY, this.usersRolDomiciliary)
+    }else if(user.rol === 'empleado'){
+        this.usersRolEmployee.push(user)
+        this.setterLocalStorage(this.EMPLOYEES_KEY, this.usersRolEmployee)
+    }else{
+        this.usersRolChef.push(user)
+        this.setterLocalStorage(this.CHEFS_KEY, this.usersRolChef)
+    }
+})
+},
     addCartButton(item){
       const productBuy = {
         id: item.id,
