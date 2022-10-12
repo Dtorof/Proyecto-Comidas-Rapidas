@@ -206,7 +206,11 @@ new Vue({
           }
         },
         getError2() {
-          
+          if (this.product == "") {
+            this.error5 = true;
+          } else {
+            this.error5 = false;
+          }
           if (this.forms.product.name.length == 0) {
             this.error6 = true;
           } else {
@@ -247,25 +251,26 @@ new Vue({
                
           }else{
           console.log(this.forms.user.name.length)
-          this.registeredUsers.push({
-            name: this.forms.user.name,
-            username: this.forms.user.username,
-            password:this.forms.user.password,
-            rol:this.forms.user.rolDefault
-          })
-         this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)}
-         this.message(
-          "success", 
-          "!Creación exitosa!",
-          2200,
-          "center",
-          `¡Ahora tienes un nuevo ${this.forms.user.rolDefault} en el sistema!`,
-          false)
+            this.registeredUsers.push({
+              name: this.forms.user.name,
+              username: this.forms.user.username,
+              password:this.forms.user.password,
+              rol:this.forms.user.rolDefault
+            })
+            this.message(
+              "success", 
+              "!Creación exitosa!",
+              2200,
+              "center",
+              `¡Ahora tienes un nuevo ${this.forms.user.rolDefault} en el sistema!`,
+              false)
+            this.setterLocalStorage(this.REGISTERED_USERS_KEY,this.registeredUsers)
+          }
          this.clearInputs();
          
         },
         
-    },
+       },
     //yeni
     watch:{
       option1(){

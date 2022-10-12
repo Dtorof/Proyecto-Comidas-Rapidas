@@ -29,3 +29,20 @@ body{
   color: var(--negro); 
   
 }
+.custom-btn{
+  width: 50%;
+  height: 40px;
+  color: var(--blanco);
+}
+.btn-9 {
+  border: none;
+  background-color: var(--dorado);
+}
+.btn-9:hover {
+  border-style: solid;
+  border-color: var(--negro);
+  border-width: 1px;
+  background-color:var(--blanco);
+  color: var(--negro);
+
+}

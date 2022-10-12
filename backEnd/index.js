@@ -264,6 +264,26 @@ new Vue({
      
       
     },
+    payMessage(){
+      this.message(
+        "success", 
+        "!Transacción exitosa!",
+        2200,
+        "center",
+        "¡Tu pedido ya está en proceso!",
+        false)
+    },
+    message(icon,title, timer, position, text, button) {
+      swal({
+        position,
+        text,
+        icon,
+        title,
+        dangerMode: false,
+        timer,
+        button,
+    })
+    },
  
     
   },
