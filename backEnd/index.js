@@ -9,6 +9,7 @@ new Vue({
   userDirection: "",
   orders:[],
   cartData: [],
+  dbCart: [],
   additionals:0,
   totalPayment: "",
   password: "",
@@ -58,8 +59,11 @@ new Vue({
       console.log(item.additional)
       console.log(item.additional.push(this.item.adicional))
       productBuy.additional = item.additional
+      // console.log(productBuy.additional)
+
       this.cartData.push(productBuy);
       this.totalToPay(); 
+      this.dbCart.push(this.cartData)
     },
     addOrder(){
        let order = {
@@ -73,8 +77,12 @@ new Vue({
       })
       order.numOrder = this.numOrder();
       this.orders.push(order)
+      console.log(order, "🎃")
+      console.log(this.cartData, "carrito👧🏻")
+      console.log(this.dbCart, "dataCarrito👸🏻")
       this.updateLocalStorage(this.orders)
       this.clearForm()
+      console.log(this.orders,"orden👶🏻" )
       this.cartData =[]
       this.totalPayment = ""
       // setTimeout(function() {location.href="./index.html"}, 2000);

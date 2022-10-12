@@ -3,11 +3,15 @@ var app = new Vue({
     data:{
         dbOrdersEmployee:{},
         dbOrderServe: [],
-        dataStorageDomiciliary: [] 
+        optionDomiciliary: "",
+        dataStorageDomiciliary: [],
+        dbOrdersDomiciliary: {}    
     },
     created() {   
         this.dbOrdersEmployee = this.getParsedLocalStorage("dbOrderEmployee") 
+        this.dbOrdersDomiciliary = this.getParsedLocalStorage("users-domiciliary") 
         console.log(this.dbOrdersEmployee)
+        console.log(this.dbOrdersDomiciliary)
         this.dataStorageEmployee = JSON.parse(localStorage.getItem("dbOrderDomiciliary") || null)
     },
     methods: {
