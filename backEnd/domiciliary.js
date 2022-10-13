@@ -8,11 +8,16 @@ var app = new Vue({
         console.log(this.dbOrdersDomic)
     },
     methods: {
+        updateLocalStorage(){
+            return localStorage.setItem("dbOrdersDom", JSON.stringify(this.dbOrdersDomic))
+        },
         getParsedLocalStorage(key) {
             return JSON.parse(localStorage.getItem(key) || null);
         },
         clever(index){
-            this.dbOrdersDomic.splice(index, 1)
+            if(index) {
+                this.dbOrdersDom.splice(index, 1)
+            }
             this.updateLocalStorage()
           },
 
