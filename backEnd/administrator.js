@@ -61,15 +61,21 @@ new Vue({
         CHEFS_KEY: 'users-chef',
         DOMICILIARIES_KEY: 'users-domiciliary',
         EMPLOYEES_KEY: 'users-employee',
+        CONSOLIDATION_CARTS_KEY: 'total-carts',
         usersRolChef:[],
         usersRolDomiciliary: [],
         usersRolEmployee: [],
-    },
+        parsedShoppingCart: [],
+        consolidationTotal: ""
+        // Es la de Arriba
+    }, 
 
     created(){
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
       this.separateUsersByRol(this.registeredUsers)
+      this.parsedShoppingCart = this.getterLocalStorage("dbOrder") 
+      this.getTotalsCart(this.parsedShoppingCart)
     },
     methods: {
         saveOptionImage(url){
@@ -91,6 +97,23 @@ new Vue({
             timer,
             button,
         })
+        },
+        format(n){
+          n=n.replace(/\,/g,'')
+          n=parseInt(n,10)
+          return n
+      },
+        getTotalsCart(elem){
+          let copyData = [...elem]
+          const res = (copyData) => copyData.map(x => this.format(x.totalPayment)
+          ).reduce((x,y) => x + y)
+          console.log('copyData');
+          this.consolidationTotal = res(copyData)
+          if(localStorage.getItem(this.CONSOLIDATION_CARTS_KEY) == null){
+            this.setterLocalStorage(this.CONSOLIDATION_CARTS_KEY,this.consolidationTotal)
+          }else{
+            this.consolidationTotal = this.getterLocalStorage(this.CONSOLIDATION_CARTS_KEY)
+          }
         },
         separateUsersByRol (arr) {
           let data = [...arr]
