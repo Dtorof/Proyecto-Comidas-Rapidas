@@ -203,10 +203,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="body" v-for="item in roles">
-                                        <td v-text="item"></td>
-                                        <td v-text="item"></td>
-                                        <td v-text="item"></td>
+                                    <tr class="body" v-for="item in parsedShoppingCart">
+                                        <td v-text="item.numOrder"></td>
+                                        <td v-text="item.description.toString()"></td>
+                                        <td v-text="item.totalPayment"></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -214,7 +214,7 @@
                                         <th id="bordeTable" ></th>
                                         <th class="bordeB">Cantidad Total</th>
                                         
-                                        <th  class="bordeB" v-text="prueba" ></th>
+                                        <th  class="bordeB" v-text="consolidationTotal" ></th>
                                     </tr>
                                 </tfoot>
 
