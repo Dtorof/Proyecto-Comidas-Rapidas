@@ -15,9 +15,9 @@ var app = new Vue({
             return JSON.parse(localStorage.getItem(key) || null);
         },
         clever(index){
-          let serve = this.dbOrdersChef.splice(index,1)
-          this.dbOrderServe.push(serve)
-          this.updateLocalStorage( this.dbOrderServe)
+          this.dbOrdersChef.splice(index,1)
+          this.dbOrderServe = [...this.dbOrderServe, ...this.dbOrdersChef];
+          this.updateLocalStorage()
         },
         updateLocalStorage(){
             localStorage.setItem("dbOrderEmployee", JSON.stringify(this.dbOrderServe))

@@ -5,7 +5,7 @@ var app = new Vue({
         dbOrderServe: [],
         optionDomiciliary: "",
         dataStorageDomiciliary: [],
-        dbOrdersDomiciliary: {}    
+        dbOrdersDomiciliary: {},
     },
     created() {   
         this.dbOrdersEmployee = this.getParsedLocalStorage("dbOrderEmployee") 
@@ -18,9 +18,19 @@ var app = new Vue({
         getParsedLocalStorage(key) {
             return JSON.parse(localStorage.getItem(key) || null);
         },
+        client(){
+            let client = {
+                ...this.dbOrdersEmployee,
+                domiciliary: this.optionDomiciliary
+            }
+            this.dbOrderServe = [...this.dbOrderServe, client];
+            console.log( client)
+            console.log( this.dbOrderServe)
+        },
         clever(index){
-          this.dbOrderServe = [...this.dbOrderServe, this. dbOrdersEmployee.splice(index,1)];
-          this.updateLocalStorage( this.dbOrderServe)
+          this.client()
+          this.dbOrdersEmployee.splice(index, 1)
+          this.updateLocalStorage()
         },
         updateLocalStorage(){
             localStorage.setItem("dbOrderDomiciliary", JSON.stringify(this.dbOrderServe))
