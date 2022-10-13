@@ -78,6 +78,7 @@ new Vue({
     usersRolChef: [],
     usersRolDomiciliary: [],
     usersRolEmployee: [],
+  
   },
 
   created() {
