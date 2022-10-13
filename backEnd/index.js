@@ -14,7 +14,7 @@ new Vue({
   password: "",
   username: "",
   loguedUser:[],
-  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"},{name: "Fernando",username:"user",password:"1234", rol: "chef"}],
+  registeredUsers:[{name: "Oscar",username:"admin",password:"admin", rol: "administrador"}],
   check:[],
   usersRolChef:[],
   usersRolDomiciliary: [],
