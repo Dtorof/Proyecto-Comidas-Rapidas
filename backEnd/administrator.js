@@ -64,12 +64,16 @@ new Vue({
         usersRolChef:[],
         usersRolDomiciliary: [],
         usersRolEmployee: [],
-    },
+        parsedShoppingCart: [],
+        consolidationTotal: ""
+    }, 
 
     created(){
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
       this.separateUsersByRol(this.registeredUsers)
+      this.parsedShoppingCart = this.getterLocalStorage("dbOrder") 
+      this.getTotalsCart(this.parsedShoppingCart)
     },
     methods: {
         saveOptionImage(url){
@@ -91,6 +95,18 @@ new Vue({
             timer,
             button,
         })
+        },
+        format(n){
+          n=n.replace(/\,/g,'')
+          n=parseInt(n,10)
+          return n
+      },
+        getTotalsCart(elem){
+          let copyData = [...elem]
+          const res = (copyData) => copyData.map(x => this.format(x.totalPayment)
+          ).reduce((x,y) => x + y)
+          console.log('copyData');
+          console.log(res(copyData));
         },
         separateUsersByRol (arr) {
           let data = [...arr]

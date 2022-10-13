@@ -167,6 +167,8 @@ new Vue({
         let payData = this.cartData.map((prod)=> {return prod.subTotalNumber})
         let pay = payData.reduce((value, num) => value + num,0)
         this.totalPayment  = this.thousandSeparator(pay, 0);
+        console.log('typeof');
+        console.log(typeof this.totalPayment );
     },
     message(icon,title, timer, position, text, button) {
       swal({
