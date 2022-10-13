@@ -307,9 +307,9 @@
               <h6>Elegir adicionales que desees agregar</h6>
             </div>
             <div class="row">
-              <div class="form-check" v-for="item in allProducts.additional" >
-                <input name="item" class="form-check-input" type="checkbox" value="item"  v-model="item.additional" id="item"/>
-                <label class="form-check-label" for="item">{{item.name}}</label>
+              <div class="form-check" v-for="item in allProducts.additional" :key="item.id">
+                <input name="item" class="form-check-input" type="checkbox" :value="item"  v-model="additionalsCheck" :id="item.id"/>
+                <label class="form-check-label" :for="item.id">{{item.name}}</label>
               </div>
             </div>
           </div>
@@ -318,7 +318,7 @@
               Cerrar
             </button>
             <button @click="validationmodalpay()" type="button" class="btn btn-primary modalsb">
-              Pagar
+              Guardar
             </button>
           </div>
         </div>
