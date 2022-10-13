@@ -92,6 +92,10 @@ new Vue({
             button,
         })
         },
+        getTotalBillingConsolidation(...data){
+          let result = data
+          let response = data.reduce((a,b) => a.total, b.total)
+        },
         separateUsersByRol (arr) {
           let data = [...arr]
            data.map(user => {
