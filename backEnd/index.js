@@ -35,6 +35,7 @@ new Vue({
   created(){
       this.setDefaultUsers()
       this.setDataProducts()
+      console.log(this.allProducts)
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.setterLocalStorage(this.DOMICILIARIES_KEY,this.usersRolDomiciliary)
       this.setterLocalStorage(this.CHEFS_KEY,this.usersRolChef)
@@ -107,15 +108,17 @@ new Vue({
               totalPayment: this.totalPayment
             }
             order.numOrder = this.numOrder();
-              order.description = this.descriptionOrden();
-              this.orders.push(order)
-              this.updateLocalStorage(this.orders)
-              this.clearForm()
-              this.cartData =[]
-              this.totalPayment = ""
+            order.description = this.descriptionOrden();
+            this.orders.push(order)
+            this.updateLocalStorage(this.orders)
+            this.clearForm()
+            this.cartData =[]
+            this.totalPayment = ""
+            this.additionalsCheck = []
+            console.log(this.orders)
               // setTimeout(function() {location.href="./index.html"}, 2000);
-              this.payMessage();
-              this.closeTotal()
+            this.payMessage();
+            this.closeTotal()
           }
     },
     descriptionOrden(){
