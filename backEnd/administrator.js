@@ -61,11 +61,13 @@ new Vue({
         CHEFS_KEY: 'users-chef',
         DOMICILIARIES_KEY: 'users-domiciliary',
         EMPLOYEES_KEY: 'users-employee',
+        CONSOLIDATION_CARTS_KEY: 'total-carts',
         usersRolChef:[],
         usersRolDomiciliary: [],
         usersRolEmployee: [],
         parsedShoppingCart: [],
         consolidationTotal: ""
+        // Es la de Arriba
     }, 
 
     created(){
@@ -106,7 +108,12 @@ new Vue({
           const res = (copyData) => copyData.map(x => this.format(x.totalPayment)
           ).reduce((x,y) => x + y)
           console.log('copyData');
-          console.log(res(copyData));
+          this.consolidationTotal = res(copyData)
+          if(localStorage.getItem(this.CONSOLIDATION_CARTS_KEY) == null){
+            this.setterLocalStorage(this.CONSOLIDATION_CARTS_KEY,this.consolidationTotal)
+          }else{
+            this.consolidationTotal = this.getterLocalStorage(this.CONSOLIDATION_CARTS_KEY)
+          }
         },
         separateUsersByRol (arr) {
           let data = [...arr]
