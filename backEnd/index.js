@@ -73,11 +73,8 @@ new Vue({
       }
       productBuy.subTotal = this.thousandSeparator(productBuy.quantity * productBuy.price);
       productBuy.subTotalNumber =  (item.qty * item.price)
-      console.log(item.additional)
       console.log(item.additional.push(this.item.adicional))
       productBuy.additional = item.additional
-      // console.log(productBuy.additional)
-
       this.cartData.push(productBuy);
       this.totalToPay(); 
     },
