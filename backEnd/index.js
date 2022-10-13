@@ -166,7 +166,7 @@ new Vue({
         let payAdditional = this.additionalsCheck.map(addit => addit.price).reduce((value,num)=> value + num, 0);    
         let payData = this.cartData.map((prod)=> {return prod.subTotalNumber})
         let pay = payData.reduce((value, num) => value + num,0)
-        this.totalPayment  = this.thousandSeparator(pay + payAdditional, 0);
+        this.totalPayment  = pay + payAdditional
     },
     message(icon,title, timer, position, text, button) {
       swal({

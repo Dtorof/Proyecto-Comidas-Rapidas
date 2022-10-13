@@ -66,7 +66,7 @@ new Vue({
         usersRolDomiciliary: [],
         usersRolEmployee: [],
         parsedShoppingCart: [],
-        consolidationTotal: ""
+        consolidationTotal: "",
         // Es la de Arriba
     }, 
 
@@ -75,7 +75,7 @@ new Vue({
       this.registeredUsers = this.getterLocalStorage(this.REGISTERED_USERS_KEY)
       this.separateUsersByRol(this.registeredUsers)
       this.parsedShoppingCart = this.getterLocalStorage("dbOrder") 
-      this.getTotalsCart(this.parsedShoppingCart)
+      this.getTotalsCart()
     },
     methods: {
         saveOptionImage(url){
@@ -98,22 +98,17 @@ new Vue({
             button,
         })
         },
-        format(n){
-          n=n.replace(/\,/g,'')
-          n=parseInt(n,10)
-          return n
-      },
-        getTotalsCart(elem){
-          let copyData = [...elem]
-          const res = (copyData) => copyData.map(x => this.format(x.totalPayment)
-          ).reduce((x,y) => x + y)
-          console.log('copyData');
+        getTotalsCart(){
+          let copyData = [...this.parsedShoppingCart]
+          const res = (copyData) => copyData.map(x => x.totalPayment).reduce((x,y) => x + y)
           this.consolidationTotal = res(copyData)
+          
           if(localStorage.getItem(this.CONSOLIDATION_CARTS_KEY) == null){
             this.setterLocalStorage(this.CONSOLIDATION_CARTS_KEY,this.consolidationTotal)
           }else{
             this.consolidationTotal = this.getterLocalStorage(this.CONSOLIDATION_CARTS_KEY)
           }
+          console.log(this.consolidationTotal);
         },
         separateUsersByRol (arr) {
           let data = [...arr]
