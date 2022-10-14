@@ -1,29 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 ​
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="../Css/administrator.css">
+    <title>Administración</title>
 </head>
 ​
+
 <body>
-​
-​
-​
-​
-​
-​
-​
-​
-​
+    <div class="container align-items-center justify-content-center" id="app">
+        <!--Select-->
+        <div class="container  border border-dark border-1 " id="principalContainer">
+        <div class="row text-center title">
+            <div class="col-11 justify-content-start text-start">
+                <h1>Administración</h1>
+            </div>
+            <div class="col-1  justify-content-end"  id="exit">
+               <a href="../../index.html"><i class="fa-solid fa-door-open open"style="width: 40%; height: 50%;"></i></a> 
+            </div>
+        </div>
+        <div class="row ">
+            <div class="select " style="width: 40%; padding: 1%;">
+                <select v-model="option1" name="seleccionProducto" id="seleccionProducto"
+                    class="form-select  text-center">
+                    <option v-for="item in option" v-text="item.name">Seleccione</option>
+                </select>
+            </div>
+        </div>
+        <!--Fin select-->
+        <!--Crear usuarios-->
+        <div v-if="flag1" class="row usuarios m-3  border border-dark border-1  justify-content-center">
+            <div class="row mt-3 text-center ">
+                <h3>Crear usuarios</h3>
+            </div>
+            <div class="row ">
+                <div class="col">
+                    <label class="form-label">Nombre</label>
+                    <input v-model="forms.user.name" class="form-control" type="text">
+                    <span class="error" v-if="error" style="color: red;">Por favor ingrese un nombre</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Usuario</label>
+                    <input v-model="forms.user.username" class="form-control" type="text">
+                    <span class="error" v-if="error2" style="color: red;">Por favor ingrese un usuario</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Contraseña</label>
+                    <input v-model="forms.user.password" class="form-control" type="text">
+                    <span class="error2" v-if="error3" style="color: red;">Por favor ingrese una contraseña</span>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label class="form-label">Rol</label>
+                    <select v-model="forms.user.rolDefault" name="seleccionProducto" id="seleccionProducto"
+                        class="form-select  text-center">
+                        <option v-for="item in  roles" v-text="item">Seleccione</option>
+                    </select>
+                    <span class="error3" v-if="error4" style="color: red;">Por favor ingrese un rol</span>
+                </div>
+            </div>
+            <div class="row m-3">
+                <div class="col">
+                    <button @click="createEmployee()" class="custom-btn btn-9" type="button">Guardar</button>
+                </div>
+            </div>
+        </div>
+        <!--Fin crear usuarios-->
+        <!--Crear productos-->
+        <div v-if="flag2" class="row usuarios  border border-dark border-2 m-3  justify-content-center">
+            <div class="row">
+                <div class="row mt-3 text-center ">
+                    <h3>Crear productos</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label>Tipo de producto</label>
+                    <select v-model="product" name="seleccionProducto" id="seleccionProducto"
+                        class="form-select text-center">
+                        <option v-for="(item,index) in productType" v-text="item.name">Seleccione</option>
+                    </select>
+                    <span class="error" v-if="error5" style="color: red;">Por favor ingrese el tipo de producto</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Nombre del producto</label>
+                    <input v-model="forms.product.name" class="form-control" type="text">
+                    <span class="error" v-if="error6" style="color: red;">Por favor ingrese el nombre del producto</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Descripción del producto</label>
+                    <input v-model="forms.product.description" class="form-control" type="text">
+                    <span class="error" v-if="error7" style="color: red;">Por favor ingrese una descripción del producto</span>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Precio</label>
+                    <input v-model="forms.product.price" class="form-control" type="number">
+                    <span class="error" v-if="error8" style="color: red;">Por favor ingrese el precio del producto</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Seleccionar imagen</label>
+                </div>
+            </div>
+            <!--Imagenes Hamburguesas-->
+            <div v-if="flag3" class="row mt-1">
+                <div class="col">
+                    <button type="button" class="btn-8" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Imagenes
+                    </button>
+                </div>
+            </div>
+            <!--Imagenes Perritos-->
+            <div v-if="flag4" class="row mt-1">
+                <div class="col">
+                    <button type="button" class="btn-8" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        Imagenes
+                    </button>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span class="error" v-if="error9" style="color: red;">Por favor seleccione una imagen</span>
+                </div>
+            </div>
+            <div class="row m-3">
+                
+                <div class="col"> 
+                    <button @click="createProduct()" type="button" class="custom-btn btn-9">Guardar</button>
+                </div>
+            </div>
+        </div>
+        <!--Fin chef-->
+
+        <!--Crear adicionales-->
+        <div v-if="flag5" class="row usuarios  border border-dark border-2 m-3  justify-content-center">
+            <div class="col">
+                <div class="row">
+                    <div class="row mt-3 text-center ">
+                        <h3>Crear adicionales</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label">Nombre del producto</label>
+                        <input v-model="forms.additional.name" class="form-control" type="text">
+                        <span class="error" v-if="error10" style="color: red;">Por favor ingrese el nombre del producto</span>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label">Precio</label>
+                        <input v-model.number="forms.additional.price" class="form-control" type="number">
+                        <span class="error" v-if="error11" style="color: red;">Por favor ingrese el precio del producto</span>
+
+                    </div>
+                </div>
+                <div class="row mt-3 mb-3">
+                    <div class="col">
+                        <button @click="createAdditional()" class="custom-btn btn-9" type="button">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin Crear adicionales-->
+        <!--Ventas realizadas-->
+        <div class="row">
+            <div class="row  title2">
+                <h1>Ventas realizadas</h1>
+            </div>
+            <div class="col">
+                <!-- tabla-->
+                <div class="row" id="tabla">
+                    <div class="container pe-4 ps-4">
+                        <div class="table-responsive">
+                            <table class="table table-bordered border-dark border-5 ">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th class="col-3">Numero pedido</th>
+                                        <th class="col-3">Descripción</th>
+                                        <th class="col-3">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="body" v-for="item in parsedShoppingCart">
+                                        <td v-text="item.numOrder"></td>
+                                        <td v-text="item.description.toString()"></td>
+                                        <td v-text="item.totalPayment"></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th id="bordeTable" ></th>
+                                        <th class="bordeB">Cantidad Total</th>
+                                        
+                                        <th  class="bordeB" v-text="consolidationTotal" ></th>
+                                    </tr>
+                                </tfoot>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Fin Ventas realizadas-->
+        <!--Modal imagenes hamburguesas-->
+        <div class="modal fade justify-content-center " id="exampleModal" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body justify-content-center">
+                        <div class="row  align-items-center">
+                            <h1 class="text-center title">Elegir imagen de su producto</h1>
+                            <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center"
+                                v-for="item in burgersOptionalImages">
+                                <div class="card" style="width: 18rem; margin:0px 45px;">
+                                    <img :src="item" class="card-img-top" alt="...">
+                                    <button @click="saveOptionImage(item)" class="btn-8 ">Elegir</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-bs-dismiss="modal"  type="button" class="btn-89">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin modal imagenes hamburguesas-->
+        <!--Modal imagenes perros calientes-->
+        <div class="modal fade justify-content-center " id="exampleModal1" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body justify-content-center">
+                        <div class="row  align-items-center">
+                            <h1 class="text-center title">Elegir imagen de su producto</h1>
+                            <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center"
+                                v-for="item in hotDogsoptionalImages">
+                                <div class="card" style="width: 18rem; margin:0px 45px;">
+                                    <img :src="item" class="card-img-top" alt="...">
+                                    <button @click="saveOptionImage(item)"  class="btn-8 ">elegir</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-bs-dismiss="modal" type="button" class="btn-89">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin modal imagenes perros calientes-->
+
+
+
+    </div>
+    </div>
+    <script src="https://kit.fontawesome.com/eb9c72ba98.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+    <script src="../../backEnd/administrator.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+        crossorigin="anonymous"></script>
+
 </body>
 ​
+
 </html>

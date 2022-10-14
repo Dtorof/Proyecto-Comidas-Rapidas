@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Source+Sans+Pro:wght@900&display=swap');
+:root{
+    --dorado:rgb(212, 175, 55);
+    --negro:rgb(0, 0, 0);
+    --blanco:#fff;
+}
+body{
+    background-color: var(--blanco);
+}
+.container .title{
+    color: var(--dorado);
+    font-family: 'Source Sans Pro', sans-serif;
+  } 
+  .container .title2{
+    color: var(--negro);
+    font-family: 'Source Sans Pro', sans-serif;
+  } 
+ #tabla th{
+    color: var(--negro);
+    font-size: 150%;
+ }
+ #tabla tr{
+    color: var(--negro);
+ }
+ .open {
+  font-size: 2rem;
+  color: var(--negro); 
+  
+}
+.custom-btn{
+  width: 50%;
+  height: 40px;
+  color: var(--blanco);
+}
+.btn-9 {
+  border: none;
+  background-color: var(--dorado);
+}
+.btn-9:hover {
+  border-style: solid;
+  border-color: var(--negro);
+  border-width: 1px;
+  background-color:var(--blanco);
+  color: var(--negro);
+
+}

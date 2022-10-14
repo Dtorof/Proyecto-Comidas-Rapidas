@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Source+Sans+Pro:wght@900&display=swap');
+:root{
+    --dorado:rgb(212, 175, 55);
+    --negro:rgb(0, 0, 0);
+    --blanco:#fff;
+}
+body{
+    background-color: black;
+    margin-bottom: 0;
+}
+
+#app{
+    width: 100%;
+   position:absolute; top:0;left:0;
+}
+.navbar{
+    background-color:#3e2420 !important;
+    font-family: 'Roboto', sans-serif;
+    
+}
+.navbar button{
+    padding-top: 1%;
+    font-family: 'Bungee Spice', cursive;
+    border-color: #3e2420 
+
+}
+.navbar form img {
+    width: 30px;
+}
+.navbar form span {
+   
+    margin-left: -4px;
+}
+
+.carousel{
+    margin-top: 70px;
+    min-height: 50vh;
+}
+.container .title{
+  color: var(--dorado);
+  font-family: 'Source Sans Pro', sans-serif;
+} 
+.container .title2{
+  color: var(--blanco);
+  font-family: 'Source Sans Pro', sans-serif;
+} 
+
+/* yeni */
+.burger #medio{
+    width: 100%;
+}
+.burger  #mas, #menos{
+    width: 60%;
+    border: none;
+}
+.burger  #mas{
+    background-color: green;
+}
+.burger  #menos{
+    background-color: red;
+}
+.burger #adicionales{
+    border-color: var(--negro);
+    color: var(--negro) !important;
+}
+.hot_dogs #medio{
+    width: 100%;
+}
+.hot_dogs  #mas, #menos{
+    width: 60%;
+    border: none;
+}
+.hot_dogs #adicionales{
+    border-color: var(--negro);
+    color: var(--negro) !important;
+}
+.container .burger .card{
+    margin-bottom: 5%;
+}
+.container .burger .card .card-body{
+    height:8rem;
+   
+}
+.container .burger .card img{
+    height:16rem;
+   
+}
+.container .hot_dogs .card{
+    margin-bottom: 5%;
+}
+.container .hot_dogs .card .card-body{
+    height:8rem;
+  
+}
+.container .hot_dogs .card img{
+    height:16rem;
+   
+}
+.hot_dogs  #mas{
+    background-color: green;
+}
+.hot_dogs  #menos{
+    background-color: red;
+}
+.hot_dogs #adicionales{
+    color: var(--negro);
+}
+#carousel {
+    position: relative;
+    filter: grayscale(30%);
+}
+#user{
+    width: 30vh;
+    height: 30vh;
+    display:block;
+    margin:auto;
+}
+#loginb{
+    margin-top: 10px;
+}
+.modal-footer  #closeinvisible{
+    display: none;
+}
+.btn-9 {
+    border: none;
+    background-color: var(--dorado);
+  }
+  .btn-9:hover {
+    border-style: solid;
+    border-color: var(--negro);
+    border-width: 1px;
+    background-color:var(--blanco);
+    color: var(--negro);
+  
+  }
+  .custom-btn{
+    width: 100%;
+    height: 40px;
+    color: var(--blanco);
+  
+  }
+
+ .modalsb{
+    border: none!important;
+    background-color: var(--dorado);;
+ }
+
+ .modalsb:hover{
+    border-style: solid!important;
+    border-color: var(--negro)!important;
+    border-width: 1px!important;
+    background-color:var(--blanco)!important;
+    color: var(--negro)!important;
+ }
+ .row footer{
+    background-color: #3e2420;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width:100%;
+    height: 1%;
+ }
+ .row footer a{
+    text-decoration: dashed;
+    color: var(--blanco);
+    
+ }
