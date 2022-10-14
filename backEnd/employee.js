@@ -9,7 +9,9 @@ var app = new Vue({
     },
     created() {   
         this.dbOrdersEmployee = this.getParsedLocalStorage("dbOrderEmployee") 
-        this.dbOrdersDomiciliary = this.getParsedLocalStorage("users-domiciliary") 
+        this.dbOrdersDomiciliary = this.getParsedLocalStorage("registered-users")
+        this.filterDomi()
+        this.dbOrdersDomiciliary = this.filterDomi()
         console.log(this.dbOrdersEmployee)
         console.log(this.dbOrdersDomiciliary)
         this.dataStorageEmployee = JSON.parse(localStorage.getItem("dbOrderDomiciliary") || null)
@@ -18,27 +20,23 @@ var app = new Vue({
         getParsedLocalStorage(key) {
             return JSON.parse(localStorage.getItem(key) || null);
         },
-        // client(){
-        //     let client = {
-        //         ...this.dbOrdersEmployee,
-        //         domiciliary: this.optionDomiciliary
-        //     }
-        //     // this.dbOrderServe = [...this.dbOrderServe, client];
-        //     this.dbOrderServe.push(client);
-        //     console.log( client)
-        //     console.log( this.dbOrderServe)
-        // },
+        filterDomi(){
+            let domic = this.dbOrdersDomiciliary.filter((domic)=> domic.rol === "domiciliario")
+            return domic
+        },
         clever(index){
             if(index) {
                 let [serve] =  this.dbOrdersEmployee.splice(index,1)
-                console.log(serve.domiciliary = this.optionDomiciliary)
                 this.dbOrderServe.push(serve)
-                // this.dbOrderServe.push( this.optionDomiciliary)
                 console.log(this.dbOrderServe)
+                console.log(serve)
             }
               this.updateLocalStorage()
             },
+           
             updateLocalStorage(){
+                localStorage.setItem("dbOrderEmployee", JSON.stringify(this.dbOrdersEmployee))
+                localStorage.setItem("listDomiciliary", JSON.stringify(this.dbOrdersDomiciliary))
                 localStorage.setItem("dbOrderDomiciliary", JSON.stringify(this.dbOrderServe))
             },
     },
