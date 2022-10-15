@@ -131,7 +131,7 @@ new Vue({
       return `${ descProd} ${descaddit}`
     },
     numOrder(){
-      let id =  `000${Math.floor(Math.random() * 101)}`;
+      let id =  `000${this.orders.length + 1}`;
       return id 
     },
     clearForm(){    
@@ -169,10 +169,10 @@ new Vue({
     totalToPay() {  
         let payDataAdditional = this.additionalsCheck.map(addit => addit.price);
         let payAdditional = payDataAdditional.reduce((value,num)=> value + num, 0); 
-        console.log(payDataAdditional , payAdditional, "🎅🏻")
+        console.log(payDataAdditional , payAdditional)
         let payData = this.cartData.map((prod)=> {return prod.subTotalNumber})
         let pay = payData.reduce((value, num) => value + num,0)
-        this.totalPayment  = pay + payAdditional
+        this.totalPayment  = this.thousandSeparator(pay + payAdditional, 0);
     },
     message(icon,title, timer, position, text, button) {
       swal({
