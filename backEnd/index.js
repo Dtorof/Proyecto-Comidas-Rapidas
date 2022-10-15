@@ -25,6 +25,7 @@ new Vue({
   ADDITIONALS_KEY: 'all-additionals',
   additionalOption:"",
   dataStorage: [],
+  dataOrderChef: [],
   flag:0,
   error:false,
   ///
@@ -42,6 +43,7 @@ new Vue({
       this.setterLocalStorage(this.EMPLOYEES_KEY,this.usersRolEmployee)
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
       this.dataStorage = JSON.parse(localStorage.getItem("dbOrder") || null)
+      this.dataOrderChef= JSON.parse(localStorage.getItem("dbOrderChef") || null)
   },
   methods: {
     setterLocalStorage(key, data) {
@@ -58,6 +60,7 @@ new Vue({
       }
     },
     updateLocalStorage(){
+      localStorage.setItem("dbOrderChef", JSON.stringify(this.orders))
       localStorage.setItem("dbOrder", JSON.stringify(this.orders))
   },
     addCartButton(item){
@@ -105,20 +108,21 @@ new Vue({
               user: this.userName,
               phone: this.userPhone,
               direction: this.userDirection, 
-              totalPayment: this.totalPayment
+              totalPayment: this.totalPayment,
             }
             order.numOrder = this.numOrder();
             order.description = this.descriptionOrden();
             this.orders.push(order)
             this.updateLocalStorage(this.orders)
-            this.clearForm()
-            this.cartData =[]
-            this.totalPayment = ""
-            this.additionalsCheck = []
             console.log(this.orders)
               // setTimeout(function() {location.href="./index.html"}, 2000);
+              this.clearForm()
+              this.cartData =[]
+              this.totalPayment = ""
+              this.additionalsCheck = []
             this.payMessage();
             this.closeTotal()
+            
           }
     },
     descriptionOrden(){
@@ -127,7 +131,7 @@ new Vue({
       return `${ descProd} ${descaddit}`
     },
     numOrder(){
-      let id =  `000${Math.floor(Math.random() * 101)}`;
+      let id =  `000${this.orders.length + 1}`;
       return id 
     },
     clearForm(){    
@@ -163,10 +167,12 @@ new Vue({
     },
     
     totalToPay() {  
-        let payAdditional = this.additionalsCheck.map(addit => addit.price).reduce((value,num)=> value + num, 0);    
+        let payDataAdditional = this.additionalsCheck.map(addit => addit.price);
+        let payAdditional = payDataAdditional.reduce((value,num)=> value + num, 0); 
+        console.log(payDataAdditional , payAdditional)
         let payData = this.cartData.map((prod)=> {return prod.subTotalNumber})
         let pay = payData.reduce((value, num) => value + num,0)
-        this.totalPayment  = pay + payAdditional
+        this.totalPayment  = this.thousandSeparator(pay + payAdditional, 0);
     },
     message(icon,title, timer, position, text, button) {
       swal({

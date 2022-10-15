@@ -4,10 +4,10 @@ var app = new Vue({
         dbOrdersChef:{},
         dbOrderServe: [],
         dataStorageEmployee: "",
-        // dbChef: []
+        dataChef: {}
     },
     created() {   
-        this.dbOrdersChef = this.getParsedLocalStorage("dbOrder") 
+        this.dbOrdersChef = JSON.parse(localStorage.getItem("dbOrderChef"));
         console.log(this.dbOrdersChef)
         this.dataStorageEmployee = JSON.parse(localStorage.getItem("dbOrderEmployee") || null)
     },
@@ -17,15 +17,17 @@ var app = new Vue({
         },
         
         clever(index){
-        if(index) {
+        if(index>=0) {
             let [serve] = this.dbOrdersChef.splice(index,1)
+            serve.domiciliary = ""
             this.dbOrderServe.push(serve)
             console.log(this.dbOrderServe)
+            console.log(this.dbOrdersChef)
         }
           this.updateLocalStorage()
         },
-        updateLocalStorage(){
-            localStorage.setItem("dbChef", JSON.stringify( this.dbOrdersChef))
+        updateLocalStorage(){ 
+            localStorage.setItem("dbOrderChef", JSON.stringify(this.dbOrdersChef))
             localStorage.setItem("dbOrderEmployee", JSON.stringify(this.dbOrderServe))
         },
         
