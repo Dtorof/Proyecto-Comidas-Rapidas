@@ -98,15 +98,10 @@ new Vue({
             button,
         })
         },
-        format(n){
-          n=n.replace(/\,/g,'')
-          n=parseInt(n,10)
-          return n
-      },
         getTotalsCart(elem){
           let copyData = [...elem]
-          const res = (copyData) => copyData.map(x => this.format(x.totalPayment)
-          ).reduce((x,y) => x + y)
+          const res = (copyData) => copyData.map(x => x.totalPayment)
+          .reduce((x,y) => x + y)
           console.log('copyData');
           this.consolidationTotal = res(copyData)
           if(localStorage.getItem(this.CONSOLIDATION_CARTS_KEY) == null){
