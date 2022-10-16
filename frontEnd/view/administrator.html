@@ -345,7 +345,9 @@
                                 <div class="col-sm-12 col-lg-5 col-xs-12 m-3  justify-content-center"
                                     v-for="item in burgersOptionalImages">
                                     <div class="card" style="width: 18rem; margin:0px 45px;">
+                                        <div :class="optionImage == item? 'back-red' : 'back-blue'">
                                             <img :src="item" class="card-img-top" alt="...">
+                                        </div>
                                             <button @click="saveOptionImage(item)" class="btn-8 ">Elegir</button>
                                     </div>
                                 </div>
