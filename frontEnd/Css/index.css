@@ -75,9 +75,12 @@ body{
 .hot_dogs #adicionales{
     border-color: var(--negro);
     color: var(--negro) !important;
+
 }
+
 .container .burger .card{
     margin-bottom: 5%;
+    
 }
 .container .burger .card .card-body{
     height:8rem;
@@ -167,3 +170,13 @@ body{
     color: var(--blanco);
     
  }
+ #price{
+    margin-top: 18%!important;
+ }
+ #bordeTable{
+    border-bottom:1px solid rgb(255, 255, 255);
+    border-left:1px solid rgb(255, 255, 255);
+  }
+.modal .table .table99{
+    background-color: var(--dorado);
+}
