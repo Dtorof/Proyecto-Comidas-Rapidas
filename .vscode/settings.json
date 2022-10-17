@@ -1,5 +1,5 @@
 {
-    "liveServer.settings.port": 5502,
+    "liveServer.settings.port": 5504,
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#ab307e",
         "activityBar.background": "#ab307e",
@@ -17,7 +17,9 @@
         "titleBar.activeForeground": "#e7e7e7",
         "titleBar.inactiveBackground": "#83256199",
         "titleBar.inactiveForeground": "#e7e7e799",
-        "sash.hoverBorder": "#ab307e"
+        "editorGroup.border": "#ab307e",
+        "statusBar.debuggingBackground": "#258347",
+        "statusBar.debuggingForeground": "#e7e7e7"
     },
     "peacock.color": "#832561"
 }

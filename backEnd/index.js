@@ -44,6 +44,7 @@ new Vue({
       this.setterLocalStorage(this.REGISTERED_USERS_KEY, this.registeredUsers)
       this.dataStorage = JSON.parse(localStorage.getItem("dbOrder") || null)
       this.dataOrderChef= JSON.parse(localStorage.getItem("dbOrderChef") || null)
+      this.orders
   },
   methods: {
     setterLocalStorage(key, data) {
@@ -72,11 +73,15 @@ new Vue({
         description: item.description,
         image: item.image,
       }
-      this.productBuy.subTotal = this.thousandSeparator(this.productBuy.quantity * this.productBuy.price);
-      this.productBuy.subTotalNumber =  (item.qty * item.price)
-      this.productBuy.additional = [...this.additionalsCheck]
+      this.productBuy.subTotalNumber =  (item.qty * item.price) 
       this.cartData.push(this.productBuy);
-      this.totalToPay(); 
+    },
+    addAdditional() {
+      this.validationmodalpay();       
+      this.productBuy.additional = [...this.additionalsCheck];
+      this.payAdditional = this.productBuy.additional.map(addit=> addit.price).reduce((value,num)=> value + num, 0)
+      this.productBuy.subTotal = this.thousandSeparator((this.productBuy.quantity * this.productBuy.price) + this.payAdditional);
+      this.totalToPay();
     },
     getError() {
           
@@ -114,7 +119,6 @@ new Vue({
             order.description = this.descriptionOrden();
             this.orders.push(order)
             this.updateLocalStorage(this.orders)
-            console.log(this.orders)
               // setTimeout(function() {location.href="./index.html"}, 2000);
               this.clearForm()
               this.cartData =[]
@@ -126,9 +130,15 @@ new Vue({
           }
     },
     descriptionOrden(){
-       let descProd = this.cartData.map(prod => `${prod.quantity} - ${prod.name}`)
-       let descaddit = this.additionalsCheck.map(addit => addit.name)
-      return `${ descProd} ${descaddit}`
+      let descProd = this.cartData.map(prod => `${prod.quantity} - ${prod.name}`)
+      let [detAddit] = this.cartData.map(prod => prod.additional)
+      let detAdditEnd = detAddit.map(prod=> prod.name)
+       let descaddit = this.productBuy.additional.map(addit => addit.name)
+      return `
+                ${descProd}
+                ${descaddit}
+                ${detAdditEnd}
+              `
     },
     numOrder(){
       let id =  `000${this.orders.length + 1}`;
@@ -164,15 +174,13 @@ new Vue({
     },
     messageB(){
       alert("Ingrese una cantidad valida")
-    },
-    
+    },   
     totalToPay() {  
-        let payDataAdditional = this.additionalsCheck.map(addit => addit.price);
-        let payAdditional = payDataAdditional.reduce((value,num)=> value + num, 0); 
-        console.log(payDataAdditional , payAdditional)
-        let payData = this.cartData.map((prod)=> {return prod.subTotalNumber})
-        let pay = payData.reduce((value, num) => value + num,0)
-        this.totalPayment  = pay + payAdditional
+      let [detPrice] = this.cartData.map(prod => prod.additional)
+      let detPriceEnd = detPrice.map(prod=> prod.price).reduce((value, num) => value + num,0)
+      let payData = this.cartData.map((prod)=> {return prod.subTotalNumber})
+      let pay = payData.reduce((value, num) => value + num,0)
+      this.totalPayment  = this.thousandSeparator(pay + this.payAdditional + detPriceEnd, 0);   
     },
     message(icon,title, timer, position, text, button) {
       swal({
