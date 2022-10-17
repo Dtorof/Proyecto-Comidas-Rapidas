@@ -9,6 +9,7 @@ new Vue({
   cartData: [],
   additionals:0,
   totalPayment: "",
+  payAdditional: "",
   password: "",
   username: "",
   loguedUser:[],
@@ -179,8 +180,8 @@ new Vue({
       let [detPrice] = this.cartData.map(prod => prod.additional)
       let detPriceEnd = detPrice.map(prod=> prod.price).reduce((value, num) => value + num,0)
       let payData = this.cartData.map((prod)=> {return prod.subTotalNumber})
-      let pay = payData.reduce((value, num) => value + num,0)
-      this.totalPayment  = this.thousandSeparator(pay + this.payAdditional + detPriceEnd, 0);   
+      let pay = payData.reduce((value, num) => value + num,0)  
+      this.totalPayment  = pay + this.payAdditional + detPriceEnd
     },
     message(icon,title, timer, position, text, button) {
       swal({

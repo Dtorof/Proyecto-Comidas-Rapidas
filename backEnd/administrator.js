@@ -102,7 +102,7 @@ new Vue({
           let copyData = [...elem]
           const res = (copyData) => copyData.map(x => x.totalPayment)
           .reduce((x,y) => x + y)
-          console.log('copyData');
+          console.log(copyData);
           this.consolidationTotal = res(copyData)
           if(localStorage.getItem(this.CONSOLIDATION_CARTS_KEY) == null){
             this.setterLocalStorage(this.CONSOLIDATION_CARTS_KEY,this.consolidationTotal)
@@ -155,6 +155,7 @@ new Vue({
             id:this.v4(),
             name: this.forms.product.name,
             price: this.forms.product.price,
+            qty:1,
             description: this.forms.product.description,
             image: this.optionImage,
             additional:[]
@@ -174,6 +175,7 @@ new Vue({
             id:this.v4(),
             name: this.forms.product.name,
             price: this.forms.product.price,
+            qty:1,
             description: this.forms.product.description,
             image: this.optionImage,
             additional:[]
@@ -200,6 +202,15 @@ new Vue({
           }
         }
         },
+        imageAdd(){
+          this.message(
+            "success", 
+            "!Imagen guardada!",
+            2200,
+            "center",
+            "¡Puede continuar!",
+            false)
+        },
         createAdditional(){
           this.getError3();
           if(this.error10 == true || this.error11 == true ){
@@ -210,7 +221,7 @@ new Vue({
             price: this.forms.additional.price
           })
             this.setterLocalStorage(this.ADDITIONALS_KEY,this.allAdditionals)
-            let newAdditionals = [...this.allAdditionals]
+            let [newAdditionals] = [...this.allAdditionals]
             this.productsParsed.additional.push(newAdditionals)
             this.setterLocalStorage(this.PRODUCTS_KEY,this.productsParsed)
 
