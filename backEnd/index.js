@@ -20,6 +20,7 @@ new Vue({
   usersRolEmployee: [],
   allAdditionals: [],
   productsParsed: [],
+  ordenParsed: [],
   allProducts: [],
   PRODUCTS_KEY: 'all-products',
   REGISTERED_USERS_KEY: 'registered-users',
@@ -63,8 +64,8 @@ new Vue({
       }
     },
     updateLocalStorage(){
-      localStorage.setItem("dbOrderChef", JSON.stringify(this.orders))
       localStorage.setItem("dbOrder", JSON.stringify(this.orders))
+      localStorage.setItem("dbOrderChef", JSON.stringify(this.orders))
   },
     addCartButton(item){
       this.productBuy = {
@@ -84,7 +85,7 @@ new Vue({
       this.payAdditional = this.productBuy.additional.map(addit=> addit.price).reduce((value,num)=> value + num, 0)
       Number(this.payAdditional)
       this.productBuy.subTotal = this.thousandSeparator((this.productBuy.quantity * this.productBuy.price) + this.payAdditional);
-      totalToPay();
+      this.totalToPay();
     },
     getError() {
           
@@ -122,11 +123,18 @@ new Vue({
             order.description = this.descriptionOrden();
             this.orders.push(order)
             this.updateLocalStorage(this.orders)
+
+    
+            if(localStorage.getItem("dbOrder") !== null){
+              this.setterLocalStorage("dbOrder",this.orders)
+            }else{
+              this.ordenParsed = this.getterLocalStorage("dbOrder")
+            }
               // setTimeout(function() {location.href="./index.html"}, 2000);
-              this.clearForm()
-              this.cartData =[]
-              this.totalPayment = ""
-              this.additionalsCheck = []
+            this.clearForm()
+            this.cartData =[]
+            this.totalPayment = ""
+            this.additionalsCheck = []
             this.payMessage();
             this.closeTotal()
             
@@ -183,7 +191,8 @@ new Vue({
       let detPriceEnd = detPrice.map(prod=> prod.price).reduce((value, num) => value + num,0)
       let payData = this.cartData.map((prod)=> {return prod.subTotalNumber})
       let pay = payData.reduce((value, num) => value + num,0)  
-      return(this.cartData.length >1)? this.totalPayment  = pay + this.payAdditional + detPriceEnd: this.totalPayment  = pay + this.payAdditional  
+      let totalPay = (this.cartData.length >1)? this.totalPayment = pay + this.payAdditional + detPriceEnd: this.totalPayment  = pay + this.payAdditional  
+      return totalPay.toFixed()
     },
     message(icon,title, timer, position, text, button) {
       swal({
