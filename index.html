@@ -330,23 +330,12 @@
                 </div>
               </div>
             </div>
-            <div class="col-6">
-              <div class="modal-body">
-                <div class="row">
-                  <h6>Elegir cantidad de adicionales para este producto:</h6>
-                </div>
-                <div class="row">
-                  <input  style="width: 50%;" type="text">
-                  <!-- v-model.number="item.qty" -->
-                </div>
-              </div>
-            </div>
           </div>
           <div class="modal-footer">
             <button @click="closeTotal()" type="button" id="close2" class="btn btn-secondary" data-bs-dismiss="modal">
               Cerrar
             </button>
-            <button @click=" addAdditional()" type="button" class="btn btn-primary modalsb">
+            <button @click="addAdditional();" type="button" class="btn btn-primary modalsb">
               Guardar
             </button>
           </div>

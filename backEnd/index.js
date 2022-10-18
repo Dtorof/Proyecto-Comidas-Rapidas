@@ -9,7 +9,8 @@ new Vue({
   cartData: [],
   additionals:0,
   totalPayment: "",
-  payAdditional: "",
+  payAdditional: [],
+  payAdditionalRes:"",
   password: "",
   username: "",
   loguedUser:[],
@@ -81,8 +82,9 @@ new Vue({
       this.validationmodalpay();       
       this.productBuy.additional = [...this.additionalsCheck];
       this.payAdditional = this.productBuy.additional.map(addit=> addit.price).reduce((value,num)=> value + num, 0)
+      Number(this.payAdditional)
       this.productBuy.subTotal = this.thousandSeparator((this.productBuy.quantity * this.productBuy.price) + this.payAdditional);
-      this.totalToPay();
+      totalToPay();
     },
     getError() {
           
@@ -181,7 +183,7 @@ new Vue({
       let detPriceEnd = detPrice.map(prod=> prod.price).reduce((value, num) => value + num,0)
       let payData = this.cartData.map((prod)=> {return prod.subTotalNumber})
       let pay = payData.reduce((value, num) => value + num,0)  
-      this.totalPayment  = pay + this.payAdditional + detPriceEnd
+      return(this.cartData.length >1)? this.totalPayment  = pay + this.payAdditional + detPriceEnd: this.totalPayment  = pay + this.payAdditional  
     },
     message(icon,title, timer, position, text, button) {
       swal({
