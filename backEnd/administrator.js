@@ -104,11 +104,13 @@ new Vue({
           .reduce((x,y) => x + y)
           console.log(copyData);
           this.consolidationTotal = res(copyData)
-          if(localStorage.getItem(this.CONSOLIDATION_CARTS_KEY) == null){
+          console.log(this.consolidationTotal);
+          if(localStorage.getItem(this.CONSOLIDATION_CARTS_KEY) == null || (this.CONSOLIDATION_CARTS_KEY) !== null){
             this.setterLocalStorage(this.CONSOLIDATION_CARTS_KEY,this.consolidationTotal)
           }else{
             this.consolidationTotal = this.getterLocalStorage(this.CONSOLIDATION_CARTS_KEY)
           }
+         
         },
         separateUsersByRol (arr) {
           let data = [...arr]
