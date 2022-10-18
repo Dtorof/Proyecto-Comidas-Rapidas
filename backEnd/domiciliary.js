@@ -30,7 +30,7 @@ var app = new Vue({
             return userLogin
         },
         clever(index){
-            if(index) {
+            if(index>=0) {
                 this.userDomic.splice(index, 1)
                 console.log(this.userDomic)
             }

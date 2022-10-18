@@ -17,7 +17,7 @@ var app = new Vue({
         },
         
         clever(index){
-        if(index) {
+        if(index>=0) {
             let [serve] = this.dbOrdersChef.splice(index,1)
             serve.domiciliary = ""
             this.dbOrderServe.push(serve)

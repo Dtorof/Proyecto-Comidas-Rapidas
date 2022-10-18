@@ -25,7 +25,7 @@ var app = new Vue({
             return domic
         },
         clever(index){
-            if(index) {
+            if(index>=0) {
                 let [serve] =  this.dbOrdersEmployee.splice(index,1)
                 this.dbOrderServe.push(serve)
                 console.log(this.dbOrderServe)
