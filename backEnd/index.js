@@ -76,15 +76,26 @@ new Vue({
         description: item.description,
         image: item.image,
       }
-      this.productBuy.subTotalNumber =  (item.qty * item.price) 
+      // this.productBuy.subTotalNumber =  (item.qty * item.price) 
+    },
+    addRealCart(){    
+      const existentProduct = this.cartData.find(prod => prod.name === this.productBuy.name);
+      if (existentProduct){ 
+        const { subTotalNumber } = existentProduct;   
+        existentProduct.quantity += this.productBuy.quantity; 
+        existentProduct.subTotal =  subTotalNumber + this.productBuy.subTotalNumber 
+        existentProduct.subTotalNumber =  (subTotalNumber) + this.productBuy.subTotalNumber
+        return 
+      }   
       this.cartData.push(this.productBuy);
     },
     addAdditional() {
       this.validationmodalpay();       
       this.productBuy.additional = [...this.additionalsCheck];
       this.payAdditional = this.productBuy.additional.map(addit=> addit.price).reduce((value,num)=> value + num, 0)
-      Number(this.payAdditional)
-      this.productBuy.subTotal = this.thousandSeparator((this.productBuy.quantity * this.productBuy.price) + this.payAdditional);
+      this.productBuy.subTotal = (this.productBuy.quantity * this.productBuy.price) + this.payAdditional;
+      this.productBuy.subTotalNumber = (this.productBuy.quantity * this.productBuy.price) + this.payAdditional;
+      this.addRealCart();
       this.totalToPay();
     },
     getError() {
@@ -187,12 +198,10 @@ new Vue({
       alert("Ingrese una cantidad valida")
     },   
     totalToPay() {  
-      let [detPrice] = this.cartData.map(prod => prod.additional)
-      let detPriceEnd = detPrice.map(prod=> prod.price).reduce((value, num) => value + num,0)
-      let payData = this.cartData.map((prod)=> {return prod.subTotalNumber})
+      let payData = this.cartData.map((prod)=> {return prod.subTotal})
       let pay = payData.reduce((value, num) => value + num,0)  
-      let totalPay = (this.cartData.length >1)? this.totalPayment = pay + this.payAdditional + detPriceEnd: this.totalPayment  = pay + this.payAdditional  
-      return totalPay.toFixed()
+      this.totalPayment = pay
+      return  this.totalPayment
     },
     message(icon,title, timer, position, text, button) {
       swal({
