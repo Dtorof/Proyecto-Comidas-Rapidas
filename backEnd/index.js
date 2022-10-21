@@ -1,3 +1,17 @@
+function thousandSeparator(number = 0, decimalsQuantity = 0) {
+  return Number(number).toFixed(decimalsQuantity).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+Vue.directive('separe', {
+  bind(el, binding, vnode){   
+    if (el.innerHTML.includes("$")){
+      el.innerHTML = "$"+thousandSeparator(parseInt(el.innerHTML.replace("$","")));
+      return
+    }
+    el.innerHTML = thousandSeparator(parseInt(new String(el.innerHTML)));
+  }
+})
+
 new Vue({   
   el: '#app',
   data: {
@@ -39,7 +53,6 @@ new Vue({
   created(){
       this.setDefaultUsers()
       this.setDataProducts()
-      console.log(this.allProducts)
       this.productsParsed = this.getterLocalStorage(this.PRODUCTS_KEY)
       this.setterLocalStorage(this.DOMICILIARIES_KEY,this.usersRolDomiciliary)
       this.setterLocalStorage(this.CHEFS_KEY,this.usersRolChef)
@@ -75,13 +88,15 @@ new Vue({
         quantity: item.qty,
         description: item.description,
         image: item.image,
+        additional: []
       }
       // this.productBuy.subTotalNumber =  (item.qty * item.price) 
+      // this.cartData.push(this.productBuy);
     },
     addRealCart(){    
       const existentProduct = this.cartData.find(prod => prod.name === this.productBuy.name);
       if (existentProduct){ 
-        const { subTotalNumber } = existentProduct;   
+        const { subTotalNumber } = existentProduct;      
         existentProduct.quantity += this.productBuy.quantity; 
         existentProduct.subTotal =  subTotalNumber + this.productBuy.subTotalNumber 
         existentProduct.subTotalNumber =  (subTotalNumber) + this.productBuy.subTotalNumber
@@ -92,6 +107,8 @@ new Vue({
     addAdditional() {
       this.validationmodalpay();       
       this.productBuy.additional = [...this.additionalsCheck];
+      let collection = [...this.productBuy.additional,this.additionalsCheck]
+      this.payAdditionalname = this.productBuy.additional.map(addit=> addit)
       this.payAdditional = this.productBuy.additional.map(addit=> addit.price).reduce((value,num)=> value + num, 0)
       this.productBuy.subTotal = (this.productBuy.quantity * this.productBuy.price) + this.payAdditional;
       this.productBuy.subTotalNumber = (this.productBuy.quantity * this.productBuy.price) + this.payAdditional;
@@ -135,7 +152,6 @@ new Vue({
             this.orders.push(order)
             this.updateLocalStorage(this.orders)
 
-    
             if(localStorage.getItem("dbOrder") !== null){
               this.setterLocalStorage("dbOrder",this.orders)
             }else{
@@ -146,6 +162,8 @@ new Vue({
             this.cartData =[]
             this.totalPayment = ""
             this.additionalsCheck = []
+            this.productsParsed.hot_dogs.qty = 1 
+            this.productsParsed.burgers.qty = 1
             this.payMessage();
             this.closeTotal()
             
@@ -155,7 +173,7 @@ new Vue({
       let descProd = this.cartData.map(prod => `${prod.quantity} - ${prod.name}`)
       let [detAddit] = this.cartData.map(prod => prod.additional)
       let detAdditEnd = detAddit.map(prod=> prod.name)
-       let descaddit = this.productBuy.additional.map(addit => addit.name)
+      let descaddit = this.productBuy.additional.map(addit => addit.name)
       return `
                 ${descProd}
                 ${descaddit}
