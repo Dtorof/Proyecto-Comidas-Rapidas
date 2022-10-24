@@ -91,6 +91,8 @@ new Vue({
         image: item.image,
         additional: []
       }
+      // this.productBuy.subTotalNumber =  (item.qty * item.price) 
+      // this.cartData.push(this.productBuy);
     },
     addRealCart(){    
       const existentProduct = this.cartData.find(prod => prod.name === this.productBuy.name);
@@ -101,6 +103,7 @@ new Vue({
         existentProduct.subTotalNumber =  (subTotalNumber) + this.productBuy.subTotalNumber
         return 
       }   
+      this.cartData.push(this.productBuy);
     },
     addAdditional() {
       this.validationmodalpay();       
@@ -148,6 +151,7 @@ new Vue({
             order.description = this.descriptionOrden();
             this.orders.push(order)
             this.updateLocalStorage(this.orders)
+            
             
             if(localStorage.getItem("dbOrder") !== null){
               this.setterLocalStorage("dbOrder",this.orders)
