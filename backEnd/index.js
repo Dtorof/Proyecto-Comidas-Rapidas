@@ -16,6 +16,7 @@ new Vue({
   el: '#app',
   data: {
   additionalsCheck:[],
+  collectionAdditional: [],
   userName: "",
   userPhone: "",
   userDirection: "",
@@ -107,7 +108,6 @@ new Vue({
     addAdditional() {
       this.validationmodalpay();       
       this.productBuy.additional = [...this.additionalsCheck];
-      let collection = [...this.productBuy.additional,this.additionalsCheck]
       this.payAdditionalname = this.productBuy.additional.map(addit=> addit)
       this.payAdditional = this.productBuy.additional.map(addit=> addit.price).reduce((value,num)=> value + num, 0)
       this.productBuy.subTotal = (this.productBuy.quantity * this.productBuy.price) + this.payAdditional;
@@ -151,13 +151,14 @@ new Vue({
             order.description = this.descriptionOrden();
             this.orders.push(order)
             this.updateLocalStorage(this.orders)
-
+            
+            
             if(localStorage.getItem("dbOrder") !== null){
               this.setterLocalStorage("dbOrder",this.orders)
             }else{
               this.ordenParsed = this.getterLocalStorage("dbOrder")
             }
-              // setTimeout(function() {location.href="./index.html"}, 2000);
+              
             this.clearForm()
             this.cartData =[]
             this.totalPayment = ""
@@ -166,19 +167,15 @@ new Vue({
             this.productsParsed.burgers.qty = 1
             this.payMessage();
             this.closeTotal()
-            
+            // setTimeout(function() {location.href="./index.html"}, 2000);
           }
     },
     descriptionOrden(){
-      let descProd = this.cartData.map(prod => `${prod.quantity} - ${prod.name}`)
-      let [detAddit] = this.cartData.map(prod => prod.additional)
-      let detAdditEnd = detAddit.map(prod=> prod.name)
-      let descaddit = this.productBuy.additional.map(addit => addit.name)
-      return `
-                ${descProd}
-                ${descaddit}
-                ${detAdditEnd}
-              `
+      let descProd = this.cartData.map(prod => {
+        let  additional = prod.additional.map((prod)=> prod.name)
+          return `${prod.quantity} - ${prod.name}- ${additional}`
+        })
+      return descProd
     },
     numOrder(){
       let id =  `000${this.orders.length + 1}`;
@@ -199,7 +196,7 @@ new Vue({
         product.qty = action === "add" ? qty + 1 : qty - 1;
       }else{
         const qty = product.qty;
-        product.qty = action === "add" ? qty + 1 : qty - 0;
+        product.qty = action === "remove" ? qty + 1 : qty - 0;
       }
     },
     updateQtyBurgers(action, id){
@@ -209,7 +206,7 @@ new Vue({
         product.qty = action === "add" ? qty + 1 : qty - 1;
       }else{
         const qty = product.qty;
-        product.qty = action === "add" ? qty + 1 : qty - 0;
+        product.qty = action === "remove" ? qty + 1 : qty - 0;
       }
     },
     messageB(){
